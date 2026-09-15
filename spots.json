@@ -1,0 +1,115 @@
+{
+  "_hinweis": "Einzige Datei, die du zum Anpassen brauchst. dirs = fahrbare Windrichtungen als Oktanten (N NO O SO S SW W NW). minWindKn je Spot überschreibt den globalen Wert.",
+
+  "kriterien": {
+    "minWindKn": 11,
+    "minGustKn": 16,
+    "stundeVon": 8,
+    "stundeBis": 21,
+    "minStunden": 2,
+    "prognoseTage": 4,
+    "zeitzone": "Europe/Zurich"
+  },
+
+  "spots": [
+    {
+      "id": "thun-gwatt",
+      "kurz": "Thun",
+      "name": "Thun / Gwatt",
+      "see": "Thunersee",
+      "lat": 46.7178,
+      "lon": 7.6335,
+      "dirs": ["NW", "N", "SO"],
+      "aktiv": true,
+      "notiz": "Nachmittagsthermik aus NW; SO bei Föhnlage."
+    },
+    {
+      "id": "spiez",
+      "kurz": "Spiez",
+      "name": "Spiez / Faulensee",
+      "see": "Thunersee",
+      "lat": 46.6815,
+      "lon": 7.674,
+      "dirs": ["NW", "N", "SO", "S"],
+      "aktiv": true,
+      "notiz": "Seeachse NW-SO, beide Richtungen fahrbar."
+    },
+    {
+      "id": "neuhaus",
+      "kurz": "Neuhaus",
+      "name": "Neuhaus / Interlaken",
+      "see": "Thunersee",
+      "lat": 46.685,
+      "lon": 7.818,
+      "dirs": ["W", "SW", "NW"],
+      "aktiv": true,
+      "notiz": "Klassische Thermik den See hinunter, ab frühem Nachmittag."
+    },
+    {
+      "id": "boenigen",
+      "kurz": "Boenigen",
+      "name": "Bönigen",
+      "see": "Brienzersee",
+      "lat": 46.688,
+      "lon": 7.889,
+      "dirs": ["W", "SW", "NW"],
+      "aktiv": true,
+      "notiz": "Seeachse W-O, Westthermik am Nachmittag."
+    },
+    {
+      "id": "ipsach",
+      "kurz": "Ipsach",
+      "name": "Ipsach / Nidau",
+      "see": "Bielersee",
+      "lat": 47.115,
+      "lon": 7.227,
+      "dirs": ["NO", "O", "W", "NW"],
+      "aktiv": true,
+      "notiz": "Bise aus NO, dazu West und Joran aus NW."
+    },
+    {
+      "id": "erlach",
+      "kurz": "Erlach",
+      "name": "Erlach / Lüscherz",
+      "see": "Bielersee",
+      "lat": 47.045,
+      "lon": 7.095,
+      "dirs": ["NO", "O", "W", "NW"],
+      "aktiv": true,
+      "notiz": "Flachwasser bei Westwind."
+    },
+    {
+      "id": "estavayer",
+      "kurz": "Estavayer",
+      "name": "Estavayer-le-Lac",
+      "see": "Neuenburgersee",
+      "lat": 46.848,
+      "lon": 6.848,
+      "dirs": ["NO", "O", "W", "NW"],
+      "aktiv": true,
+      "notiz": "Läuft bei Westwind und bei Bise aus NO."
+    },
+    {
+      "id": "yvonand",
+      "kurz": "Yvonand",
+      "name": "Yvonand",
+      "see": "Neuenburgersee",
+      "lat": 46.8,
+      "lon": 6.74,
+      "dirs": ["NO", "O", "SW", "W"],
+      "aktiv": true,
+      "notiz": "Kräftigste Bise am Neuenburgersee."
+    },
+    {
+      "id": "vully",
+      "kurz": "Vully",
+      "name": "Praz / Vully",
+      "see": "Murtensee",
+      "lat": 46.945,
+      "lon": 7.077,
+      "dirs": ["NO", "O", "W", "NW"],
+      "aktiv": true,
+      "notiz": "Bise und West, kleiner See mit kurzer Welle."
+    }
+  ]
+}
