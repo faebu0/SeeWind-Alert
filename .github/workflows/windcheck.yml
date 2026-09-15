@@ -1,0 +1,88 @@
+name: Windcheck
+
+on:
+  schedule:
+    # Zeiten sind UTC. 05:00 UTC = 07:00 Sommerzeit / 06:00 Winterzeit,
+    # 15:00 UTC = 17:00 Sommerzeit / 16:00 Winterzeit.
+    - cron: "0 5 * * *"
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+    inputs:
+      testmeldung:
+        description: "Nur eine Testmeldung schicken (Kanal prüfen, keine Prognose)"
+        type: boolean
+        default: false
+
+# Damit der Job das aktualisierte Dashboard zurückschreiben kann.
+permissions:
+  contents: write
+
+concurrency:
+  group: windcheck
+  cancel-in-progress: false
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # Kein setup-node: der Runner bringt Node bereits mit, und dieses Projekt
+      # hat keine Abhängigkeiten. Eine Action weniger, die veralten kann.
+      - name: Node-Version protokollieren
+        run: node --version
+
+      - name: Prognose holen und auswerten
+        env:
+          # Meldekanal: smtp, brevo, aspsms, twilio oder telegram.
+          # Ohne diese Variable wird er aus den vorhandenen Zugangsdaten erraten.
+          MELDER: ${{ vars.MELDER }}
+
+          # E-Mail über ein bestehendes Postfach (gratis)
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ vars.SMTP_PORT }}
+          SMTP_BENUTZER: ${{ secrets.SMTP_BENUTZER }}
+          SMTP_PASSWORT: ${{ secrets.SMTP_PASSWORT }}
+
+          # E-Mail über die Brevo-API (gratis bis 300 am Tag)
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+
+          # Für beide Mail-Wege
+          MAIL_EMPFAENGER: ${{ secrets.MAIL_EMPFAENGER }}
+          MAIL_ABSENDER: ${{ vars.MAIL_ABSENDER }}
+          MAIL_ABSENDERNAME: ${{ vars.MAIL_ABSENDERNAME }}
+
+          # SMS über ASPSMS (Schweizer Anbieter, keine Grundgebühr)
+          ASPSMS_USERKEY: ${{ secrets.ASPSMS_USERKEY }}
+          ASPSMS_PASSWORT: ${{ secrets.ASPSMS_PASSWORT }}
+
+          # SMS über Twilio (global)
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+
+          # Für beide SMS-Wege
+          SMS_EMPFAENGER: ${{ secrets.SMS_EMPFAENGER }}
+          SMS_ABSENDER: ${{ vars.SMS_ABSENDER }}
+          SMS_MAX_ZEICHEN: ${{ vars.SMS_MAX_ZEICHEN }}
+
+          # Telegram (gratis)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
+          KALENDER_STATUS: ${{ vars.KALENDER_STATUS }}
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: node run.mjs ${{ inputs.testmeldung && '--test' || '' }}
+
+      - name: Dashboard und Meldestand sichern
+        if: ${{ !inputs.testmeldung }}
+        run: |
+          git config user.name "windcheck"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs state
+          if git diff --quiet --staged; then
+            echo "Keine Änderung."
+          else
+            git commit -m "Windlauf $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
