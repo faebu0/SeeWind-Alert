@@ -1,0 +1,90 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Seewind//Windalarm//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Seewind — Windfenster
+X-WR-TIMEZONE:Europe/Zurich
+REFRESH-INTERVAL;VALUE=DURATION:PT4H
+X-PUBLISHED-TTL:PT4H
+BEGIN:VEVENT
+UID:estavayer-2026-09-16-11@seewind
+DTSTAMP:20260915T162848Z
+DTSTART:20260916T090000Z
+DTEND:20260916T190000Z
+SUMMARY:Wingfoil Estavayer — 18 kn NW
+DESCRIPTION:Estavayer-le-Lac · Neuenburgersee\n18 kn Mittelwind\, Böen 33
+  kn\, Richtung NW\nFenster 11–21 Uhr (10 h)\, Modell ICON-CH1\nPrognose\
+ , keine Zusage — vor der Fahrt nochmal nachsehen.
+LOCATION:Estavayer-le-Lac\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.848;6.848
+END:VEVENT
+BEGIN:VEVENT
+UID:vully-2026-09-16-11@seewind
+DTSTAMP:20260915T162848Z
+DTSTART:20260916T090000Z
+DTEND:20260916T150000Z
+SUMMARY:Wingfoil Vully — 14 kn NW
+DESCRIPTION:Praz / Vully · Murtensee\n14 kn Mittelwind\, Böen 28 kn\, Ric
+ htung NW\nFenster 11–17 Uhr (6 h)\, Modell ICON-CH1\nPrognose\, keine Zu
+ sage — vor der Fahrt nochmal nachsehen.
+LOCATION:Praz / Vully\, Murtensee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.945;7.077
+END:VEVENT
+BEGIN:VEVENT
+UID:erlach-2026-09-16-12@seewind
+DTSTAMP:20260915T162848Z
+DTSTART:20260916T100000Z
+DTEND:20260916T180000Z
+SUMMARY:Wingfoil Erlach — 16 kn NW
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n16 kn Mittelwind\, Böen 29 kn
+ \, Richtung NW\nFenster 12–20 Uhr (8 h)\, Modell ICON-CH1\nPrognose\, ke
+ ine Zusage — vor der Fahrt nochmal nachsehen.
+LOCATION:Erlach / Lüscherz\, Bielersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:47.045;7.095
+END:VEVENT
+BEGIN:VEVENT
+UID:neuhaus-2026-09-16-13@seewind
+DTSTAMP:20260915T162848Z
+DTSTART:20260916T110000Z
+DTEND:20260916T140000Z
+SUMMARY:Wingfoil Neuhaus — 12 kn SW
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n12 kn Mittelwind\, Böen 26 
+ kn\, Richtung SW\nFenster 13–16 Uhr (3 h)\, Modell ICON-CH1\nPrognose\, 
+ keine Zusage — vor der Fahrt nochmal nachsehen.
+LOCATION:Neuhaus / Interlaken\, Thunersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.685;7.818
+END:VEVENT
+BEGIN:VEVENT
+UID:ipsach-2026-09-16-13@seewind
+DTSTAMP:20260915T162848Z
+DTSTART:20260916T110000Z
+DTEND:20260916T180000Z
+SUMMARY:Wingfoil Ipsach — 16 kn NW
+DESCRIPTION:Ipsach / Nidau · Bielersee\n16 kn Mittelwind\, Böen 32 kn\, R
+ ichtung NW\nFenster 13–20 Uhr (7 h)\, Modell ICON-CH1\nPrognose\, keine 
+ Zusage — vor der Fahrt nochmal nachsehen.
+LOCATION:Ipsach / Nidau\, Bielersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:47.115;7.227
+END:VEVENT
+END:VCALENDAR
