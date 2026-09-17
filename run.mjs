@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 import { holePrognose, alleFenster, schluessel, tagLabel, uhr } from "./lib.mjs";
 import { baueSeite } from "./template.mjs";
 import { melde, testMeldung, waehleKanal, pruefeZugang } from "./melder.mjs";
-import { baueIcs } from "./ics.mjs";
+import { baueIcs, baueIcsEinzeln } from "./ics.mjs";
 
 const WURZEL = dirname(fileURLToPath(import.meta.url));
 const KONFIG = join(WURZEL, "spots.json");
@@ -129,12 +129,12 @@ async function main() {
   const ergebnis = await melde(neue, {
     kanal,
     trocken: trocken || Boolean(hindernis),
-    // Nur die neuen Fenster anhängen - der abonnierbare Kalender enthält alle.
-    ics: baueIcs(neue, {
+    // Je neuem Fenster eine eigene Datei: so kann man einzeln auswählen, was
+    // im Kalender landet. Der abonnierbare Kalender enthält weiterhin alle.
+    dateien: baueIcsEinzeln(neue, {
       zeitzone: kriterien.zeitzone,
       dashboardUrl: process.env.DASHBOARD_URL || "",
       status: process.env.KALENDER_STATUS || "BUSY",
-      name: "Seewind — neue Windfenster",
     }),
     kalenderUrl,
   });
