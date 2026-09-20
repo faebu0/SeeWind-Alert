@@ -211,6 +211,61 @@ h1{font-size:19px;font-weight:800;letter-spacing:-.015em;font-stretch:112%}
 .cell.na{background:transparent}
 .hours span{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--ink-3)}
 
+/* Reisemodus */
+.modus{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:22px}
+.modus button{
+  font:600 12px Archivo,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  padding:8px 15px;border:1px solid var(--line-strong);border-radius:2px;
+  background:var(--surface);color:var(--ink-2);cursor:pointer;
+}
+.modus button:hover{border-color:var(--accent);color:var(--accent)}
+.modus button.an{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.modus button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.modus-hinweis{font-size:12.5px;color:var(--ink-3);margin-left:auto;text-align:right}
+
+.reise{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:15px 16px 16px}
+.reise-zeile{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.reise-zeile+.reise-zeile{margin-top:11px}
+.reise input[type=search]{
+  flex:1;min-width:220px;font:15px "Source Sans 3",system-ui,sans-serif;
+  padding:9px 11px;border:1px solid var(--line-strong);border-radius:2px;
+  background:var(--surface-2);color:var(--ink);
+}
+.reise input[type=search]:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.reise .umkreis label{font:600 10.5px Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.reise input[type=range]{flex:1;min-width:140px;max-width:300px;accent-color:var(--accent)}
+.reise output{font-weight:600;min-width:54px}
+.knopf{
+  font:600 12px Archivo,sans-serif;letter-spacing:.05em;padding:9px 14px;
+  border:1px solid var(--accent);border-radius:2px;background:var(--accent);
+  color:var(--surface);cursor:pointer;white-space:nowrap;
+}
+.knopf:hover{filter:brightness(1.08)}
+.knopf:disabled{opacity:.42;cursor:default;filter:none}
+.knopf.still{background:var(--surface);color:var(--ink-2);border-color:var(--line-strong)}
+.knopf.still:hover{border-color:var(--accent);color:var(--accent);filter:none}
+.knopf:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ort-treffer{margin-top:10px;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.ort-treffer button{
+  display:block;width:100%;text-align:left;padding:9px 12px;border:0;cursor:pointer;
+  background:var(--surface);color:var(--ink);font:15px "Source Sans 3",system-ui,sans-serif;
+  border-bottom:1px solid var(--line);
+}
+.ort-treffer button:last-child{border-bottom:0}
+.ort-treffer button:hover{background:var(--accent-soft)}
+.ort-treffer .wo{display:block;font-size:12.5px;color:var(--ink-3)}
+.reise-fuss{margin:12px 0 0;font-size:12.5px;color:var(--ink-3);max-width:74ch}
+.reise-status{margin-top:12px;padding:10px 12px;border-radius:2px;background:var(--surface-2);border:1px solid var(--line);font-size:13.5px;color:var(--ink-2)}
+.reise-status.fehler{background:var(--lv3-bg);border-color:var(--lv3);color:var(--lv3)}
+.reise-status.fertig{background:var(--lv2-bg);border-color:var(--lv2);color:var(--lv2)}
+.uebernehmen{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.uebernehmen p{margin:6px 0 9px;font-size:13px;color:var(--ink-2);max-width:74ch}
+.uebernehmen pre{
+  margin:0 0 10px;padding:11px 12px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:2px;font-size:12.5px;overflow:auto;white-space:pre;
+}
+.zeitzone{font-size:11.5px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
+
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;font-size:12px;color:var(--ink-3);align-items:center}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);max-width:68ch}
@@ -226,12 +281,50 @@ footer p{margin:0 0 10px}
     <h1>Seewind</h1>
     <div class="top-meta">
       <span>Modell <b>ICON-CH1&nbsp;/&nbsp;CH2</b> · MeteoSchweiz</span>
-      <span>Stand <b>20.09. 08:00</b></span>
+      <span>Stand <b>20.09. 12:00</b></span>
     </div>
   </div>
 </header>
 
 <div class="wrap">
+  <div class="modus" id="modus">
+    <button type="button" class="an" data-modus="standard">Standard</button>
+    <button type="button" data-modus="reise">Reisemodus</button>
+    <span class="modus-hinweis" id="modus-hinweis">Die gespeicherten Seen, zweimal täglich frisch gerechnet.</span>
+  </div>
+
+  <section class="reise" id="reise" hidden>
+    <div class="reise-zeile">
+      <input type="search" id="ort-eingabe" placeholder="Ort suchen — Tarifa, Torbole, Sylt …" autocomplete="off" spellcheck="false">
+      <button type="button" class="knopf" id="ort-suchen">Suchen</button>
+      <button type="button" class="knopf still" id="ort-hier">Mein Standort</button>
+    </div>
+    <div class="ort-treffer" id="ort-treffer" hidden></div>
+
+    <div class="reise-zeile umkreis">
+      <label for="umkreis">Umkreis</label>
+      <input type="range" id="umkreis" min="5" max="60" step="5" value="25">
+      <output id="umkreis-out" class="mono">25 km</output>
+      <button type="button" class="knopf" id="reise-start" disabled>Spots suchen</button>
+    </div>
+
+    <p class="reise-fuss">
+      Kein Spotverzeichnis, sondern Geometrie: aus der Uferform wird gemessen, wie
+      weit das Wasser gegen den Wind reicht. Das schliesst ablandigen Wind aus und
+      verwirft Pfützen — sagt aber nichts über Zugang, Einstieg oder örtliche
+      Verbote. Auch auf die Karte tippen setzt den Mittelpunkt.
+    </p>
+
+    <div class="reise-status" id="reise-status" hidden></div>
+
+    <div class="uebernehmen" id="uebernehmen" hidden>
+      <div class="eyebrow">Für Meldungen übernehmen</div>
+      <p>Diesen Block in <code>spots.json</code> anstelle des vorhandenen <code>"reise"</code>-Blocks einsetzen. Ab dem nächsten Lauf werden diese Spots gemeldet wie die Seen zu Hause.</p>
+      <pre class="mono" id="reise-json"></pre>
+      <button type="button" class="knopf" id="reise-kopieren">Block kopieren</button>
+    </div>
+  </section>
+
   <div id="podium"></div>
 
   <section class="karte-box" id="karte-box" hidden>
@@ -287,88 +380,1018 @@ footer p{margin:0 0 10px}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
-<script id="daten" type="application/json">{"kriterien":{"minWindKn":11,"minGustKn":16,"stundeVon":8,"stundeBis":21,"minStunden":2,"prognoseTage":4,"zeitzone":"Europe/Zurich"},"stand":"2026-09-20T08:00","spots":[{"id":"thun-gwatt","name":"Thun / Gwatt","see":"Thunersee","dirs":["NW","N","SO"],"lat":46.7178,"lon":7.6335,"aktiv":true,"minWindKn":11,"notiz":"Nachmittagsthermik aus NW; SO bei Föhnlage."},{"id":"spiez","name":"Spiez / Faulensee","see":"Thunersee","dirs":["NW","N","SO","S"],"lat":46.6815,"lon":7.674,"aktiv":true,"minWindKn":11,"notiz":"Seeachse NW-SO, beide Richtungen fahrbar."},{"id":"neuhaus","name":"Neuhaus / Interlaken","see":"Thunersee","dirs":["W","SW","NW"],"lat":46.685,"lon":7.818,"aktiv":true,"minWindKn":11,"notiz":"Klassische Thermik den See hinunter, ab frühem Nachmittag."},{"id":"boenigen","name":"Bönigen","see":"Brienzersee","dirs":["W","SW","NW"],"lat":46.688,"lon":7.889,"aktiv":true,"minWindKn":11,"notiz":"Seeachse W-O, Westthermik am Nachmittag."},{"id":"ipsach","name":"Ipsach / Nidau","see":"Bielersee","dirs":["NO","O","W","NW"],"lat":47.115,"lon":7.227,"aktiv":true,"minWindKn":11,"notiz":"Bise aus NO, dazu West und Joran aus NW."},{"id":"erlach","name":"Erlach / Lüscherz","see":"Bielersee","dirs":["NO","O","W","NW"],"lat":47.045,"lon":7.095,"aktiv":true,"minWindKn":11,"notiz":"Flachwasser bei Westwind."},{"id":"estavayer","name":"Estavayer-le-Lac","see":"Neuenburgersee","dirs":["NO","O","W","NW"],"lat":46.848,"lon":6.848,"aktiv":true,"minWindKn":11,"notiz":"Läuft bei Westwind und bei Bise aus NO."},{"id":"yvonand","name":"Yvonand","see":"Neuenburgersee","dirs":["NO","O","SW","W"],"lat":46.8,"lon":6.74,"aktiv":true,"minWindKn":11,"notiz":"Kräftigste Bise am Neuenburgersee."},{"id":"vully","name":"Praz / Vully","see":"Murtensee","dirs":["NO","O","W","NW"],"lat":46.945,"lon":7.077,"aktiv":true,"minWindKn":11,"notiz":"Bise und West, kleiner See mit kurzer Welle."}],"reihen":{"thun-gwatt":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":2,"boe":5,"grad":239,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":1,"boe":5,"grad":236,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":2,"boe":5,"grad":76,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":2,"boe":5,"grad":45,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":9,"grad":331,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":4,"boe":10,"grad":317,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":6,"boe":12,"grad":318,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":5,"boe":12,"grad":348,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":11,"grad":334,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":6,"boe":15,"grad":353,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":3,"boe":13,"grad":297,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":4,"boe":8,"grad":231,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":2,"boe":9,"grad":220,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":4,"boe":9,"grad":237,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":4,"grad":198,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":2,"boe":5,"grad":270,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":3,"boe":7,"grad":335,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":3,"boe":7,"grad":333,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":3,"boe":6,"grad":321,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":6,"boe":11,"grad":305,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":7,"boe":13,"grad":297,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":8,"boe":14,"grad":283,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":5,"boe":14,"grad":323,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":5,"boe":9,"grad":352,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":7,"boe":11,"grad":19,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":5,"boe":11,"grad":312,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":5,"boe":9,"grad":313,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":4,"boe":8,"grad":325,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":3,"boe":5,"grad":321,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":3,"boe":5,"grad":315,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":3,"boe":6,"grad":312,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":6,"grad":321,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":4,"boe":7,"grad":311,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":5,"boe":9,"grad":300,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":6,"boe":11,"grad":291,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":7,"boe":13,"grad":265,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":6,"boe":13,"grad":340,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":5,"boe":11,"grad":343,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":5,"boe":10,"grad":316,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":6,"boe":10,"grad":295,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":2,"boe":10,"grad":305,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":1,"boe":4,"grad":262,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":2,"boe":4,"grad":305,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":2,"boe":5,"grad":318,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":4,"grad":315,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":2,"boe":4,"grad":307,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":5,"grad":309,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":4,"boe":7,"grad":302,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":4,"boe":8,"grad":302,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":4,"boe":8,"grad":315,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":3,"boe":8,"grad":326,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":6,"grad":315,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":4,"grad":210,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":3,"boe":5,"grad":135,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":3,"boe":5,"grad":102,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":2,"boe":5,"grad":105,"modell":"ch2"}],"spiez":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":4,"boe":8,"grad":216,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":2,"boe":7,"grad":221,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":2,"boe":5,"grad":60,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":2,"boe":5,"grad":68,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":8,"grad":333,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":3,"boe":9,"grad":327,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":6,"boe":12,"grad":311,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":14,"grad":337,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":12,"grad":322,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":6,"boe":14,"grad":339,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":2,"boe":12,"grad":241,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":5,"boe":9,"grad":210,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":3,"boe":9,"grad":213,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":5,"boe":9,"grad":235,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":4,"boe":7,"grad":196,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":2,"boe":6,"grad":252,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":3,"boe":7,"grad":317,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":2,"boe":7,"grad":329,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":3,"boe":7,"grad":340,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":5,"boe":10,"grad":304,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":6,"boe":14,"grad":285,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":6,"boe":14,"grad":284,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":6,"boe":14,"grad":285,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":6,"boe":14,"grad":289,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":6,"boe":13,"grad":267,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":6,"boe":13,"grad":257,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":3,"boe":12,"grad":257,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":2,"boe":6,"grad":319,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":1,"boe":1,"grad":315,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":1,"boe":3,"grad":8,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":2,"boe":6,"grad":360,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":7,"grad":4,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":3,"boe":7,"grad":349,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":3,"boe":8,"grad":333,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":3,"boe":8,"grad":315,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":4,"boe":9,"grad":288,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":5,"boe":11,"grad":275,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":5,"boe":12,"grad":276,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":5,"boe":11,"grad":265,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":3,"boe":9,"grad":254,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":1,"boe":5,"grad":214,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":1,"boe":2,"grad":153,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":1,"boe":2,"grad":236,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":2,"boe":4,"grad":263,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":5,"grad":353,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":2,"boe":5,"grad":323,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":2,"boe":6,"grad":333,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":3,"boe":7,"grad":324,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":3,"boe":7,"grad":297,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":3,"boe":7,"grad":278,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":2,"boe":7,"grad":260,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":5,"grad":257,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":4,"grad":209,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":3,"boe":5,"grad":188,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":5,"boe":10,"grad":205,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":5,"boe":10,"grad":200,"modell":"ch2"}],"neuhaus":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":1,"boe":2,"grad":117,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":1,"boe":3,"grad":243,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":1,"boe":4,"grad":198,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":2,"boe":5,"grad":167,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":5,"grad":218,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":3,"boe":8,"grad":239,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":4,"boe":9,"grad":221,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":7,"boe":13,"grad":216,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":10,"boe":18,"grad":222,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":12,"boe":22,"grad":228,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":10,"boe":22,"grad":223,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":3,"boe":19,"grad":280,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":5,"boe":10,"grad":339,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":2,"boe":10,"grad":326,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":1,"boe":3,"grad":180,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":2,"boe":3,"grad":104,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":3,"boe":6,"grad":225,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":4,"boe":9,"grad":240,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":4,"boe":10,"grad":231,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":7,"boe":14,"grad":226,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":7,"boe":15,"grad":222,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":7,"boe":15,"grad":220,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":7,"boe":15,"grad":226,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":8,"boe":16,"grad":225,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":8,"boe":16,"grad":233,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":7,"boe":16,"grad":238,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":4,"boe":14,"grad":249,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":3,"boe":7,"grad":246,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":1,"boe":2,"grad":333,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":1,"boe":3,"grad":225,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":2,"boe":6,"grad":236,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":7,"grad":238,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":4,"boe":9,"grad":240,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":5,"boe":11,"grad":231,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":6,"boe":12,"grad":229,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":6,"boe":13,"grad":224,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":6,"boe":13,"grad":221,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":6,"boe":12,"grad":221,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":6,"boe":12,"grad":228,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":4,"boe":12,"grad":232,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":1,"boe":8,"grad":259,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":1,"boe":2,"grad":59,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":1,"boe":3,"grad":236,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":1,"boe":4,"grad":207,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":3,"boe":7,"grad":225,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":7,"grad":222,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":8,"grad":225,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":4,"boe":9,"grad":223,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":5,"boe":11,"grad":223,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":4,"boe":11,"grad":225,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":4,"boe":10,"grad":215,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":3,"boe":9,"grad":207,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":3,"boe":8,"grad":198,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":5,"grad":79,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":6,"grad":61,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":2,"boe":4,"grad":40,"modell":"ch2"}],"boenigen":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":1,"boe":2,"grad":211,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":3,"boe":5,"grad":207,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":1,"boe":4,"grad":162,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":3,"boe":5,"grad":73,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":0,"boe":5,"grad":135,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":5,"boe":9,"grad":234,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":6,"boe":10,"grad":229,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":10,"grad":235,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":10,"grad":239,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":4,"boe":8,"grad":245,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":2,"boe":7,"grad":232,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":1,"boe":4,"grad":191,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":1,"boe":2,"grad":198,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":3,"boe":5,"grad":228,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":1,"boe":4,"grad":243,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":1,"boe":1,"grad":90,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":1,"boe":2,"grad":207,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":4,"boe":7,"grad":243,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":4,"boe":7,"grad":241,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":4,"boe":8,"grad":243,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":5,"boe":10,"grad":248,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":4,"boe":10,"grad":240,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":4,"boe":8,"grad":234,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":4,"boe":8,"grad":229,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":2,"boe":7,"grad":202,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":2,"boe":4,"grad":214,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":2,"boe":3,"grad":225,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":2,"boe":3,"grad":252,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":3,"boe":4,"grad":258,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":2,"boe":4,"grad":221,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":2,"boe":5,"grad":225,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":6,"grad":242,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":3,"boe":6,"grad":243,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":3,"boe":7,"grad":238,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":3,"boe":7,"grad":243,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":3,"boe":6,"grad":247,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":2,"boe":5,"grad":257,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":1,"boe":4,"grad":270,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":0,"boe":2,"grad":90,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":1,"boe":1,"grad":72,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":1,"boe":2,"grad":349,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":1,"boe":3,"grad":9,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":2,"boe":3,"grad":255,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":4,"boe":6,"grad":210,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":6,"grad":229,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":6,"grad":240,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":7,"grad":245,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":4,"boe":8,"grad":245,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":5,"boe":9,"grad":246,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":5,"boe":9,"grad":244,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":4,"boe":9,"grad":247,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":3,"boe":8,"grad":243,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":6,"grad":221,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":4,"grad":166,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":3,"grad":216,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":1,"boe":2,"grad":198,"modell":"ch2"}],"ipsach":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":1,"boe":3,"grad":135,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":0,"boe":2,"grad":360,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":2,"boe":4,"grad":229,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":2,"boe":5,"grad":238,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":9,"grad":235,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":5,"boe":11,"grad":228,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":6,"boe":13,"grad":232,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":12,"grad":236,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":12,"grad":224,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":3,"boe":11,"grad":259,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":3,"boe":9,"grad":291,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":1,"boe":6,"grad":135,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":2,"boe":4,"grad":121,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":4,"boe":7,"grad":143,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":2,"boe":5,"grad":90,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":3,"boe":7,"grad":62,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":5,"boe":11,"grad":71,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":6,"boe":13,"grad":75,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":5,"boe":10,"grad":79,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":5,"boe":10,"grad":75,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":7,"boe":12,"grad":39,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":7,"boe":13,"grad":21,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":7,"boe":13,"grad":14,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":8,"boe":15,"grad":11,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":7,"boe":15,"grad":6,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":7,"boe":13,"grad":353,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":8,"boe":13,"grad":350,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":9,"boe":15,"grad":351,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":5,"boe":9,"grad":37,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":7,"boe":11,"grad":46,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":7,"boe":12,"grad":48,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":9,"boe":17,"grad":57,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":10,"boe":18,"grad":63,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":10,"boe":18,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":11,"boe":19,"grad":71,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":11,"boe":20,"grad":74,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":10,"boe":20,"grad":69,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":9,"boe":18,"grad":54,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":8,"boe":16,"grad":38,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":6,"boe":15,"grad":25,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":7,"boe":12,"grad":8,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":7,"boe":12,"grad":9,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":5,"grad":77,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":3,"boe":5,"grad":86,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":3,"boe":6,"grad":87,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":7,"grad":94,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":1,"boe":6,"grad":171,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":2,"boe":5,"grad":209,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":3,"boe":7,"grad":211,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":4,"boe":7,"grad":207,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":3,"boe":7,"grad":217,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":3,"boe":6,"grad":213,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":6,"grad":204,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":4,"grad":360,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":3,"boe":6,"grad":342,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":2,"boe":5,"grad":360,"modell":"ch2"}],"erlach":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":3,"boe":6,"grad":230,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":3,"boe":6,"grad":228,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":1,"boe":6,"grad":248,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":2,"boe":5,"grad":240,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":4,"grad":220,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":4,"boe":7,"grad":229,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":5,"boe":8,"grad":230,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":5,"boe":9,"grad":227,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":4,"boe":8,"grad":225,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":5,"boe":12,"grad":289,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":4,"boe":10,"grad":304,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":2,"boe":7,"grad":207,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":3,"boe":5,"grad":205,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":3,"boe":6,"grad":213,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":4,"boe":8,"grad":81,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":5,"boe":10,"grad":70,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":8,"boe":14,"grad":57,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":10,"boe":18,"grad":65,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":7,"boe":13,"grad":67,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":8,"boe":13,"grad":66,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":10,"boe":16,"grad":75,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":10,"boe":16,"grad":60,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":9,"boe":16,"grad":51,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":9,"boe":15,"grad":42,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":9,"boe":15,"grad":34,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":7,"boe":14,"grad":27,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":5,"boe":10,"grad":7,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":4,"boe":8,"grad":53,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":9,"boe":14,"grad":83,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":10,"boe":16,"grad":76,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":12,"boe":19,"grad":67,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":13,"boe":21,"grad":65,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":13,"boe":22,"grad":64,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":13,"boe":22,"grad":65,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":13,"boe":21,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":14,"boe":22,"grad":70,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":14,"boe":22,"grad":71,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":13,"boe":22,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":11,"boe":20,"grad":61,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":9,"boe":18,"grad":53,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":7,"boe":14,"grad":47,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":9,"boe":13,"grad":43,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":7,"grad":106,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":3,"boe":6,"grad":103,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":4,"boe":6,"grad":81,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":2,"boe":6,"grad":61,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":1,"boe":5,"grad":45,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":1,"boe":3,"grad":360,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":2,"boe":4,"grad":253,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":4,"boe":7,"grad":242,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":6,"boe":10,"grad":236,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":5,"boe":10,"grad":237,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":3,"boe":8,"grad":214,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":5,"grad":191,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":1,"boe":1,"grad":45,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":1,"boe":1,"grad":326,"modell":"ch2"}],"estavayer":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":4,"boe":6,"grad":151,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":2,"boe":6,"grad":174,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":2,"boe":5,"grad":301,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":3,"boe":6,"grad":286,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":7,"grad":295,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":3,"boe":7,"grad":333,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":3,"boe":6,"grad":347,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":4,"boe":7,"grad":342,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":3,"boe":7,"grad":335,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":4,"boe":7,"grad":336,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":7,"boe":12,"grad":313,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":12,"boe":19,"grad":301,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":8,"boe":19,"grad":302,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":4,"boe":13,"grad":165,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":4,"boe":8,"grad":137,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":4,"boe":6,"grad":117,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":6,"boe":10,"grad":55,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":9,"boe":15,"grad":45,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":8,"boe":14,"grad":28,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":8,"boe":13,"grad":25,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":8,"boe":13,"grad":42,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":8,"boe":13,"grad":48,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":10,"boe":16,"grad":61,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":11,"boe":18,"grad":70,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":12,"boe":19,"grad":74,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":10,"boe":19,"grad":61,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":7,"boe":16,"grad":65,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":6,"boe":11,"grad":78,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":8,"boe":12,"grad":70,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":9,"boe":15,"grad":60,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":12,"boe":19,"grad":55,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":13,"boe":21,"grad":52,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":13,"boe":22,"grad":49,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":13,"boe":22,"grad":49,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":14,"boe":22,"grad":51,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":14,"boe":23,"grad":56,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":14,"boe":23,"grad":62,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":14,"boe":23,"grad":65,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":13,"boe":23,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":11,"boe":21,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":9,"boe":18,"grad":66,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":8,"boe":14,"grad":67,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":5,"grad":106,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":3,"boe":5,"grad":106,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":4,"boe":6,"grad":74,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":6,"grad":50,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":6,"grad":4,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":3,"boe":6,"grad":356,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":3,"boe":5,"grad":347,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":2,"boe":5,"grad":331,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":2,"boe":5,"grad":333,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":5,"grad":324,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":4,"grad":339,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":4,"grad":27,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":3,"grad":144,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":3,"boe":4,"grad":172,"modell":"ch2"}],"yvonand":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":2,"boe":4,"grad":214,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":1,"boe":3,"grad":217,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":2,"boe":6,"grad":319,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":1,"boe":4,"grad":315,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":4,"grad":6,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":2,"boe":6,"grad":15,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":2,"boe":6,"grad":31,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":2,"boe":5,"grad":45,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":1,"boe":6,"grad":22,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":7,"boe":12,"grad":311,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":7,"boe":12,"grad":287,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":6,"boe":12,"grad":259,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":4,"boe":10,"grad":171,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":4,"boe":7,"grad":169,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":5,"grad":90,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":4,"boe":6,"grad":62,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":7,"boe":12,"grad":53,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":11,"boe":18,"grad":40,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":9,"boe":17,"grad":34,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":9,"boe":16,"grad":42,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":10,"boe":17,"grad":56,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":11,"boe":18,"grad":46,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":10,"boe":18,"grad":43,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":10,"boe":17,"grad":51,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":10,"boe":17,"grad":65,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":10,"boe":17,"grad":61,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":8,"boe":16,"grad":69,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":6,"boe":12,"grad":84,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":10,"boe":17,"grad":59,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":12,"boe":19,"grad":54,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":14,"boe":23,"grad":48,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":15,"boe":25,"grad":45,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":15,"boe":26,"grad":42,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":15,"boe":26,"grad":40,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":15,"boe":25,"grad":41,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":15,"boe":25,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":14,"boe":24,"grad":51,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":14,"boe":23,"grad":58,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":13,"boe":22,"grad":64,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":12,"boe":21,"grad":66,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":10,"boe":20,"grad":66,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":8,"boe":16,"grad":65,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":6,"grad":117,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":3,"boe":5,"grad":75,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":5,"boe":8,"grad":54,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":4,"boe":8,"grad":43,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":4,"boe":8,"grad":35,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":3,"boe":8,"grad":32,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":3,"boe":6,"grad":21,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":2,"boe":6,"grad":355,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":2,"boe":5,"grad":297,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":3,"boe":5,"grad":258,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":5,"grad":265,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":3,"boe":5,"grad":203,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":5,"boe":8,"grad":180,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":5,"boe":9,"grad":180,"modell":"ch2"}],"vully":[{"zeit":"2026-09-20T08:00","datum":"2026-09-20","stunde":8,"wind":3,"boe":6,"grad":184,"modell":"ch1"},{"zeit":"2026-09-20T09:00","datum":"2026-09-20","stunde":9,"wind":4,"boe":7,"grad":171,"modell":"ch1"},{"zeit":"2026-09-20T10:00","datum":"2026-09-20","stunde":10,"wind":1,"boe":7,"grad":198,"modell":"ch1"},{"zeit":"2026-09-20T11:00","datum":"2026-09-20","stunde":11,"wind":0,"boe":3,"grad":225,"modell":"ch1"},{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":3,"boe":7,"grad":142,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":2,"boe":7,"grad":153,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":3,"boe":7,"grad":155,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":3,"boe":8,"grad":155,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":6,"boe":12,"grad":278,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":7,"boe":14,"grad":273,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":7,"boe":16,"grad":297,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":10,"boe":19,"grad":310,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":5,"boe":19,"grad":303,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":2,"boe":12,"grad":354,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":2,"boe":5,"grad":53,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":4,"boe":8,"grad":45,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":7,"boe":15,"grad":48,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":11,"boe":21,"grad":60,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":9,"boe":18,"grad":53,"modell":"ch2"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":8,"boe":16,"grad":53,"modell":"ch2"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":9,"boe":16,"grad":64,"modell":"ch2"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":10,"boe":18,"grad":65,"modell":"ch2"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":10,"boe":18,"grad":68,"modell":"ch2"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":10,"boe":18,"grad":64,"modell":"ch2"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":10,"boe":18,"grad":46,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":8,"boe":17,"grad":40,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":6,"boe":15,"grad":46,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":6,"boe":14,"grad":62,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":11,"boe":25,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":12,"boe":24,"grad":45,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":13,"boe":22,"grad":47,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":14,"boe":24,"grad":48,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":13,"boe":24,"grad":49,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":13,"boe":24,"grad":52,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":14,"boe":24,"grad":54,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":14,"boe":25,"grad":56,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":14,"boe":25,"grad":59,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":13,"boe":24,"grad":59,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":12,"boe":23,"grad":61,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":10,"boe":21,"grad":60,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":8,"boe":18,"grad":52,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":7,"boe":19,"grad":49,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":9,"grad":56,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":2,"boe":8,"grad":63,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":3,"boe":8,"grad":65,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":2,"boe":8,"grad":73,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":2,"boe":6,"grad":120,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":1,"boe":5,"grad":164,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":1,"boe":5,"grad":202,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":1,"boe":3,"grad":270,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":2,"boe":4,"grad":306,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":1,"boe":5,"grad":323,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":1,"boe":5,"grad":79,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":5,"grad":103,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":5,"grad":144,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":1,"boe":3,"grad":198,"modell":"ch2"}]}}</script>
+<script id="daten" type="application/json">{"kriterien":{"minWindKn":11,"minGustKn":16,"stundeVon":8,"stundeBis":21,"minStunden":2,"prognoseTage":4,"zeitzone":"Europe/Zurich"},"stand":"2026-09-20T12:00","reise":null,"spots":[{"id":"thun-gwatt","name":"Thun / Gwatt","see":"Thunersee","dirs":["NW","N","SO"],"lat":46.7178,"lon":7.6335,"aktiv":true,"minWindKn":11,"notiz":"Nachmittagsthermik aus NW; SO bei Föhnlage.","reise":false,"strecken":null},{"id":"spiez","name":"Spiez / Faulensee","see":"Thunersee","dirs":["NW","N","SO","S"],"lat":46.6815,"lon":7.674,"aktiv":true,"minWindKn":11,"notiz":"Seeachse NW-SO, beide Richtungen fahrbar.","reise":false,"strecken":null},{"id":"neuhaus","name":"Neuhaus / Interlaken","see":"Thunersee","dirs":["W","SW","NW"],"lat":46.685,"lon":7.818,"aktiv":true,"minWindKn":11,"notiz":"Klassische Thermik den See hinunter, ab frühem Nachmittag.","reise":false,"strecken":null},{"id":"boenigen","name":"Bönigen","see":"Brienzersee","dirs":["W","SW","NW"],"lat":46.688,"lon":7.889,"aktiv":true,"minWindKn":11,"notiz":"Seeachse W-O, Westthermik am Nachmittag.","reise":false,"strecken":null},{"id":"ipsach","name":"Ipsach / Nidau","see":"Bielersee","dirs":["NO","O","W","NW"],"lat":47.115,"lon":7.227,"aktiv":true,"minWindKn":11,"notiz":"Bise aus NO, dazu West und Joran aus NW.","reise":false,"strecken":null},{"id":"erlach","name":"Erlach / Lüscherz","see":"Bielersee","dirs":["NO","O","W","NW"],"lat":47.045,"lon":7.095,"aktiv":true,"minWindKn":11,"notiz":"Flachwasser bei Westwind.","reise":false,"strecken":null},{"id":"estavayer","name":"Estavayer-le-Lac","see":"Neuenburgersee","dirs":["NO","O","W","NW"],"lat":46.848,"lon":6.848,"aktiv":true,"minWindKn":11,"notiz":"Läuft bei Westwind und bei Bise aus NO.","reise":false,"strecken":null},{"id":"yvonand","name":"Yvonand","see":"Neuenburgersee","dirs":["NO","O","SW","W"],"lat":46.8,"lon":6.74,"aktiv":true,"minWindKn":11,"notiz":"Kräftigste Bise am Neuenburgersee.","reise":false,"strecken":null},{"id":"vully","name":"Praz / Vully","see":"Murtensee","dirs":["NO","O","W","NW"],"lat":46.945,"lon":7.077,"aktiv":true,"minWindKn":11,"notiz":"Bise und West, kleiner See mit kurzer Welle.","reise":false,"strecken":null}],"reihen":{"thun-gwatt":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":6,"grad":331,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":5,"boe":11,"grad":321,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":5,"boe":12,"grad":327,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":5,"boe":12,"grad":337,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":11,"grad":348,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":6,"boe":14,"grad":343,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":3,"boe":11,"grad":300,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":4,"boe":7,"grad":221,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":3,"boe":8,"grad":196,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":3,"boe":5,"grad":266,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":2,"boe":4,"grad":249,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":1,"boe":4,"grad":278,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":1,"boe":4,"grad":8,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":3,"boe":7,"grad":327,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":5,"boe":11,"grad":313,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":5,"boe":11,"grad":317,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":6,"boe":13,"grad":299,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":7,"boe":15,"grad":286,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":8,"boe":17,"grad":295,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":9,"boe":18,"grad":290,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":5,"boe":12,"grad":360,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":5,"boe":9,"grad":318,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":6,"boe":10,"grad":304,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":4,"boe":9,"grad":331,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":3,"boe":5,"grad":312,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":3,"boe":5,"grad":309,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":3,"boe":5,"grad":318,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":4,"boe":7,"grad":317,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":4,"boe":8,"grad":309,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":5,"boe":9,"grad":299,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":6,"boe":10,"grad":280,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":7,"boe":12,"grad":265,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":6,"boe":12,"grad":352,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":6,"boe":11,"grad":358,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":6,"boe":11,"grad":320,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":6,"boe":11,"grad":292,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":2,"boe":10,"grad":304,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":1,"boe":4,"grad":270,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":6,"grad":321,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":2,"boe":5,"grad":325,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":5,"grad":315,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":5,"grad":315,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":4,"boe":7,"grad":311,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":4,"boe":8,"grad":302,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":5,"boe":9,"grad":304,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":5,"boe":9,"grad":307,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":4,"boe":9,"grad":313,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":3,"boe":8,"grad":310,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":6,"grad":270,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":5,"grad":233,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":2,"grad":83,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":2,"boe":6,"grad":90,"modell":"ch2"}],"spiez":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":6,"grad":331,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":4,"boe":9,"grad":328,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":7,"boe":13,"grad":313,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":14,"grad":323,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":12,"grad":318,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":5,"boe":12,"grad":332,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":2,"boe":10,"grad":275,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":5,"boe":8,"grad":211,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":5,"boe":9,"grad":198,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":4,"boe":8,"grad":213,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":6,"grad":225,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":2,"boe":5,"grad":270,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":2,"boe":5,"grad":346,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":3,"boe":7,"grad":325,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":4,"boe":8,"grad":333,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":4,"boe":8,"grad":3,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":5,"boe":11,"grad":309,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":6,"boe":13,"grad":285,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":8,"boe":15,"grad":291,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":9,"boe":18,"grad":280,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":7,"boe":15,"grad":265,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":6,"boe":14,"grad":259,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":4,"boe":13,"grad":261,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":1,"boe":7,"grad":349,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":0,"boe":1,"grad":333,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":1,"boe":3,"grad":360,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":2,"boe":6,"grad":5,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":7,"grad":360,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":3,"boe":7,"grad":344,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":3,"boe":7,"grad":337,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":3,"boe":7,"grad":326,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":3,"boe":7,"grad":288,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":5,"boe":11,"grad":270,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":6,"boe":12,"grad":270,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":5,"boe":12,"grad":264,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":3,"boe":11,"grad":243,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":1,"boe":5,"grad":188,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":1,"boe":2,"grad":180,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":1,"boe":2,"grad":254,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":1,"boe":3,"grad":281,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":5,"grad":324,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":2,"boe":6,"grad":318,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":7,"grad":318,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":3,"boe":7,"grad":300,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":3,"boe":7,"grad":293,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":3,"boe":6,"grad":288,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":2,"boe":6,"grad":281,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":5,"grad":264,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":5,"grad":214,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":3,"boe":4,"grad":210,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":4,"boe":8,"grad":208,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":5,"boe":10,"grad":201,"modell":"ch2"}],"neuhaus":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":6,"grad":216,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":4,"boe":8,"grad":241,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":5,"boe":10,"grad":230,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":12,"grad":221,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":9,"boe":18,"grad":224,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":11,"boe":20,"grad":225,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":10,"boe":21,"grad":223,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":4,"boe":19,"grad":234,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":6,"boe":11,"grad":339,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":4,"boe":11,"grad":332,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":1,"boe":2,"grad":180,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":2,"boe":4,"grad":238,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":3,"boe":7,"grad":232,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":3,"boe":7,"grad":235,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":4,"boe":9,"grad":234,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":4,"boe":9,"grad":221,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":3,"boe":8,"grad":218,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":5,"boe":10,"grad":207,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":8,"boe":15,"grad":212,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":8,"boe":16,"grad":237,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":8,"boe":17,"grad":235,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":6,"boe":16,"grad":243,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":4,"boe":12,"grad":248,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":3,"boe":8,"grad":250,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":2,"boe":4,"grad":360,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":1,"boe":4,"grad":239,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":2,"boe":6,"grad":239,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":8,"grad":242,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":4,"boe":9,"grad":239,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":6,"boe":12,"grad":231,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":6,"boe":12,"grad":229,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":6,"boe":12,"grad":228,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":6,"boe":12,"grad":222,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":5,"boe":12,"grad":219,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":5,"boe":12,"grad":229,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":3,"boe":11,"grad":230,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":1,"boe":6,"grad":236,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":4,"boe":8,"grad":31,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":2,"boe":4,"grad":270,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":2,"boe":5,"grad":255,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":5,"grad":232,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":7,"grad":230,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":5,"boe":11,"grad":230,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":5,"boe":11,"grad":222,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":4,"boe":11,"grad":223,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":4,"boe":10,"grad":221,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":4,"boe":10,"grad":223,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":4,"boe":9,"grad":221,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":3,"boe":8,"grad":208,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":6,"grad":172,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":3,"boe":5,"grad":50,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":2,"boe":6,"grad":55,"modell":"ch2"}],"boenigen":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":1,"boe":6,"grad":27,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":4,"boe":8,"grad":225,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":6,"boe":12,"grad":237,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":11,"grad":237,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":10,"grad":240,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":5,"boe":9,"grad":236,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":1,"boe":9,"grad":236,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":1,"boe":2,"grad":171,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":1,"boe":2,"grad":214,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":3,"boe":4,"grad":231,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":4,"grad":238,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":3,"boe":4,"grad":238,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":4,"boe":6,"grad":218,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":2,"boe":6,"grad":222,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":5,"boe":8,"grad":238,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":4,"boe":9,"grad":227,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":4,"boe":8,"grad":223,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":3,"boe":7,"grad":215,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":3,"boe":6,"grad":184,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":3,"boe":5,"grad":189,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":4,"boe":7,"grad":227,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":2,"boe":7,"grad":207,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":2,"boe":3,"grad":241,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":2,"boe":3,"grad":257,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":3,"boe":5,"grad":270,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":1,"boe":4,"grad":214,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":3,"boe":5,"grad":228,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":3,"boe":6,"grad":238,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":3,"boe":7,"grad":242,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":3,"boe":7,"grad":237,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":3,"boe":7,"grad":240,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":2,"boe":6,"grad":246,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":2,"boe":5,"grad":259,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":1,"boe":5,"grad":270,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":2,"boe":3,"grad":90,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":1,"boe":3,"grad":101,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":2,"boe":2,"grad":32,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":3,"boe":5,"grad":318,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":5,"grad":249,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":3,"boe":4,"grad":234,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":2,"boe":5,"grad":225,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":5,"grad":252,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":4,"boe":8,"grad":246,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":5,"boe":9,"grad":244,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":5,"boe":9,"grad":241,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":5,"boe":9,"grad":243,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":4,"boe":9,"grad":246,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":4,"boe":8,"grad":241,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":3,"boe":7,"grad":234,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":5,"grad":194,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":3,"grad":230,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":1,"boe":2,"grad":252,"modell":"ch2"}],"ipsach":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":9,"grad":231,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":6,"boe":12,"grad":229,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":5,"boe":13,"grad":237,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":6,"boe":12,"grad":230,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":6,"boe":13,"grad":226,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":3,"boe":12,"grad":245,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":2,"boe":8,"grad":288,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":2,"boe":4,"grad":264,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":2,"boe":3,"grad":90,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":2,"boe":5,"grad":110,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":5,"grad":77,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":3,"boe":6,"grad":60,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":4,"boe":8,"grad":67,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":6,"boe":12,"grad":76,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":6,"boe":12,"grad":73,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":5,"boe":12,"grad":75,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":7,"boe":15,"grad":85,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":7,"boe":15,"grad":20,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":7,"boe":14,"grad":5,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":7,"boe":15,"grad":19,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":7,"boe":14,"grad":6,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":7,"boe":13,"grad":355,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":8,"boe":12,"grad":353,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":8,"boe":13,"grad":354,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":6,"boe":10,"grad":33,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":7,"boe":12,"grad":46,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":7,"boe":13,"grad":51,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":9,"boe":16,"grad":59,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":10,"boe":18,"grad":66,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":10,"boe":18,"grad":71,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":11,"boe":19,"grad":74,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":11,"boe":19,"grad":75,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":10,"boe":19,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":9,"boe":17,"grad":54,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":9,"boe":16,"grad":33,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":7,"boe":15,"grad":18,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":7,"boe":11,"grad":8,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":8,"boe":13,"grad":360,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":5,"grad":51,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":4,"boe":7,"grad":62,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":4,"boe":8,"grad":63,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":8,"grad":77,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":2,"boe":7,"grad":90,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":2,"boe":6,"grad":126,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":2,"boe":4,"grad":166,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":2,"boe":5,"grad":204,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":3,"boe":6,"grad":219,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":5,"grad":228,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":1,"boe":5,"grad":288,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":2,"grad":329,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":3,"boe":5,"grad":343,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":2,"boe":4,"grad":360,"modell":"ch2"}],"erlach":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":7,"grad":227,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":5,"boe":9,"grad":225,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":5,"boe":11,"grad":230,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":5,"boe":10,"grad":227,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":9,"grad":225,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":5,"boe":11,"grad":286,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":4,"boe":9,"grad":292,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":2,"boe":6,"grad":299,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":2,"boe":5,"grad":325,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":1,"boe":4,"grad":243,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":5,"grad":86,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":5,"boe":8,"grad":72,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":5,"boe":10,"grad":57,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":7,"boe":13,"grad":53,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":9,"boe":16,"grad":61,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":9,"boe":17,"grad":66,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":8,"boe":17,"grad":71,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":10,"boe":17,"grad":70,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":11,"boe":20,"grad":54,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":9,"boe":20,"grad":38,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":9,"boe":16,"grad":39,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":6,"boe":14,"grad":29,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":5,"boe":10,"grad":13,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":4,"boe":8,"grad":53,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":9,"boe":15,"grad":84,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":10,"boe":17,"grad":78,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":11,"boe":18,"grad":70,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":13,"boe":21,"grad":67,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":14,"boe":22,"grad":66,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":13,"boe":22,"grad":67,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":13,"boe":21,"grad":69,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":13,"boe":21,"grad":69,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":13,"boe":21,"grad":70,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":12,"boe":21,"grad":68,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":11,"boe":19,"grad":60,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":9,"boe":17,"grad":43,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":6,"boe":14,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":6,"boe":10,"grad":45,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":5,"boe":9,"grad":102,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":5,"boe":8,"grad":97,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":5,"boe":9,"grad":88,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":4,"boe":8,"grad":71,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":7,"grad":55,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":2,"boe":6,"grad":42,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":2,"boe":5,"grad":27,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":2,"boe":5,"grad":14,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":1,"boe":5,"grad":323,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":4,"grad":6,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":4,"grad":29,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":3,"grad":81,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":1,"boe":2,"grad":352,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":1,"boe":2,"grad":284,"modell":"ch2"}],"estavayer":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":4,"boe":8,"grad":275,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":4,"boe":8,"grad":299,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":4,"boe":8,"grad":331,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":2,"boe":7,"grad":15,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":5,"boe":8,"grad":9,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":4,"boe":9,"grad":357,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":9,"boe":14,"grad":320,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":11,"boe":18,"grad":305,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":5,"boe":17,"grad":230,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":5,"boe":9,"grad":162,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":5,"boe":9,"grad":138,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":4,"boe":8,"grad":126,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":4,"boe":8,"grad":90,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":7,"boe":12,"grad":27,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":8,"boe":15,"grad":30,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":9,"boe":15,"grad":18,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":9,"boe":16,"grad":11,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":8,"boe":16,"grad":30,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":9,"boe":16,"grad":61,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":11,"boe":18,"grad":66,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":11,"boe":18,"grad":73,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":10,"boe":18,"grad":61,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":7,"boe":16,"grad":61,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":6,"boe":11,"grad":84,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":8,"boe":12,"grad":73,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":9,"boe":15,"grad":64,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":12,"boe":19,"grad":55,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":13,"boe":22,"grad":52,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":14,"boe":22,"grad":50,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":14,"boe":23,"grad":49,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":14,"boe":23,"grad":51,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":14,"boe":22,"grad":54,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":14,"boe":22,"grad":61,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":14,"boe":23,"grad":66,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":13,"boe":22,"grad":69,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":11,"boe":21,"grad":70,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":8,"boe":17,"grad":71,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":7,"boe":13,"grad":69,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":3,"boe":5,"grad":80,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":3,"boe":5,"grad":94,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":4,"boe":6,"grad":61,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":4,"boe":7,"grad":47,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":3,"boe":7,"grad":24,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":4,"boe":7,"grad":354,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":3,"boe":7,"grad":356,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":3,"boe":6,"grad":3,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":3,"boe":6,"grad":11,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":6,"grad":20,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":1,"boe":4,"grad":27,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":3,"grad":21,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":1,"boe":2,"grad":90,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":3,"boe":5,"grad":162,"modell":"ch2"}],"yvonand":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":2,"boe":5,"grad":306,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":3,"boe":6,"grad":4,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":1,"boe":5,"grad":101,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":2,"boe":5,"grad":29,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":3,"boe":6,"grad":8,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":3,"boe":6,"grad":322,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":9,"boe":15,"grad":290,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":6,"boe":14,"grad":255,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":4,"boe":10,"grad":167,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":5,"boe":7,"grad":190,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":3,"boe":5,"grad":129,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":3,"boe":5,"grad":67,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":6,"boe":10,"grad":44,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":9,"boe":15,"grad":41,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":11,"boe":18,"grad":33,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":11,"boe":18,"grad":28,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":10,"boe":18,"grad":36,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":9,"boe":16,"grad":35,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":10,"boe":17,"grad":29,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":10,"boe":18,"grad":55,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":10,"boe":16,"grad":63,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":9,"boe":16,"grad":61,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":7,"boe":15,"grad":68,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":6,"boe":12,"grad":90,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":10,"boe":17,"grad":63,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":12,"boe":19,"grad":58,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":14,"boe":22,"grad":50,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":15,"boe":25,"grad":46,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":16,"boe":26,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":16,"boe":27,"grad":42,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":16,"boe":26,"grad":42,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":15,"boe":26,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":14,"boe":24,"grad":49,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":13,"boe":23,"grad":58,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":12,"boe":22,"grad":67,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":12,"boe":20,"grad":70,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":9,"boe":19,"grad":72,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":7,"boe":14,"grad":71,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":5,"boe":9,"grad":77,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":6,"boe":10,"grad":66,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":6,"boe":10,"grad":55,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":5,"boe":10,"grad":48,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":5,"boe":9,"grad":37,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":5,"boe":9,"grad":38,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":4,"boe":9,"grad":34,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":4,"boe":8,"grad":35,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":3,"boe":8,"grad":40,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":3,"boe":7,"grad":52,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":2,"boe":6,"grad":61,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":2,"boe":4,"grad":60,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":4,"boe":6,"grad":162,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":5,"boe":8,"grad":178,"modell":"ch2"}],"vully":[{"zeit":"2026-09-20T12:00","datum":"2026-09-20","stunde":12,"wind":1,"boe":4,"grad":180,"modell":"ch1"},{"zeit":"2026-09-20T13:00","datum":"2026-09-20","stunde":13,"wind":1,"boe":5,"grad":198,"modell":"ch1"},{"zeit":"2026-09-20T14:00","datum":"2026-09-20","stunde":14,"wind":4,"boe":9,"grad":155,"modell":"ch1"},{"zeit":"2026-09-20T15:00","datum":"2026-09-20","stunde":15,"wind":2,"boe":8,"grad":135,"modell":"ch1"},{"zeit":"2026-09-20T16:00","datum":"2026-09-20","stunde":16,"wind":4,"boe":9,"grad":313,"modell":"ch1"},{"zeit":"2026-09-20T17:00","datum":"2026-09-20","stunde":17,"wind":6,"boe":12,"grad":304,"modell":"ch1"},{"zeit":"2026-09-20T18:00","datum":"2026-09-20","stunde":18,"wind":7,"boe":14,"grad":306,"modell":"ch1"},{"zeit":"2026-09-20T19:00","datum":"2026-09-20","stunde":19,"wind":10,"boe":18,"grad":314,"modell":"ch1"},{"zeit":"2026-09-20T20:00","datum":"2026-09-20","stunde":20,"wind":6,"boe":19,"grad":299,"modell":"ch1"},{"zeit":"2026-09-20T21:00","datum":"2026-09-20","stunde":21,"wind":2,"boe":12,"grad":299,"modell":"ch1"},{"zeit":"2026-09-21T08:00","datum":"2026-09-21","stunde":8,"wind":2,"boe":5,"grad":125,"modell":"ch1"},{"zeit":"2026-09-21T09:00","datum":"2026-09-21","stunde":9,"wind":3,"boe":6,"grad":94,"modell":"ch1"},{"zeit":"2026-09-21T10:00","datum":"2026-09-21","stunde":10,"wind":5,"boe":10,"grad":54,"modell":"ch1"},{"zeit":"2026-09-21T11:00","datum":"2026-09-21","stunde":11,"wind":8,"boe":16,"grad":54,"modell":"ch1"},{"zeit":"2026-09-21T12:00","datum":"2026-09-21","stunde":12,"wind":10,"boe":20,"grad":62,"modell":"ch1"},{"zeit":"2026-09-21T13:00","datum":"2026-09-21","stunde":13,"wind":8,"boe":19,"grad":59,"modell":"ch1"},{"zeit":"2026-09-21T14:00","datum":"2026-09-21","stunde":14,"wind":8,"boe":17,"grad":63,"modell":"ch1"},{"zeit":"2026-09-21T15:00","datum":"2026-09-21","stunde":15,"wind":8,"boe":17,"grad":69,"modell":"ch1"},{"zeit":"2026-09-21T16:00","datum":"2026-09-21","stunde":16,"wind":9,"boe":19,"grad":70,"modell":"ch1"},{"zeit":"2026-09-21T17:00","datum":"2026-09-21","stunde":17,"wind":10,"boe":20,"grad":64,"modell":"ch1"},{"zeit":"2026-09-21T18:00","datum":"2026-09-21","stunde":18,"wind":10,"boe":17,"grad":45,"modell":"ch2"},{"zeit":"2026-09-21T19:00","datum":"2026-09-21","stunde":19,"wind":8,"boe":17,"grad":41,"modell":"ch2"},{"zeit":"2026-09-21T20:00","datum":"2026-09-21","stunde":20,"wind":6,"boe":15,"grad":52,"modell":"ch2"},{"zeit":"2026-09-21T21:00","datum":"2026-09-21","stunde":21,"wind":6,"boe":14,"grad":61,"modell":"ch2"},{"zeit":"2026-09-22T08:00","datum":"2026-09-22","stunde":8,"wind":11,"boe":25,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T09:00","datum":"2026-09-22","stunde":9,"wind":11,"boe":25,"grad":44,"modell":"ch2"},{"zeit":"2026-09-22T10:00","datum":"2026-09-22","stunde":10,"wind":12,"boe":21,"grad":46,"modell":"ch2"},{"zeit":"2026-09-22T11:00","datum":"2026-09-22","stunde":11,"wind":13,"boe":23,"grad":49,"modell":"ch2"},{"zeit":"2026-09-22T12:00","datum":"2026-09-22","stunde":12,"wind":14,"boe":24,"grad":51,"modell":"ch2"},{"zeit":"2026-09-22T13:00","datum":"2026-09-22","stunde":13,"wind":14,"boe":25,"grad":52,"modell":"ch2"},{"zeit":"2026-09-22T14:00","datum":"2026-09-22","stunde":14,"wind":14,"boe":24,"grad":54,"modell":"ch2"},{"zeit":"2026-09-22T15:00","datum":"2026-09-22","stunde":15,"wind":14,"boe":24,"grad":56,"modell":"ch2"},{"zeit":"2026-09-22T16:00","datum":"2026-09-22","stunde":16,"wind":13,"boe":24,"grad":58,"modell":"ch2"},{"zeit":"2026-09-22T17:00","datum":"2026-09-22","stunde":17,"wind":13,"boe":23,"grad":61,"modell":"ch2"},{"zeit":"2026-09-22T18:00","datum":"2026-09-22","stunde":18,"wind":12,"boe":22,"grad":63,"modell":"ch2"},{"zeit":"2026-09-22T19:00","datum":"2026-09-22","stunde":19,"wind":9,"boe":20,"grad":60,"modell":"ch2"},{"zeit":"2026-09-22T20:00","datum":"2026-09-22","stunde":20,"wind":7,"boe":17,"grad":46,"modell":"ch2"},{"zeit":"2026-09-22T21:00","datum":"2026-09-22","stunde":21,"wind":7,"boe":17,"grad":49,"modell":"ch2"},{"zeit":"2026-09-23T08:00","datum":"2026-09-23","stunde":8,"wind":4,"boe":12,"grad":47,"modell":"ch2"},{"zeit":"2026-09-23T09:00","datum":"2026-09-23","stunde":9,"wind":4,"boe":12,"grad":56,"modell":"ch2"},{"zeit":"2026-09-23T10:00","datum":"2026-09-23","stunde":10,"wind":4,"boe":12,"grad":60,"modell":"ch2"},{"zeit":"2026-09-23T11:00","datum":"2026-09-23","stunde":11,"wind":3,"boe":11,"grad":60,"modell":"ch2"},{"zeit":"2026-09-23T12:00","datum":"2026-09-23","stunde":12,"wind":2,"boe":7,"grad":81,"modell":"ch2"},{"zeit":"2026-09-23T13:00","datum":"2026-09-23","stunde":13,"wind":2,"boe":6,"grad":117,"modell":"ch2"},{"zeit":"2026-09-23T14:00","datum":"2026-09-23","stunde":14,"wind":2,"boe":6,"grad":148,"modell":"ch2"},{"zeit":"2026-09-23T15:00","datum":"2026-09-23","stunde":15,"wind":1,"boe":5,"grad":207,"modell":"ch2"},{"zeit":"2026-09-23T16:00","datum":"2026-09-23","stunde":16,"wind":1,"boe":3,"grad":301,"modell":"ch2"},{"zeit":"2026-09-23T17:00","datum":"2026-09-23","stunde":17,"wind":2,"boe":5,"grad":326,"modell":"ch2"},{"zeit":"2026-09-23T18:00","datum":"2026-09-23","stunde":18,"wind":1,"boe":4,"grad":321,"modell":"ch2"},{"zeit":"2026-09-23T19:00","datum":"2026-09-23","stunde":19,"wind":1,"boe":3,"grad":162,"modell":"ch2"},{"zeit":"2026-09-23T20:00","datum":"2026-09-23","stunde":20,"wind":2,"boe":2,"grad":166,"modell":"ch2"},{"zeit":"2026-09-23T21:00","datum":"2026-09-23","stunde":21,"wind":1,"boe":2,"grad":191,"modell":"ch2"}]}}</script>
+<script>
+var Kern = (function(){
+"use strict";
+/**
+ * Kernlogik: Prognose holen, Stunden bewerten, Fenster erkennen.
+ * Bewusst ohne Abhängigkeiten - läuft auf jedem Node ab Version 20.
+ */
+
+const OKTANTEN = ["N", "NO", "O", "SO", "S", "SW", "W", "NW"];
+
+/** Gradzahl auf Oktant abbilden (N = 337.5-22.5 usw.). */
+function oktant(grad) {
+  const g = ((grad % 360) + 360) % 360;
+  return OKTANTEN[Math.round(g / 45) % 8];
+}
+
+const API = "https://api.open-meteo.com/v1/forecast";
+
+const MODELLNAMEN = { ch1: "ICON-CH1", ch2: "ICON-CH2", global: "Best-Match" };
+
+/**
+ * Holt die Prognose für alle Spots.
+ *
+ * Zwei Sorten Spots, zwei Datenwege:
+ *
+ *   quelle "ch" (Standard) — die MeteoSchweiz-Modelle ICON-CH1 (1 km, rund
+ *     33 Stunden) und ICON-CH2 (2 km, darüber hinaus). Nur über der Schweiz
+ *     und den Alpen brauchbar, dort aber das Beste, was es gibt.
+ *
+ *   quelle "global" — für Orte im Reisemodus, irgendwo auf der Welt. Open-Meteo
+ *     wählt dort selbst das beste verfügbare Modell. In Europa, Nordamerika,
+ *     Skandinavien und Japan sind das 1 bis 3 km, sonst 9 bis 25 km.
+ *
+ * Nebenwirkung, bewusst: Bei "global" trägt diese Funktion die vom Dienst
+ * gemeldete Zeitzone in den Spot ein. Ein Fenster in Tarifa soll in spanischer
+ * Ortszeit im Kalender stehen, nicht in Schweizer.
+ */
+async function holePrognose(spots, kriterien, fetchImpl = fetch) {
+  const schweizer = spots.filter((s) => (s.quelle || "ch") !== "global");
+  const globale = spots.filter((s) => (s.quelle || "ch") === "global");
+
+  const [a, b] = await Promise.all([
+    schweizer.length ? holeSchweiz(schweizer, kriterien, fetchImpl) : {},
+    globale.length ? holeGlobal(globale, kriterien, fetchImpl) : {},
+  ]);
+  return { ...a, ...b };
+}
+
+async function holeSchweiz(spots, kriterien, fetchImpl) {
+  const basis = anfrage(spots, kriterien, kriterien.zeitzone) + "&models=";
+  const [fein, grob] = await Promise.all([
+    hole(fetchImpl, basis + "meteoswiss_icon_ch1"),
+    hole(fetchImpl, basis + "meteoswiss_icon_ch2"),
+  ]);
+  return verschmelze(spots, fein, grob, kriterien);
+}
+
+async function holeGlobal(spots, kriterien, fetchImpl) {
+  // timezone=auto: die Stunden kommen in der Ortszeit des jeweiligen Punktes.
+  const daten = await hole(fetchImpl, anfrage(spots, kriterien, "auto"));
+  spots.forEach((spot, i) => {
+    if (daten[i]?.timezone) spot.zeitzone = daten[i].timezone;
+  });
+  // Kein feines Modell: die grobe Reihe trägt allein.
+  return verschmelze(spots, [], daten, kriterien, new Date(), "global");
+}
+
+function anfrage(spots, kriterien, zone) {
+  const lat = spots.map((s) => s.lat).join(",");
+  const lon = spots.map((s) => s.lon).join(",");
+  return (
+    `${API}?latitude=${lat}&longitude=${lon}` +
+    `&hourly=wind_speed_10m,wind_gusts_10m,wind_direction_10m` +
+    `&wind_speed_unit=kn&timezone=${encodeURIComponent(zone)}` +
+    `&forecast_days=${kriterien.prognoseTage}`
+  );
+}
+
+async function hole(fetchImpl, url) {
+  const res = await fetchImpl(url, {
+    headers: { "User-Agent": "wingfoil-alert (github actions)" },
+  });
+  if (!res.ok) {
+    throw new Error(`Open-Meteo antwortete mit ${res.status} ${res.statusText}`);
+  }
+  const daten = await res.json();
+  return Array.isArray(daten) ? daten : [daten];
+}
+
+/** Aus beiden Modellläufen eine Zeitreihe je Spot bauen. */
+function verschmelze(spots, fein, grob, kriterien, jetzt = new Date(), grobName = "ch2") {
+  const ergebnis = {};
+
+  spots.forEach((spot, i) => {
+    // Die Stunden kommen in Ortszeit; abgeschnitten wird deshalb auch nach
+    // Ortszeit. Der GitHub-Runner läuft in UTC — ohne das hätte das Dashboard
+    // im Sommer zwei bereits vergangene Stunden angezeigt.
+    const grenze = lokalerStempel(jetzt, spot.zeitzone || kriterien.zeitzone);
+    const f = fein[i]?.hourly;
+    const g = grob[i]?.hourly;
+    if (!g) {
+      ergebnis[spot.id] = [];
+      return;
+    }
+    const feinIndex = new Map();
+    if (f) f.time.forEach((t, k) => feinIndex.set(t, k));
+
+    const zeilen = [];
+    g.time.forEach((t, k) => {
+      const stunde = Number(t.slice(11, 13));
+      if (stunde < kriterien.stundeVon || stunde > kriterien.stundeBis) return;
+      if (t < grenze) return;
+
+      const k1 = feinIndex.has(t) ? feinIndex.get(t) : -1;
+      const feinBrauchbar = k1 >= 0 && f.wind_speed_10m[k1] !== null && !istLeer(f, k1);
+
+      const wind = feinBrauchbar ? f.wind_speed_10m[k1] : g.wind_speed_10m[k];
+      const boe = feinBrauchbar ? f.wind_gusts_10m[k1] : g.wind_gusts_10m[k];
+      const richtung = feinBrauchbar ? f.wind_direction_10m[k1] : g.wind_direction_10m[k];
+      if (wind === null || wind === undefined) return;
+
+      zeilen.push({
+        zeit: t,
+        datum: t.slice(0, 10),
+        stunde,
+        wind: Math.round(wind),
+        boe: Math.round(boe ?? 0),
+        grad: Math.round(richtung ?? 0),
+        modell: feinBrauchbar ? "ch1" : grobName,
+      });
+    });
+    ergebnis[spot.id] = zeilen;
+  });
+
+  return ergebnis;
+}
+
+/** ICON-CH1 liefert jenseits seines Horizonts Nullzeilen statt null. */
+function istLeer(h, k) {
+  return h.wind_speed_10m[k] === 0 && h.wind_gusts_10m[k] === 0 && h.wind_direction_10m[k] === 0;
+}
+
+/** "2026-09-15T14:00" in der angegebenen Zeitzone, als Vergleichsschwelle. */
+function lokalerStempel(d, zone) {
+  const f = new Intl.DateTimeFormat("en-CA", {
+    timeZone: zone || undefined,
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+  });
+  const p = {};
+  for (const teil of f.formatToParts(d)) p[teil.type] = teil.value;
+  const stunde = String(Number(p.hour) % 24).padStart(2, "0");
+  return `${p.year}-${p.month}-${p.day}T${stunde}:00`;
+}
+
+/**
+ * Stufe einer einzelnen Stunde:
+ *   0 zu wenig oder falsche Richtung, 1 knapp, 2 fahrbar, 3 kräftig.
+ */
+function stufe(zeile, spot, kriterien) {
+  const schwelle = spot.minWindKn ?? kriterien.minWindKn;
+  const passt = spot.dirs.includes(oktant(zeile.grad));
+  if (!passt) {
+    return zeile.wind >= schwelle || zeile.boe >= kriterien.minGustKn ? 1 : 0;
+  }
+  if (zeile.wind >= schwelle + 6) return 3;
+  if (zeile.wind >= schwelle) return 2;
+  if (zeile.wind >= schwelle - 3 || zeile.boe >= kriterien.minGustKn) return 1;
+  return 0;
+}
+
+/**
+ * Zusammenhängende Blöcke ab `minStunden` auf Stufe 2 oder höher.
+ * Blöcke enden am Tageswechsel, weil eine Session keine Nacht überspannt.
+ */
+function fenster(zeilen, spot, kriterien) {
+  const treffer = [];
+  const nachTag = new Map();
+  for (const z of zeilen) {
+    if (!nachTag.has(z.datum)) nachTag.set(z.datum, []);
+    nachTag.get(z.datum).push(z);
+  }
+
+  for (const datum of [...nachTag.keys()].sort()) {
+    const tag = nachTag.get(datum).sort((a, b) => a.stunde - b.stunde);
+    let block = [];
+
+    const abschliessen = () => {
+      if (block.length >= kriterien.minStunden) {
+        const spitze = block.reduce((m, z) => (z.wind > m.wind ? z : m), block[0]);
+        treffer.push({
+          spotId: spot.id,
+          spotName: spot.name,
+          spotKurz: spot.kurz || "",
+          see: spot.see,
+          lat: spot.lat,
+          lon: spot.lon,
+          // Nur gesetzt, wo sie von der Schweizer Zeit abweicht — dann sind
+          // "von" und "bis" Ortszeit am Spot, und der Kalender muss es wissen.
+          zeitzone: spot.zeitzone || "",
+          quelle: spot.quelle || "ch",
+          datum,
+          von: block[0].stunde,
+          bis: block[block.length - 1].stunde + 1,
+          stunden: block.length,
+          wind: spitze.wind,
+          boe: Math.max(...block.map((z) => z.boe)),
+          richtung: oktant(spitze.grad),
+          modell: [...new Set(block.map((z) => MODELLNAMEN[z.modell] || z.modell))].join("/"),
+        });
+      }
+      block = [];
+    };
+
+    for (const z of tag) {
+      const luecke = block.length && z.stunde !== block[block.length - 1].stunde + 1;
+      if (luecke) abschliessen();
+      if (stufe(z, spot, kriterien) >= 2) block.push(z);
+      else abschliessen();
+    }
+    abschliessen();
+  }
+  return treffer;
+}
+
+/**
+ * Bewertet ein Fenster mit 0 bis 100 Punkten, damit sich Fenster vergleichen
+ * lassen. Die vier Teile sind bewusst getrennt und werden im Dashboard einzeln
+ * ausgewiesen — eine Rangliste, deren Zustandekommen man nicht sieht, ist wertlos.
+ *
+ *   Wind   0-50  Stärke über der Schwelle; zu viel gibt wieder Abzug
+ *   Dauer  0-25  wie lange das Fenster am Stück trägt
+ *   Böen   0-15  je gleichmässiger, desto besser
+ *   Nähe   0-10  je näher, desto verlässlicher die Prognose
+ */
+function bewerte(f, spot, kriterien, heute = new Date()) {
+  const g = kriterien.bewertung || {};
+  const schwelle = spot?.minWindKn ?? kriterien.minWindKn;
+
+  const idealUeber = g.idealUeberSchwelle ?? 8;
+  const zuvielUeber = g.zuvielUeberSchwelle ?? 18;
+  const ueber = f.wind - schwelle;
+  let wind;
+  if (ueber <= idealUeber) {
+    wind = (ueber / idealUeber) * 50;
+  } else {
+    // Oberhalb des Optimums fällt die Bewertung wieder, aber nicht auf null:
+    // viel Wind ist unbequem, nicht wertlos.
+    const zuviel = Math.min((ueber - idealUeber) / (zuvielUeber - idealUeber), 1);
+    wind = 50 - zuviel * 20;
+  }
+  wind = grenze(wind, 0, 50);
+
+  const volleDauer = g.dauerVollStunden ?? 6;
+  const dauer = (Math.min(f.stunden, volleDauer) / volleDauer) * 25;
+
+  // Verhältnis Böe zu Mittelwind: 1.4 ist angenehm, ab 2.2 wird es ruppig.
+  const verhaeltnis = f.wind > 0 ? f.boe / f.wind : 3;
+  const boeen = 15 * (1 - grenze((verhaeltnis - (g.boeenGut ?? 1.4)) / ((g.boeenSchlecht ?? 2.2) - (g.boeenGut ?? 1.4)), 0, 1));
+
+  const naehe = [10, 8, 5, 3][Math.min(tageBis(f.datum, heute), 3)] ?? 3;
+
+  return {
+    punkte: Math.round(wind + dauer + boeen + naehe),
+    teile: {
+      wind: Math.round(wind),
+      dauer: Math.round(dauer),
+      boeen: Math.round(boeen),
+      naehe,
+    },
+  };
+}
+
+function grenze(x, min, max) {
+  return Math.max(min, Math.min(max, x));
+}
+
+/** Volle Tage von heute bis zum Datum, nie negativ. */
+function tageBis(datum, heute) {
+  const [j, m, t] = datum.split("-").map(Number);
+  const ziel = Date.UTC(j, m - 1, t);
+  const start = Date.UTC(heute.getFullYear(), heute.getMonth(), heute.getDate());
+  return Math.max(0, Math.round((ziel - start) / 86400000));
+}
+
+/**
+ * Alle Fenster über alle aktiven Spots, zeitlich sortiert — mit Punktzahl und
+ * Rang. Der Rang ergibt sich aus der Bewertung, die Reihenfolge der Liste
+ * bleibt chronologisch: beides zusammen ist lesbarer als nur eines davon.
+ */
+function alleFenster(spots, reihen, kriterien, heute = new Date()) {
+  const out = [];
+  for (const spot of spots) {
+    if (spot.aktiv === false) continue;
+    for (const f of fenster(reihen[spot.id] ?? [], spot, kriterien)) {
+      const b = bewerte(f, spot, kriterien, heute);
+      out.push({ ...f, punkte: b.punkte, teile: b.teile });
+    }
+  }
+
+  // Rang nach Punkten; bei Gleichstand gewinnt das frühere Fenster.
+  [...out]
+    .sort((a, b) => (b.punkte !== a.punkte ? b.punkte - a.punkte : vergleicheZeit(a, b)))
+    .forEach((f, i) => (f.rang = i + 1));
+
+  out.sort(vergleicheZeit);
+  return out;
+}
+
+function vergleicheZeit(a, b) {
+  return a.datum === b.datum ? a.von - b.von : a.datum < b.datum ? -1 : 1;
+}
+
+/** Die besten n Fenster, nach Rang. */
+function besteFenster(fensterListe, n = 3) {
+  return [...fensterListe].sort((a, b) => a.rang - b.rang).slice(0, n);
+}
+
+/** Stabiler Schlüssel, damit dasselbe Fenster nicht zweimal gemeldet wird. */
+function schluessel(f) {
+  return `${f.spotId}|${f.datum}|${f.von}`;
+}
+
+const WOCHENTAGE = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
+
+function tagLabel(datum) {
+  const [j, m, t] = datum.split("-").map(Number);
+  const d = new Date(j, m - 1, t);
+  return { kurz: WOCHENTAGE[d.getDay()], datum: `${t}.${m}.` };
+}
+
+function uhr(stunde) {
+  return String(stunde).padStart(2, "0");
+}
+
+return { MODELLNAMEN, OKTANTEN, alleFenster, besteFenster, bewerte, fenster, holePrognose, oktant, schluessel, stufe, tagLabel, uhr, verschmelze };
+})();
+
+var Suche = (function(){
+"use strict";
+/**
+ * Spotsuche im Umkreis — für den Reisemodus.
+ *
+ * Grundgedanke: aus OpenStreetMap-Kacheln eine Wasserkarte bauen und daraus
+ * je Himmelsrichtung messen, wie weit das Wasser gegen den Wind reicht.
+ *
+ * Diese eine Zahl — die Anlaufstrecke — leistet zweierlei zugleich:
+ *   - sie schliesst ablandigen Wind aus, denn gegen den Wind läge dann Land
+ *   - sie verwirft Pfützen, auf denen sich ohnehin keine Welle aufbaut
+ *
+ * Bewusst über Kacheln statt über die Overpass-API: Overpass brauchte für einen
+ * Umkreis von 25 km um den Gardasee über 45 Sekunden und lief in
+ * Zeitüberschreitungen. Eine Kachel ist ein Bild, kommt in Millisekunden und
+ * deckt mehrere Kilometer ab.
+ *
+ * Grenze, die man kennen muss: erkannt wird die Wasserfarbe des OSM-Standardstils.
+ * Ändert sich dieser Stil, muss die Erkennung nachgezogen werden. Deshalb prüft
+ * `ladeWasserkarte` das Ergebnis auf Plausibilität und meldet sich, wenn eine
+ * Kachel gar kein bekanntes Land und kein Wasser enthält.
+ */
+
+const KACHELGROESSE = 256;
+const ERDRADIUS_KM = 6371;
+
+/* ------------------------------------------------------------------ *
+ * Kachelrechnung
+ * ------------------------------------------------------------------ */
+
+function zuKachel(lat, lon, zoom) {
+  const n = 2 ** zoom;
+  const la = (lat * Math.PI) / 180;
+  return {
+    x: ((lon + 180) / 360) * n,
+    y: ((1 - Math.log(Math.tan(la) + 1 / Math.cos(la)) / Math.PI) / 2) * n,
+  };
+}
+
+function ausKachel(x, y, zoom) {
+  const n = 2 ** zoom;
+  const lon = (x / n) * 360 - 180;
+  const k = Math.PI - (2 * Math.PI * y) / n;
+  const lat = (180 / Math.PI) * Math.atan(0.5 * (Math.exp(k) - Math.exp(-k)));
+  return { lat, lon };
+}
+
+/** Meter je Bildpunkt auf dieser Breite und Zoomstufe. */
+function meterProPixel(lat, zoom) {
+  // 156543.03392 ist die Auflösung am Äquator auf Zoom 0 in Meter je Bildpunkt.
+  // Sie ist bereits pro Bildpunkt gerechnet, nicht pro Kachel — deshalb hier
+  // nur durch 2^zoom teilen. (Einmal durch 2^(zoom+8) geteilt, und die Karte
+  // ist um den Faktor 256 zu fein: statt Dutzenden lädt sie Tausende Kacheln.)
+  return (156543.03392 * Math.cos((lat * Math.PI) / 180)) / 2 ** zoom;
+}
+
+/* ------------------------------------------------------------------ *
+ * Wassererkennung
+ * ------------------------------------------------------------------ */
+
+/**
+ * Bewusst tolerant statt auf einen festen Farbwert: der OSM-Standardstil
+ * zeichnet Wasser als helles Blau, variiert aber leicht (Uferkanten,
+ * Beschriftungen, Untiefen).
+ */
+function istWasserFarbe(r, g, b) {
+  return b > r + 18 && b > g + 6 && b > 190 && r > 120 && r < 210;
+}
+
+/** Grün, grau, weiss, braun - alles, was klar kein Wasser ist. */
+function istLandFarbe(r, g, b) {
+  return !istWasserFarbe(r, g, b) && !(r === 0 && g === 0 && b === 0);
+}
+
+/* ------------------------------------------------------------------ *
+ * Wasserkarte
+ * ------------------------------------------------------------------ */
+
+/**
+ * Lädt die Kacheln, die den Umkreis abdecken, und liefert eine Karte mit
+ * Abfragen in geografischen Koordinaten.
+ *
+ * @param {object} o
+ * @param {number} o.lat
+ * @param {number} o.lon
+ * @param {number} o.umkreisKm
+ * @param {number} [o.zoom]        Standard 12 (rund 25 m je Bildpunkt)
+ * @param {function} [o.ladeKachel] (zoom,x,y) -> Uint8ClampedArray mit RGBA
+ */
+/** Grösserer Umkreis, gröbere Kacheln — sonst wird die Zahl der Kacheln unsinnig. */
+function passenderZoom(umkreisKm) {
+  if (umkreisKm <= 12) return 13;
+  if (umkreisKm <= 30) return 12;
+  return 11;
+}
+
+async function ladeWasserkarte(o) {
+  const zoom = o.zoom ?? passenderZoom(o.umkreisKm);
+  const lade = o.ladeKachel || standardLader();
+  const mpp = meterProPixel(o.lat, zoom);
+  const radiusPx = (o.umkreisKm * 1000) / mpp;
+
+  const mitte = zuKachel(o.lat, o.lon, zoom);
+  const von = {
+    x: Math.floor(mitte.x - radiusPx / KACHELGROESSE),
+    y: Math.floor(mitte.y - radiusPx / KACHELGROESSE),
+  };
+  const bis = {
+    x: Math.floor(mitte.x + radiusPx / KACHELGROESSE),
+    y: Math.floor(mitte.y + radiusPx / KACHELGROESSE),
+  };
+
+  const breite = (bis.x - von.x + 1) * KACHELGROESSE;
+  const hoehe = (bis.y - von.y + 1) * KACHELGROESSE;
+  const maske = new Uint8Array(breite * hoehe);
+
+  let wasserPixel = 0;
+  let landPixel = 0;
+  const fehlend = [];
+
+  // Kacheln nebeneinander holen statt nacheinander: ein Umkreis von 25 km sind
+  // schnell ein paar Dutzend, und einzeln geladen wartet man zu lange.
+  const offen = [];
+  for (let ty = von.y; ty <= bis.y; ty++) {
+    for (let tx = von.x; tx <= bis.x; tx++) offen.push({ tx, ty });
+  }
+
+  const gleichzeitig = o.gleichzeitig ?? 8;
+  for (let i = 0; i < offen.length; i += gleichzeitig) {
+    const block = offen.slice(i, i + gleichzeitig);
+    const geladen = await Promise.all(
+      block.map(({ tx, ty }) =>
+        lade(zoom, tx, ty).catch(() => {
+          fehlend.push(`${zoom}/${tx}/${ty}`);
+          return null;
+        })
+      )
+    );
+
+    geladen.forEach((daten, j) => {
+      if (!daten) return;
+      const { tx, ty } = block[j];
+      const ox = (tx - von.x) * KACHELGROESSE;
+      const oy = (ty - von.y) * KACHELGROESSE;
+      for (let py = 0; py < KACHELGROESSE; py++) {
+        for (let px = 0; px < KACHELGROESSE; px++) {
+          const k = (py * KACHELGROESSE + px) * 4;
+          const r = daten[k], g = daten[k + 1], b = daten[k + 2];
+          if (istWasserFarbe(r, g, b)) {
+            maske[(oy + py) * breite + ox + px] = 1;
+            wasserPixel++;
+          } else if (istLandFarbe(r, g, b)) {
+            landPixel++;
+          }
+        }
+      }
+    });
+
+    if (o.fortschritt) o.fortschritt(Math.min(i + gleichzeitig, offen.length), offen.length);
+  }
+
+  const karte = {
+    zoom,
+    breite,
+    hoehe,
+    von,
+    mpp,
+    maske,
+    fehlendeKacheln: fehlend,
+    wasseranteil: wasserPixel / Math.max(1, wasserPixel + landPixel),
+
+    /** Bildpunkt zu geografischer Koordinate. */
+    pixelVon(lat, lon) {
+      const k = zuKachel(lat, lon, zoom);
+      return {
+        px: Math.round((k.x - von.x) * KACHELGROESSE),
+        py: Math.round((k.y - von.y) * KACHELGROESSE),
+      };
+    },
+    koordinateVon(px, py) {
+      return ausKachel(von.x + px / KACHELGROESSE, von.y + py / KACHELGROESSE, zoom);
+    },
+    istWasserPixel(px, py) {
+      if (px < 0 || py < 0 || px >= breite || py >= hoehe) return false;
+      return maske[py * breite + px] === 1;
+    },
+    istWasser(lat, lon) {
+      const p = this.pixelVon(lat, lon);
+      return this.istWasserPixel(p.px, p.py);
+    },
+  };
+
+  return karte;
+}
+
+/** Im Browser über ein Bild, in Node über einen eigenen PNG-Leser. */
+function standardLader() {
+  if (typeof document !== "undefined" && typeof Image !== "undefined") {
+    return browserLader();
+  }
+  return nodeLader();
+}
+
+function browserLader() {
+  const leinwand = document.createElement("canvas");
+  leinwand.width = KACHELGROESSE;
+  leinwand.height = KACHELGROESSE;
+  const ctx = leinwand.getContext("2d", { willReadFrequently: true });
+
+  return (zoom, x, y) =>
+    new Promise((erfuellen, ablehnen) => {
+      const bild = new Image();
+      bild.crossOrigin = "anonymous";
+      bild.onload = () => {
+        ctx.clearRect(0, 0, KACHELGROESSE, KACHELGROESSE);
+        ctx.drawImage(bild, 0, 0);
+        erfuellen(ctx.getImageData(0, 0, KACHELGROESSE, KACHELGROESSE).data);
+      };
+      bild.onerror = () => ablehnen(new Error("Kachel nicht ladbar"));
+      bild.src = `https://tile.openstreetmap.org/${zoom}/${x}/${y}.png`;
+    });
+}
+
+function nodeLader() {
+  return async (zoom, x, y) => {
+    const res = await fetch(`https://tile.openstreetmap.org/${zoom}/${x}/${y}.png`, {
+      headers: { "User-Agent": "seewind-windalarm (github actions)" },
+    });
+    if (!res.ok) throw new Error(`Kachel ${zoom}/${x}/${y}: ${res.status}`);
+    const { inflateSync } = await import("node:zlib");
+    return dekodierePng(new Uint8Array(await res.arrayBuffer()), inflateSync);
+  };
+}
+
+/* ------------------------------------------------------------------ *
+ * PNG lesen (nur so viel, wie OSM-Kacheln brauchen)
+ * ------------------------------------------------------------------ */
+
+/**
+ * Minimaler PNG-Leser für 8-bit-Kacheln, damit auch der Lauf ohne Browser
+ * eine Wasserkarte bauen kann — und ohne zusätzliche Abhängigkeit.
+ * Unterstützt Graustufen, RGB, Palette und RGBA, keine Interlace-Bilder.
+ */
+function dekodierePng(bytes, inflate) {
+  const sig = [137, 80, 78, 71, 13, 10, 26, 10];
+  for (let i = 0; i < 8; i++) {
+    if (bytes[i] !== sig[i]) throw new Error("Keine PNG-Datei");
+  }
+
+  let pos = 8;
+  let breite = 0, hoehe = 0, tiefe = 0, farbtyp = 0, interlace = 0;
+  const idat = [];
+  let palette = null, transparenz = null;
+  const sicht = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+
+  while (pos < bytes.length) {
+    const laenge = sicht.getUint32(pos);
+    const typ = String.fromCharCode(bytes[pos + 4], bytes[pos + 5], bytes[pos + 6], bytes[pos + 7]);
+    const daten = bytes.subarray(pos + 8, pos + 8 + laenge);
+
+    if (typ === "IHDR") {
+      breite = sicht.getUint32(pos + 8);
+      hoehe = sicht.getUint32(pos + 12);
+      tiefe = daten[8];
+      farbtyp = daten[9];
+      interlace = daten[12];
+    } else if (typ === "PLTE") palette = daten.slice();
+    else if (typ === "tRNS") transparenz = daten.slice();
+    else if (typ === "IDAT") idat.push(daten);
+    else if (typ === "IEND") break;
+
+    pos += 12 + laenge;
+  }
+
+  if (tiefe !== 8) throw new Error(`Bittiefe ${tiefe} wird nicht gelesen`);
+  if (interlace) throw new Error("Interlace wird nicht gelesen");
+
+  const gesamt = new Uint8Array(idat.reduce((n, d) => n + d.length, 0));
+  let o = 0;
+  for (const d of idat) { gesamt.set(d, o); o += d.length; }
+  const roh = new Uint8Array(inflate(gesamt));
+
+  const kanaele = { 0: 1, 2: 3, 3: 1, 4: 2, 6: 4 }[farbtyp];
+  if (!kanaele) throw new Error(`Farbtyp ${farbtyp} wird nicht gelesen`);
+
+  const zeile = breite * kanaele;
+  const bild = new Uint8Array(hoehe * zeile);
+
+  // Zeilenfilter rückgängig machen (PNG-Norm, Abschnitt 9).
+  for (let y = 0; y < hoehe; y++) {
+    const filter = roh[y * (zeile + 1)];
+    const quelle = y * (zeile + 1) + 1;
+    const ziel = y * zeile;
+    for (let i = 0; i < zeile; i++) {
+      const x = roh[quelle + i];
+      const a = i >= kanaele ? bild[ziel + i - kanaele] : 0;
+      const b = y > 0 ? bild[ziel - zeile + i] : 0;
+      const c = y > 0 && i >= kanaele ? bild[ziel - zeile + i - kanaele] : 0;
+      let wert;
+      switch (filter) {
+        case 0: wert = x; break;
+        case 1: wert = x + a; break;
+        case 2: wert = x + b; break;
+        case 3: wert = x + ((a + b) >> 1); break;
+        case 4: {
+          const p = a + b - c;
+          const pa = Math.abs(p - a), pb = Math.abs(p - b), pc = Math.abs(p - c);
+          wert = x + (pa <= pb && pa <= pc ? a : pb <= pc ? b : c);
+          break;
+        }
+        default: throw new Error(`Unbekannter Zeilenfilter ${filter}`);
+      }
+      bild[ziel + i] = wert & 0xff;
+    }
+  }
+
+  // Auf RGBA vereinheitlichen, damit die Auswertung nur einen Fall kennt.
+  const rgba = new Uint8ClampedArray(breite * hoehe * 4);
+  for (let i = 0, j = 0; i < breite * hoehe; i++, j += 4) {
+    if (farbtyp === 3) {
+      const p = bild[i] * 3;
+      rgba[j] = palette[p]; rgba[j + 1] = palette[p + 1]; rgba[j + 2] = palette[p + 2];
+      rgba[j + 3] = transparenz && bild[i] < transparenz.length ? transparenz[bild[i]] : 255;
+    } else if (farbtyp === 0) {
+      rgba[j] = rgba[j + 1] = rgba[j + 2] = bild[i]; rgba[j + 3] = 255;
+    } else if (farbtyp === 4) {
+      rgba[j] = rgba[j + 1] = rgba[j + 2] = bild[i * 2]; rgba[j + 3] = bild[i * 2 + 1];
+    } else if (farbtyp === 2) {
+      rgba[j] = bild[i * 3]; rgba[j + 1] = bild[i * 3 + 1]; rgba[j + 2] = bild[i * 3 + 2];
+      rgba[j + 3] = 255;
+    } else {
+      rgba[j] = bild[i * 4]; rgba[j + 1] = bild[i * 4 + 1];
+      rgba[j + 2] = bild[i * 4 + 2]; rgba[j + 3] = bild[i * 4 + 3];
+    }
+  }
+  return rgba;
+}
+
+/* ------------------------------------------------------------------ *
+ * Anlaufstrecke und Richtungen
+ * ------------------------------------------------------------------ */
+
+const OKTANTEN = ["N", "NO", "O", "SO", "S", "SW", "W", "NW"];
+const OKTANT_GRAD = { N: 0, NO: 45, O: 90, SO: 135, S: 180, SW: 225, W: 270, NW: 315 };
+
+/**
+ * Wie weit reicht das Wasser von diesem Punkt aus gegen den Wind?
+ *
+ * Windrichtungen werden als Herkunft angegeben: bei Wind aus NW liegt die
+ * Anlaufstrecke nach NW. Steht dort Land, ist der Wind ablandig — und die
+ * Strecke entsprechend kurz.
+ */
+function anlaufstrecke(karte, lat, lon, gradVon, maxKm = 12) {
+  const start = karte.pixelVon(lat, lon);
+  const rad = (gradVon * Math.PI) / 180;
+  // Bildkoordinaten: x nach Osten, y nach Süden.
+  const dx = Math.sin(rad);
+  const dy = -Math.cos(rad);
+
+  const maxPixel = (maxKm * 1000) / karte.mpp;
+  let gelaufen = 0;
+  // Einzelne Störpixel (Beschriftungen, Bojen) dürfen nicht abbrechen.
+  let luecke = 0;
+  const maxLuecke = Math.max(2, Math.round(60 / karte.mpp));
+
+  while (gelaufen < maxPixel) {
+    gelaufen++;
+    const px = Math.round(start.px + dx * gelaufen);
+    const py = Math.round(start.py + dy * gelaufen);
+    if (px < 0 || py < 0 || px >= karte.breite || py >= karte.hoehe) break;
+    if (karte.istWasserPixel(px, py)) {
+      luecke = 0;
+    } else if (++luecke > maxLuecke) {
+      gelaufen -= luecke;
+      break;
+    }
+  }
+  return Math.max(0, (gelaufen * karte.mpp) / 1000);
+}
+
+/**
+ * Ein Oktant deckt 45 Grad ab, ein einzelner Strahl nur einen. Bei einem
+ * schmalen See, dessen Achse schräg zu den Oktanten liegt, ginge der Strahl
+ * sonst nach wenigen hundert Metern an Land — und die beste Richtung des Sees
+ * fiele durch. Deshalb ein Fächer und davon die längste Strecke.
+ *
+ * Am Gardasee sichtbar: ohne Fächer verlor Torbole den Süd-Sektor, also
+ * ausgerechnet die Ora.
+ */
+function sektorStrecke(karte, lat, lon, grad, maxKm = 12) {
+  let best = 0;
+  for (const ab of [-15, 0, 15]) {
+    best = Math.max(best, anlaufstrecke(karte, lat, lon, grad + ab, maxKm));
+  }
+  return best;
+}
+
+/**
+ * Fahrbare Oktanten: jene, aus denen genug Wasser gegen den Wind liegt.
+ * Liefert zusätzlich die gemessenen Strecken, damit die Herleitung sichtbar
+ * bleibt statt als Zahl vom Himmel zu fallen.
+ */
+function ableitenSektoren(karte, lat, lon, minFetchKm = 1.2) {
+  const strecken = {};
+  const dirs = [];
+  for (const okt of OKTANTEN) {
+    const km = sektorStrecke(karte, lat, lon, OKTANT_GRAD[okt]);
+    strecken[okt] = Math.round(km * 10) / 10;
+    if (km >= minFetchKm) dirs.push(okt);
+  }
+  return { dirs, strecken };
+}
+
+/* ------------------------------------------------------------------ *
+ * Kandidaten finden
+ * ------------------------------------------------------------------ */
+
+/** Abstand zweier Koordinaten in Kilometern. */
+function abstandKm(aLat, aLon, bLat, bLon) {
+  const r = (g) => (g * Math.PI) / 180;
+  const dLat = r(bLat - aLat), dLon = r(bLon - aLon);
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(r(aLat)) * Math.cos(r(bLat)) * Math.sin(dLon / 2) ** 2;
+  return 2 * ERDRADIUS_KM * Math.asin(Math.sqrt(h));
+}
+
+/**
+ * Sucht Stellen am Ufer: Wasser, aber nah genug am Land, dass man einsteigen
+ * kann. Mitten auf dem See zu melden bringt niemandem etwas.
+ *
+ * Der Weg dahin geht bewusst nicht "Rasterpunkt nehmen, wenn zufällig Ufer in
+ * der Nähe ist". Das hat beim ersten Versuch fast alles verschluckt: ein Ufer
+ * ist ein schmales Band, und ein Raster von einem Kilometer trifft es nur
+ * zufällig — bei einem geraden Ufer entweder immer oder nie. Ein rechteckiger
+ * Testsee von 22 mal 11 Kilometern ergab so drei Punkte statt eines Dutzends.
+ *
+ * Stattdessen: von jedem Wasserpunkt aus das nächste Land suchen und den
+ * Kandidaten davor setzen. Damit bringt jede Rasterzelle am Ufer auch einen
+ * Punkt, und er liegt dort, wo man einsteigt — nicht dort, wo das Raster lag.
+ *
+ * @returns {Array<{lat,lon,dirs,strecken,entfernungKm,guete}>}
+ */
+function findeUferpunkte(karte, o) {
+  const { lat, lon, umkreisKm } = o;
+  const minFetchKm = o.minFetchKm ?? 1.2;
+  const mindestabstandKm = o.mindestabstandKm ?? 4;
+  const uferAbstandM = o.uferAbstandM ?? o.maxUferM ?? 150;
+  const schrittKm = o.schrittKm ?? 1;
+
+  const schrittPx = Math.max(4, Math.round((schrittKm * 1000) / karte.mpp));
+  const uferPx = Math.max(2, Math.round(uferAbstandM / karte.mpp));
+  const kandidaten = [];
+  const gesehen = new Set();
+
+  for (let py = 0; py < karte.hoehe; py += schrittPx) {
+    for (let px = 0; px < karte.breite; px += schrittPx) {
+      if (!karte.istWasserPixel(px, py)) continue;
+
+      const land = naechstesLand(karte, px, py, schrittPx);
+      if (!land) continue; // mitten im offenen Wasser: kein Einstieg
+
+      // Ein Stück vom Ufer weg ins Wasser zurück — dort steht man beim Start.
+      const dx = px - land.x;
+      const dy = py - land.y;
+      const laenge = Math.hypot(dx, dy) || 1;
+      const ux = Math.round(land.x + (dx / laenge) * uferPx);
+      const uy = Math.round(land.y + (dy / laenge) * uferPx);
+      if (!karte.istWasserPixel(ux, uy)) continue;
+
+      // Benachbarte Rasterzellen finden oft dieselbe Uferstelle.
+      const marke = `${Math.round(ux / uferPx)},${Math.round(uy / uferPx)}`;
+      if (gesehen.has(marke)) continue;
+      gesehen.add(marke);
+
+      const k = karte.koordinateVon(ux, uy);
+      const entfernung = abstandKm(lat, lon, k.lat, k.lon);
+      if (entfernung > umkreisKm) continue;
+
+      const { dirs, strecken } = ableitenSektoren(karte, k.lat, k.lon, minFetchKm);
+      if (!dirs.length) continue;
+
+      kandidaten.push({
+        lat: k.lat,
+        lon: k.lon,
+        dirs,
+        strecken,
+        entfernungKm: Math.round(entfernung * 10) / 10,
+        // Je länger die beste Anlaufstrecke, desto eher ein echtes Revier.
+        guete: Math.max(...Object.values(strecken)),
+      });
+    }
+  }
+
+  // Reihenfolge: erst die längste Anlaufstrecke, bei gleichem Rang die Nähe.
+  // Auf offener See laufen fast alle Strecken in die Begrenzung, und ohne den
+  // zweiten Massstab lagen die Vorschläge für Tarifa zwanzig Kilometer weit
+  // weg, obwohl direkt vor Ort dasselbe Wasser liegt. Auf ganze Kilometer
+  // gerundet, damit hundert Meter Unterschied nicht über die Nähe entscheiden.
+  kandidaten.sort((a, b) => {
+    const ga = Math.round(a.guete);
+    const gb = Math.round(b.guete);
+    return ga !== gb ? gb - ga : a.entfernungKm - b.entfernungKm;
+  });
+  const behalten = [];
+  for (const k of kandidaten) {
+    if (behalten.some((b) => abstandKm(b.lat, b.lon, k.lat, k.lon) < mindestabstandKm)) continue;
+    behalten.push(k);
+    if (behalten.length >= (o.maxSpots ?? 12)) break;
+  }
+  return behalten;
+}
+
+/* ------------------------------------------------------------------ *
+ * Aus Uferpunkten Spots machen
+ * ------------------------------------------------------------------ */
+
+/**
+ * Liest den `reise`-Block aus spots.json (oder die Eingaben im Dashboard) und
+ * macht daraus einen geprüften Ort mit Standardwerten. Steht hier und nicht in
+ * `reise.mjs`, damit Seite und Lauf buchstäblich dieselbe Prüfung anwenden.
+ */
+function ortAusKonfig(reise) {
+  const lat = Number(reise.lat);
+  const lon = Number(reise.lon);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+    throw new Error("Es fehlen Koordinaten (lat/lon) für den Ort.");
+  }
+  if (Math.abs(lat) > 90 || Math.abs(lon) > 180) {
+    throw new Error(`${lat}/${lon} liegt ausserhalb der Erde.`);
+  }
+  const name = String(reise.ort || "").trim() || `${lat.toFixed(3)}, ${lon.toFixed(3)}`;
+  return {
+    lat,
+    lon,
+    name,
+    kurz: String(name).split(/[,(]/)[0].trim().slice(0, 18) || "Ort",
+    umkreisKm: grenzeAuf(Number(reise.umkreisKm) || 25, 3, 60),
+    minFetchKm: Number(reise.minFetchKm) || 1.2,
+    maxSpots: grenzeAuf(Math.round(Number(reise.maxSpots) || 6), 1, 12),
+  };
+}
+
+/** Uferpunkte in Spots im Format von spots.json. */
+function baueSpots(punkte, ort) {
+  return punkte.map((p, i) => {
+    const richtung = OKTANTEN[Math.round((peilung(ort.lat, ort.lon, p.lat, p.lon) % 360) / 45) % 8];
+    // Ohne Ortsnamen aus einer Datenbank ist die Lage zum gesuchten Ort das
+    // Ehrlichste, was sich sagen lässt — und auf der Karte sofort auffindbar.
+    const lage = p.entfernungKm < 1 ? "direkt am Ort" : `${p.entfernungKm} km ${richtung}`;
+    return {
+      id: `reise-${i + 1}`,
+      kurz: `${ort.kurz} ${i + 1}`,
+      name: `${ort.name} — ${lage}`,
+      see: `Umkreis ${ort.umkreisKm} km um ${ort.name}`,
+      lat: Math.round(p.lat * 10000) / 10000,
+      lon: Math.round(p.lon * 10000) / 10000,
+      dirs: p.dirs,
+      aktiv: true,
+      quelle: "global",
+      reise: true,
+      strecken: p.strecken,
+      entfernungKm: p.entfernungKm,
+      notiz:
+        `Aus der Ufergeometrie abgeleitet, längste Anlaufstrecke ${p.guete} km. ` +
+        `Sagt nichts über Zugang, Einstieg oder örtliche Verbote — das gehört vor Ort geprüft.`,
+    };
+  });
+}
+
+/** Kurswinkel von A nach B, in Grad ab Nord. */
+function peilung(aLat, aLon, bLat, bLon) {
+  const r = (g) => (g * Math.PI) / 180;
+  const dLon = r(bLon - aLon);
+  const y = Math.sin(dLon) * Math.cos(r(bLat));
+  const x =
+    Math.cos(r(aLat)) * Math.sin(r(bLat)) -
+    Math.sin(r(aLat)) * Math.cos(r(bLat)) * Math.cos(dLon);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+function grenzeAuf(x, min, max) {
+  return Math.max(min, Math.min(max, x));
+}
+
+/**
+ * Nächster Landpunkt, ringweise nach aussen. Ausserhalb der Karte zählt nicht
+ * als Land — sonst entstünde am Kartenrand ein Ufer, das es nicht gibt.
+ */
+function naechstesLand(karte, px, py, maxPx) {
+  for (let r = 2; r <= maxPx; r += 2) {
+    for (let grad = 0; grad < 360; grad += 12) {
+      const x = Math.round(px + r * Math.cos((grad * Math.PI) / 180));
+      const y = Math.round(py + r * Math.sin((grad * Math.PI) / 180));
+      if (x < 0 || y < 0 || x >= karte.breite || y >= karte.hoehe) continue;
+      if (!karte.istWasserPixel(x, y)) {
+        if (!istEchtesLand(karte, x, y)) continue;
+        return { x, y, r };
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * Nicht alles, was nicht wasserfarben ist, ist Land. Die Karte zeichnet auch
+ * Fährlinien, Seegrenzen und Beschriftungen aufs offene Wasser — und jede
+ * solche Linie täuschte ein Ufer vor. In der Meerenge von Gibraltar landeten
+ * so Vorschläge fünf Kilometer draussen auf See.
+ *
+ * Echtes Ufer hat rundherum viel Land; eine Linie im Wasser hat fast keins.
+ * Gemessen: an der Küste bei Tarifa 0.44 bis 0.48, auf der Linie mitten in der
+ * Meerenge 0.16.
+ */
+function istEchtesLand(karte, x, y, meter = 120, mindestens = 0.3) {
+  const r = Math.max(2, Math.round(meter / karte.mpp));
+  const schritt = Math.max(1, r >> 1);
+  let land = 0;
+  let alle = 0;
+  for (let dy = -r; dy <= r; dy += schritt) {
+    for (let dx = -r; dx <= r; dx += schritt) {
+      const px = x + dx;
+      const py = y + dy;
+      if (px < 0 || py < 0 || px >= karte.breite || py >= karte.hoehe) continue;
+      alle++;
+      if (!karte.istWasserPixel(px, py)) land++;
+    }
+  }
+  return alle > 0 && land / alle >= mindestens;
+}
+
+
+return { OKTANTEN, OKTANT_GRAD, ableitenSektoren, abstandKm, anlaufstrecke, ausKachel, baueSpots, dekodierePng, findeUferpunkte, istWasserFarbe, ladeWasserkarte, meterProPixel, ortAusKonfig, passenderZoom, peilung, sektorStrecke, zuKachel };
+})();
+
+</script>
 <script>
 (function(){
   var D = JSON.parse(document.getElementById("daten").textContent);
-  var OKT = ["N","NO","O","SO","S","SW","W","NW"];
   var WT = ["So","Mo","Di","Mi","Do","Fr","Sa"];
-  var SEEN = ["Thunersee","Brienzersee","Bielersee","Neuenburgersee","Murtensee"];
   var K = D.kriterien;
+  // Reihenfolge der Seeabschnitte: so, wie die Spots in der Konfiguration stehen.
+  function seenListe(){
+    var out = [];
+    D.spots.forEach(function(s){ if (out.indexOf(s.see) < 0) out.push(s.see); });
+    return out;
+  }
   var STUNDEN = [];
   for (var h = K.stundeVon; h <= K.stundeBis; h++) STUNDEN.push(h);
 
-  function oktant(g){ g=((g%360)+360)%360; return OKT[Math.round(g/45)%8]; }
+  function oktant(g){ return Kern.oktant(g); }
   function tag(datum){
     var p = datum.split("-").map(Number);
     var d = new Date(p[0], p[1]-1, p[2]);
     return { kurz: WT[d.getDay()], datum: p[2]+"."+p[1]+"." };
   }
-  function stufe(z, spot, schwelle){
-    var passt = spot.dirs.indexOf(oktant(z.grad)) >= 0;
-    if (!passt) return (z.wind >= schwelle || z.boe >= K.minGustKn) ? 1 : 0;
-    if (z.wind >= schwelle + 6) return 3;
-    if (z.wind >= schwelle) return 2;
-    if (z.wind >= schwelle - 3 || z.boe >= K.minGustKn) return 1;
-    return 0;
+  // Stufe, Fenster und Bewertung kommen aus lib.mjs — demselben Modul, mit dem
+  // der Lauf die Meldung rechnet. Vorher stand die Formel hier ein zweites Mal,
+  // von Hand abgeschrieben; als die beiden auseinanderliefen, zeigte das
+  // Dashboard eine andere Rangfolge als die Meldung. Der Regler unten verstellt
+  // nur die Schwelle, also wird sie dem Spot als minWindKn untergeschoben.
+  function mitSchwelle(spot, schwelle){
+    var kopie = {};
+    for (var k in spot) if (Object.prototype.hasOwnProperty.call(spot, k)) kopie[k] = spot[k];
+    kopie.minWindKn = schwelle;
+    return kopie;
   }
-  function fenster(zeilen, spot, schwelle){
-    var out = [], nachTag = {};
-    zeilen.forEach(function(z){ (nachTag[z.datum] = nachTag[z.datum] || []).push(z); });
-    Object.keys(nachTag).sort().forEach(function(datum){
-      var liste = nachTag[datum].slice().sort(function(a,b){ return a.stunde-b.stunde; });
-      var block = [];
-      function zu(){
-        if (block.length >= K.minStunden){
-          var sp = block.reduce(function(m,z){ return z.wind > m.wind ? z : m; }, block[0]);
-          out.push({ datum: datum, von: block[0].stunde, bis: block[block.length-1].stunde+1,
-                     stunden: block.length,
-                     wind: sp.wind, boe: Math.max.apply(null, block.map(function(z){return z.boe;})),
-                     richtung: oktant(sp.grad) });
-        }
-        block = [];
-      }
-      liste.forEach(function(z){
-        if (block.length && z.stunde !== block[block.length-1].stunde + 1) zu();
-        if (stufe(z, spot, schwelle) >= 2) block.push(z); else zu();
-      });
-      zu();
-    });
-    return out;
-  }
-
-  // Bewertung — muss dieselbe Formel sein wie in lib.mjs, sonst weicht die
-  // Rangliste im Dashboard von der in der Meldung ab.
-  function bewerte(f, schwelle){
-    var g = K.bewertung || {};
-    var idealUeber = g.idealUeberSchwelle != null ? g.idealUeberSchwelle : 8;
-    var zuvielUeber = g.zuvielUeberSchwelle != null ? g.zuvielUeberSchwelle : 18;
-    var ueber = f.wind - schwelle, wind;
-    if (ueber <= idealUeber) wind = (ueber / idealUeber) * 50;
-    else wind = 50 - Math.min((ueber - idealUeber) / (zuvielUeber - idealUeber), 1) * 20;
-    wind = Math.max(0, Math.min(50, wind));
-
-    var volleDauer = g.dauerVollStunden != null ? g.dauerVollStunden : 6;
-    var dauer = (Math.min(f.stunden, volleDauer) / volleDauer) * 25;
-
-    var gut = g.boeenGut != null ? g.boeenGut : 1.4;
-    var schlecht = g.boeenSchlecht != null ? g.boeenSchlecht : 2.2;
-    var verh = f.wind > 0 ? f.boe / f.wind : 3;
-    var boeen = 15 * (1 - Math.max(0, Math.min(1, (verh - gut) / (schlecht - gut))));
-
-    var naehe = [10, 8, 5, 3][Math.min(tageBis(f.datum), 3)];
-    if (naehe == null) naehe = 3;
-
-    return { punkte: Math.round(wind + dauer + boeen + naehe),
-             teile: { wind: Math.round(wind), dauer: Math.round(dauer),
-                      boeen: Math.round(boeen), naehe: naehe } };
-  }
-  function tageBis(datum){
-    var p = datum.split("-").map(Number), n = new Date();
-    var ziel = Date.UTC(p[0], p[1]-1, p[2]);
-    var start = Date.UTC(n.getFullYear(), n.getMonth(), n.getDate());
-    return Math.max(0, Math.round((ziel - start) / 86400000));
-  }
+  function stufe(z, spot, schwelle){ return Kern.stufe(z, mitSchwelle(spot, schwelle), K); }
+  function fenster(zeilen, spot, schwelle){ return Kern.fenster(zeilen, mitSchwelle(spot, schwelle), K); }
+  function bewerte(f, schwelle){ return Kern.bewerte(f, { minWindKn: schwelle }, K); }
 
   var podiumHost = document.getElementById("podium");
   var host = document.getElementById("seen");
@@ -468,7 +1491,7 @@ footer p{margin:0 0 10px}
     podium(global);
     karteZeichnen(parseInt(zeitRegler.value, 10), global);
     host.innerHTML = "";
-    SEEN.forEach(function(see){
+    seenListe().forEach(function(see){
       var spots = D.spots.filter(function(s){ return s.see === see; });
       if (!spots.length) return;
       var sec = document.createElement("section");
@@ -583,7 +1606,7 @@ footer p{margin:0 0 10px}
   /* ---------------- Karte ---------------- */
 
   // Alle Prognosestunden über alle Spots, chronologisch und eindeutig.
-  var STUNDENLISTE = (function(){
+  function stundenListe(){
     var gesehen = {}, liste = [];
     Object.keys(D.reihen).forEach(function(id){
       (D.reihen[id] || []).forEach(function(z){
@@ -595,7 +1618,8 @@ footer p{margin:0 0 10px}
       return a.datum === b.datum ? a.stunde - b.stunde : (a.datum < b.datum ? -1 : 1);
     });
     return liste;
-  })();
+  }
+  var STUNDENLISTE = stundenListe();
 
   var lkarte = null, nadeln = {}, spielt = null;
 
@@ -613,6 +1637,12 @@ footer p{margin:0 0 10px}
       '<div class="scheibe">' + (z ? z.wind : "–") + '</div></div>';
   }
 
+  /** "N 0.8 · NO 3.4 · O 1.3 …" — nur die Richtungen, wo überhaupt Wasser liegt. */
+  function strecken(s){
+    return Kern.OKTANTEN.filter(function(o){ return s[o] >= 0.5; })
+      .map(function(o){ return o + " " + s[o]; }).join(" · ") || "überall unter 0.5";
+  }
+
   function stundeVon(spotId, punkt){
     var reihe = D.reihen[spotId] || [];
     for (var i = 0; i < reihe.length; i++){
@@ -627,13 +1657,24 @@ footer p{margin:0 0 10px}
     document.getElementById("karte-box").hidden = false;
     lkarte = L.map("karte", { scrollWheelZoom: false, attributionControl: true });
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 15, minZoom: 7,
+      maxZoom: 15, minZoom: 3,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(lkarte);
 
     // Scrollen auf der Seite soll nicht in der Karte hängenbleiben.
     lkarte.on("click", function(){ lkarte.scrollWheelZoom.enable(); });
     lkarte.on("mouseout", function(){ lkarte.scrollWheelZoom.disable(); });
+
+    nadelnSetzen();
+    setTimeout(function(){ lkarte.invalidateSize(); }, 0);
+    return true;
+  }
+
+  /** Marker zu den aktuell angezeigten Spots — auch nach einem Datenwechsel. */
+  function nadelnSetzen(){
+    if (!lkarte) return;
+    Object.keys(nadeln).forEach(function(id){ lkarte.removeLayer(nadeln[id].marker); });
+    nadeln = {};
 
     var punkte = [];
     D.spots.forEach(function(spot){
@@ -646,9 +1687,8 @@ footer p{margin:0 0 10px}
       nadeln[spot.id] = { marker: m, spot: spot };
     });
     if (punkte.length) lkarte.fitBounds(punkte, { padding: [34, 34] });
-    // Der Abschnitt war bis eben ausgeblendet - Leaflet muss neu messen.
+    // Der Abschnitt war eben noch ausgeblendet - Leaflet muss neu messen.
     setTimeout(function(){ lkarte.invalidateSize(); }, 0);
-    return true;
   }
 
   function karteZeichnen(index, schwelle){
@@ -677,7 +1717,8 @@ footer p{margin:0 0 10px}
         (z
           ? z.wind + " kn, Böen " + z.boe + " kn<br>Richtung " + oktant(z.grad) + " (" + z.grad + "°)" +
             "<br>fahrbar bei " + n.spot.dirs.join(" ")
-          : "keine Prognose für diese Stunde")
+          : "keine Prognose für diese Stunde") +
+        (n.spot.strecken ? '<br><span class="zeitzone">Anlaufstrecke km: ' + strecken(n.spot.strecken) + '</span>' : "")
       );
     });
   }
@@ -685,9 +1726,9 @@ footer p{margin:0 0 10px}
   var zeitRegler = document.getElementById("zeit");
   var abspielKnopf = document.getElementById("abspielen");
 
-  if (karteAufbauen()){
-    zeitRegler.max = String(STUNDENLISTE.length - 1);
-    // Startpunkt: die Stunde des besten Fensters, nicht stumpf die erste.
+  /** Zeitregler auf die Stunde des besten Fensters stellen, nicht stumpf auf die erste. */
+  function reglerStellen(){
+    zeitRegler.max = String(Math.max(0, STUNDENLISTE.length - 1));
     var beste = alleTreffer(parseInt(slider.value, 10))[0];
     var start = 0;
     if (beste){
@@ -696,29 +1737,274 @@ footer p{margin:0 0 10px}
       }
     }
     zeitRegler.value = String(start);
-
-    zeitRegler.addEventListener("input", function(){
-      anhalten();
-      karteZeichnen(parseInt(zeitRegler.value, 10), parseInt(slider.value, 10));
-    });
-
-    abspielKnopf.addEventListener("click", function(){
-      if (spielt) { anhalten(); return; }
-      abspielKnopf.classList.add("laeuft");
-      abspielKnopf.textContent = "❚❚";
-      spielt = setInterval(function(){
-        var n = (parseInt(zeitRegler.value, 10) + 1) % STUNDENLISTE.length;
-        zeitRegler.value = String(n);
-        karteZeichnen(n, parseInt(slider.value, 10));
-      }, 700);
-    });
   }
+
+  zeitRegler.addEventListener("input", function(){
+    anhalten();
+    karteZeichnen(parseInt(zeitRegler.value, 10), parseInt(slider.value, 10));
+  });
+
+  abspielKnopf.addEventListener("click", function(){
+    if (spielt) { anhalten(); return; }
+    if (!STUNDENLISTE.length) return;
+    abspielKnopf.classList.add("laeuft");
+    abspielKnopf.textContent = "❚❚";
+    spielt = setInterval(function(){
+      var n = (parseInt(zeitRegler.value, 10) + 1) % STUNDENLISTE.length;
+      zeitRegler.value = String(n);
+      karteZeichnen(n, parseInt(slider.value, 10));
+    }, 700);
+  });
+
+  if (karteAufbauen()) reglerStellen();
 
   function anhalten(){
     if (!spielt) return;
     clearInterval(spielt); spielt = null;
     abspielKnopf.classList.remove("laeuft");
     abspielKnopf.textContent = "▶";
+  }
+
+  /* ---------------- Reisemodus ---------------- */
+
+  // Die Seen von zu Hause bleiben liegen, damit der Weg zurück nichts kostet.
+  var ZUHAUSE = { spots: D.spots, reihen: D.reihen };
+
+  /**
+   * Der Reisemodus ersetzt schlicht die Daten und lässt dieselbe Darstellung
+   * noch einmal laufen. Keine zweite Rangliste, keine zweite Karte, keine
+   * zweite Bewertung — was hier steht, ist dieselbe Rechnung wie für zu Hause.
+   */
+  function setzeDaten(spots, reihen){
+    anhalten();
+    D.spots = spots;
+    D.reihen = reihen;
+    STUNDENLISTE = stundenListe();
+    if (!lkarte) karteAufbauen(); else nadelnSetzen();
+    reglerStellen();
+    zeichne();
+  }
+
+  (function reisemodus(){
+    var box = document.getElementById("reise");
+    var leiste = document.getElementById("modus");
+    var hinweis = document.getElementById("modus-hinweis");
+    var eingabe = document.getElementById("ort-eingabe");
+    var trefferHost = document.getElementById("ort-treffer");
+    var umkreis = document.getElementById("umkreis");
+    var umkreisAus = document.getElementById("umkreis-out");
+    var startKnopf = document.getElementById("reise-start");
+    var status = document.getElementById("reise-status");
+    var uebernehmen = document.getElementById("uebernehmen");
+    var jsonFeld = document.getElementById("reise-json");
+    var kopieren = document.getElementById("reise-kopieren");
+    if (!box || typeof Suche === "undefined") return;
+
+    var ort = null;
+    var laeuft = false;
+    var offen = false;
+
+    merkenLaden();
+    umkreisAus.textContent = umkreis.value + " km";
+
+    leiste.addEventListener("click", function(e){
+      var knopf = e.target.closest ? e.target.closest("button[data-modus]") : null;
+      if (!knopf) return;
+      umschalten(knopf.getAttribute("data-modus"));
+    });
+
+    umkreis.addEventListener("input", function(){
+      umkreisAus.textContent = umkreis.value + " km";
+      try { localStorage.setItem("seewind-umkreis", umkreis.value); } catch (e) {}
+    });
+
+    document.getElementById("ort-suchen").addEventListener("click", suchen);
+    eingabe.addEventListener("keydown", function(e){ if (e.key === "Enter") { e.preventDefault(); suchen(); } });
+    document.getElementById("ort-hier").addEventListener("click", hierher);
+    startKnopf.addEventListener("click", starten);
+    kopieren.addEventListener("click", function(){ inZwischenablage(jsonFeld.textContent, kopieren, "Block kopieren"); });
+
+    // Auf die Karte tippen setzt den Mittelpunkt — aber nur im Reisemodus,
+    // sonst verschöbe ein Klick auf einen Spot zu Hause das halbe Dashboard.
+    if (lkarte) {
+      lkarte.on("click", function(e){
+        if (!offen || laeuft) return;
+        setzeOrt({
+          name: e.latlng.lat.toFixed(3) + ", " + e.latlng.lng.toFixed(3),
+          lat: e.latlng.lat, lon: e.latlng.lng
+        });
+        melde("Mittelpunkt gesetzt. Jetzt „Spots suchen“.");
+      });
+    }
+
+    function umschalten(name){
+      offen = name === "reise";
+      Array.prototype.forEach.call(leiste.querySelectorAll("button[data-modus]"), function(b){
+        b.classList.toggle("an", b.getAttribute("data-modus") === name);
+      });
+      box.hidden = !offen;
+      hinweis.textContent = offen
+        ? "Rechnet im Browser, hier und jetzt — gemeldet wird erst, wenn du den Ort unten übernimmst."
+        : "Die gespeicherten Seen, zweimal täglich frisch gerechnet.";
+      if (!offen) setzeDaten(ZUHAUSE.spots, ZUHAUSE.reihen);
+      else if (D.spots === ZUHAUSE.spots && ort) melde("Ort gemerkt: " + ort.name + ". „Spots suchen“ rechnet neu.");
+    }
+
+    async function suchen(){
+      var text = eingabe.value.trim();
+      if (text.length < 2) return;
+      trefferHost.hidden = true;
+      melde("Ort suchen …");
+      try {
+        var url = "https://geocoding-api.open-meteo.com/v1/search?count=6&language=de&format=json&name=" +
+          encodeURIComponent(text);
+        var r = await fetch(url);
+        if (!r.ok) throw new Error("Die Ortssuche antwortete mit " + r.status + ".");
+        var daten = await r.json();
+        var liste = daten.results || [];
+        if (!liste.length) { melde("Nichts gefunden zu „" + text + "“.", "fehler"); return; }
+        status.hidden = true;
+        trefferHost.innerHTML = "";
+        liste.forEach(function(o){
+          var b = document.createElement("button");
+          b.type = "button";
+          b.innerHTML = escapeHtml(o.name) +
+            '<span class="wo">' + escapeHtml([o.admin1, o.country].filter(Boolean).join(", ")) +
+            " · " + o.latitude.toFixed(3) + ", " + o.longitude.toFixed(3) + "</span>";
+          b.addEventListener("click", function(){
+            trefferHost.hidden = true;
+            setzeOrt({ name: o.name, lat: o.latitude, lon: o.longitude });
+            starten();
+          });
+          trefferHost.appendChild(b);
+        });
+        trefferHost.hidden = false;
+      } catch (e) {
+        melde("Ortssuche fehlgeschlagen: " + (e.message || e), "fehler");
+      }
+    }
+
+    function hierher(){
+      if (!navigator.geolocation) { melde("Dieses Gerät gibt den Standort nicht her.", "fehler"); return; }
+      melde("Standort abfragen …");
+      navigator.geolocation.getCurrentPosition(
+        function(p){
+          setzeOrt({ name: "Mein Standort", lat: p.coords.latitude, lon: p.coords.longitude });
+          starten();
+        },
+        function(){ melde("Standort nicht bekommen — der Zugriff wurde abgelehnt oder ist blockiert.", "fehler"); },
+        { timeout: 10000, maximumAge: 300000 }
+      );
+    }
+
+    function setzeOrt(neu){
+      ort = neu;
+      eingabe.value = neu.name;
+      startKnopf.disabled = false;
+      try { localStorage.setItem("seewind-ort", JSON.stringify(neu)); } catch (e) {}
+    }
+
+    function merkenLaden(){
+      try {
+        var g = JSON.parse(localStorage.getItem("seewind-ort") || "null");
+        if (g && isFinite(g.lat) && isFinite(g.lon)) { ort = g; eingabe.value = g.name || ""; startKnopf.disabled = false; }
+        var u = localStorage.getItem("seewind-umkreis");
+        if (u) umkreis.value = u;
+      } catch (e) {}
+    }
+
+    async function starten(){
+      if (!ort || laeuft) return;
+      laeuft = true;
+      startKnopf.disabled = true;
+      uebernehmen.hidden = true;
+      try {
+        var o = Suche.ortAusKonfig({
+          ort: ort.name, lat: ort.lat, lon: ort.lon,
+          umkreisKm: parseInt(umkreis.value, 10), maxSpots: 6
+        });
+
+        melde("Karte laden …");
+        var wasserkarte = await Suche.ladeWasserkarte({
+          lat: o.lat, lon: o.lon, umkreisKm: o.umkreisKm,
+          fortschritt: function(fertig, alle){ melde("Karte laden … " + fertig + " von " + alle + " Kacheln"); }
+        });
+        if (wasserkarte.fehlendeKacheln.length > alle10Prozent(wasserkarte)) {
+          throw new Error("Zu viele Kartenkacheln fehlen — der Kachelserver antwortet gerade nicht. Später nochmal.");
+        }
+
+        melde("Ufer vermessen …");
+        var punkte = Suche.findeUferpunkte(wasserkarte, o);
+        if (!punkte.length) {
+          throw new Error(
+            "Im Umkreis von " + o.umkreisKm + " km liegt kein Ufer, an dem genug Wasser " +
+            "gegen den Wind steht. Grösserer Umkreis, oder hier ist wirklich nichts."
+          );
+        }
+        var spots = Suche.baueSpots(punkte, o);
+
+        melde("Prognose holen für " + spots.length + " Stellen …");
+        var reihen = await Kern.holePrognose(spots, K);
+
+        setzeDaten(spots, reihen);
+        var zone = spots.map(function(s){ return s.zeitzone; }).filter(Boolean)[0];
+        melde(
+          spots.length + " Stellen um " + o.name + " gefunden" +
+          (zone && zone !== K.zeitzone ? " — Zeiten in Ortszeit (" + zone + ")." : "."),
+          "fertig"
+        );
+        jsonFeld.textContent = jsonBlock(o);
+        uebernehmen.hidden = false;
+      } catch (e) {
+        melde(e.message || String(e), "fehler");
+      } finally {
+        laeuft = false;
+        startKnopf.disabled = false;
+      }
+    }
+
+    function alle10Prozent(k){
+      var kacheln = (k.breite / 256) * (k.hoehe / 256);
+      return Math.max(1, Math.round(kacheln * 0.1));
+    }
+
+    function jsonBlock(o){
+      return '"reise": ' + JSON.stringify({
+        aktiv: true,
+        ort: o.name,
+        lat: Math.round(o.lat * 10000) / 10000,
+        lon: Math.round(o.lon * 10000) / 10000,
+        umkreisKm: o.umkreisKm,
+        minFetchKm: o.minFetchKm,
+        maxSpots: o.maxSpots
+      }, null, 2);
+    }
+
+    function melde(text, art){
+      status.className = "reise-status" + (art ? " " + art : "");
+      status.textContent = text;
+      status.hidden = false;
+    }
+  })();
+
+  function escapeHtml(s){
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function inZwischenablage(text, knopf, zurueck){
+    var fertig = function(){
+      knopf.classList.add("ok");
+      knopf.textContent = "kopiert";
+      setTimeout(function(){ knopf.classList.remove("ok"); knopf.textContent = zurueck; }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(fertig, function(){});
+      return;
+    }
+    var t = document.createElement("textarea");
+    t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); fertig(); } catch (e) {}
+    document.body.removeChild(t);
   }
 
   try {
