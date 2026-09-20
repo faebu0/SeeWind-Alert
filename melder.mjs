@@ -108,7 +108,7 @@ export function telegramText(fenster, dashboardUrl, kalenderUrl = "") {
     const t = tagLabel(f.datum);
     return (
       `${medaille(f)}<b>${esc(f.spotName)}</b> · ${esc(f.see)}\n` +
-      `${t.kurz} ${t.datum} ${uhr(f.von)}–${uhr(f.bis)} Uhr · ` +
+      `${t.kurz} ${t.datum} ${uhr(f.von)}–${uhr(f.bis)} Uhr${f.zeitzone ? " Ortszeit" : ""} · ` +
       `${f.wind} kn, Böen ${f.boe} kn, ${f.richtung}` +
       (f.punkte != null ? ` · <b>${f.punkte}</b>/100` : "")
     );
@@ -138,7 +138,9 @@ export function mailInhalt(fenster, dashboardUrl, kalenderUrl = "") {
     const rang = f.rang != null && f.rang <= 3 ? `[Platz ${f.rang}] ` : "";
     return (
       `${rang}${f.spotName} · ${f.see}\n` +
-      `  ${t.kurz} ${t.datum}, ${uhr(f.von)}–${uhr(f.bis)} Uhr (${f.stunden} h)\n` +
+      `  ${t.kurz} ${t.datum}, ${uhr(f.von)}–${uhr(f.bis)} Uhr` +
+      (f.zeitzone ? ` Ortszeit (${f.zeitzone})` : "") +
+      ` (${f.stunden} h)\n` +
       `  ${f.wind} kn Mittelwind, Böen ${f.boe} kn, Richtung ${f.richtung}\n` +
       `  Modell ${f.modell}` +
       (f.punkte != null

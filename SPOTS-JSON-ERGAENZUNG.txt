@@ -1,0 +1,20 @@
+spots.json wird NICHT ersetzt — deine Spots und Kriterien bleiben, wie sie sind.
+
+Stattdessen einen Block ergänzen: in spots.json direkt VOR die Zeile
+  "spots": [
+diese beiden Zeilen einfügen und mit einer Leerzeile abtrennen:
+
+  "_reise": "Reisemodus. aktiv=true schaltet einen Ort scharf: der Lauf sucht im Umkreis selbst Spots und meldet sie wie die Seen unten. Ort, lat und lon holst du dir im Dashboard unter 'Reisemodus' — dort gibt es einen Knopf, der genau diesen Block fertig zum Einsetzen kopiert. aktiv=false laesst alles wie bisher.",
+  "reise": {
+    "aktiv": false,
+    "ort": "",
+    "lat": null,
+    "lon": null,
+    "umkreisKm": 25,
+    "minFetchKm": 1.2,
+    "maxSpots": 6
+  },
+
+Fehlt der Block ganz, läuft alles weiter wie bisher — der Reisemodus im
+Dashboard funktioniert auch ohne ihn. Gebraucht wird er erst, wenn ein Ort
+auch gemeldet werden soll.

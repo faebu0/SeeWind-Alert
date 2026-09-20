@@ -18,10 +18,12 @@ import { holePrognose, alleFenster, schluessel, tagLabel, uhr } from "./lib.mjs"
 import { baueSeite } from "./template.mjs";
 import { melde, testMeldung, waehleKanal, pruefeZugang } from "./melder.mjs";
 import { baueIcs, baueIcsEinzeln } from "./ics.mjs";
+import { reiseSpots } from "./reise.mjs";
 
 const WURZEL = dirname(fileURLToPath(import.meta.url));
 const KONFIG = join(WURZEL, "spots.json");
 const STAND = join(WURZEL, "state", "gemeldet.json");
+const REISESTAND = join(WURZEL, "state", "reise.json");
 const SEITE = join(WURZEL, "docs", "index.html");
 const ROHDATEN = join(WURZEL, "docs", "prognose.json");
 // Verhindert, dass GitHub Pages die fertige Seite noch durch Jekyll schickt.
@@ -57,7 +59,23 @@ async function main() {
 
   const konfig = JSON.parse(await readFile(KONFIG, "utf8"));
   const kriterien = konfig.kriterien;
-  const spots = konfig.spots;
+  if (konfig.bewertung) kriterien.bewertung = konfig.bewertung;
+
+  // Reisemodus: ist ein Ort scharf gestellt, kommen die dort gefundenen Spots
+  // zu den festen dazu und werden genauso gemeldet.
+  let gefunden = [];
+  if (konfig.reise?.aktiv) {
+    try {
+      gefunden = await reiseSpots(konfig.reise, { cache: REISESTAND });
+      console.log(`Reisemodus: ${gefunden.length} Spots um ${konfig.reise.ort || "den Ort"}.`);
+      gefunden.forEach((s) => console.log(`  ${s.name} · ${s.dirs.join(" ")}`));
+    } catch (err) {
+      // Ein Ausfall der Kartenkacheln darf die Seen zu Hause nicht mitreissen.
+      console.warn(`Reisemodus übersprungen: ${err.message}`);
+    }
+  }
+
+  const spots = [...konfig.spots, ...gefunden];
   const aktive = spots.filter((s) => s.aktiv !== false);
 
   if (!aktive.length) {
@@ -88,12 +106,13 @@ async function main() {
   await mkdir(dirname(SEITE), { recursive: true });
   await writeFile(
     SEITE,
-    baueSeite({
+    await baueSeite({
       spots,
       kriterien,
       reihen,
       treffer,
       stand,
+      reise: konfig.reise || null,
     })
   );
   await writeFile(ROHDATEN, JSON.stringify({ stand, kriterien, reihen, treffer }, null, 1));

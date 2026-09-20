@@ -60,7 +60,8 @@ docs/index.html
 docs/prognose.json
 docs/.nojekyll
 state/gemeldet.json
-lib.mjs  melder.mjs  run.mjs  smtp.mjs  template.mjs
+browserbau.mjs  ics.mjs  lib.mjs  melder.mjs  reise.mjs
+run.mjs  smtp.mjs  spotsuche.mjs  template.mjs
 spots.json  package.json  prognose-test.json  README.md
 ```
 
@@ -233,12 +234,71 @@ als `DASHBOARD_URL` ein, dann steht der Link auch in der Meldung.
 
 ---
 
+## Karte
+
+Über der Rangliste liegt eine Karte der Region. Jeder Spot ist eine Scheibe mit
+dem Mittelwind dieser Stunde, eingefärbt nach Stufe, mit einem Pfeil in
+Windrichtung. Die drei bestbewerteten Spots tragen eine Markierung.
+
+Der Regler unter der Karte läuft über alle Prognosestunden; der Knopf daneben
+spielt sie ab. Damit sieht man, **wann** der Wind wo durchkommt — eine Bise, die
+morgens am Bielersee steht und erst nachmittags den Neuenburgersee erreicht, ist
+auf dem Standbild nicht zu erkennen.
+
+Wichtig beim Lesen: ein Spot färbt sich nur ein, wenn die Richtung zu *seinen*
+Sektoren passt. Derselbe Wind kann am einen See fahrbar sein und am anderen
+nutzlos — genau dafür ist die Karte da.
+
+Die Karte nutzt [Leaflet](https://leafletjs.com/) und Kacheln von
+OpenStreetMap — beides ohne Schlüssel und ohne Konto. Lädt die Bibliothek nicht
+(kein Netz, geblockte CDN), bleibt der Kartenabschnitt einfach ausgeblendet; der
+Rest der Seite funktioniert unverändert.
+
+---
+
+## Rangliste
+
+Nicht jedes Fenster ist gleich viel wert. Jedes bekommt deshalb 0 bis 100 Punkte
+aus vier Teilen; das Dashboard zeigt die **drei besten** oben, mit der Aufschlüsselung
+daneben.
+
+| Teil | Punkte | Wofür |
+|---|---|---|
+| **Wind** | 0–50 | Stärke über deiner Schwelle. Das Optimum liegt 8 kn darüber; wer deutlich mehr bringt, verliert wieder bis zu 20 Punkte — viel Wind ist unbequem, nicht wertlos. |
+| **Dauer** | 0–25 | Volle Punkte ab 6 zusammenhängenden Stunden. |
+| **Böen** | 0–15 | Verhältnis Böe zu Mittelwind. Bis 1,4 gleichmässig, ab 2,2 ruppig. |
+| **Nähe** | 0–10 | Heute 10, morgen 8, übermorgen 5, danach 3 — je näher, desto verlässlicher die Prognose. |
+
+Die Gewichte stehen unter `bewertung` in `spots.json` und lassen sich verschieben.
+Wer etwa lieber lange Sessions als starken Wind hätte, senkt `idealUeberSchwelle`.
+
+Die Rangfolge taucht überall auf: im Dashboard als Podest, in Telegram als
+🥇🥈🥉 mit Punktzahl, in der E-Mail als *[Platz 1]* samt Aufschlüsselung, im
+Kalendertitel als `#1`. Bei **SMS** entscheidet sie mit, welche Fenster in die
+160 Zeichen kommen — es werden die besten ausgewählt, ausgegeben aber
+chronologisch.
+
+Die Liste unter dem Podest bleibt nach Zeit sortiert. Eine reine Bestenliste
+ohne Zeitachse wäre schlechter zu lesen, wenn man wissen will, wann man frei
+nehmen muss.
+
+---
+
 ## Termine in Outlook
 
 Jeder Lauf schreibt `docs/fenster.ics` — eine Kalenderdatei mit allen aktuellen
 Fenstern. Zwei Wege, sie zu nutzen:
 
-**Abonnieren (empfohlen).** In Outlook einmalig als Internetkalender eintragen:
+**Abonnieren (empfohlen).** Am schnellsten über das Dashboard: dort stehen neben
+dem Download die Knöpfe **In Outlook abonnieren** und **Adresse kopieren**. Der
+erste öffnet den Abo-Dialog direkt (`webcal://`), der zweite legt die
+`https://`-Adresse in die Zwischenablage, falls Outlook den Link nicht annimmt.
+Beide Adressen leitet die Seite aus ihrem eigenen Ort ab — sie stimmen also auch,
+wenn das Repository anders heisst oder unter einer eigenen Domain liegt. Öffnest
+du die Seite lokal als Datei, sind beide Knöpfe ausgeblendet: ohne Server gibt es
+nichts zu abonnieren.
+
+Von Hand geht es so:
 
 - *Outlook im Web / Microsoft 365:* Kalender → **Kalender hinzufügen → Aus dem
   Internet abonnieren** → `https://<konto>.github.io/<repo>/fenster.ics`
@@ -250,9 +310,16 @@ Mal am Tag, nicht sofort. Die Datei bittet mit `REFRESH-INTERVAL` um alle vier
 Stunden, aber das ist eine Bitte, keine Garantie. Für eine Vorlaufzeit von ein
 bis drei Tagen reicht das; wer es sofort haben will, nimmt die Meldung.
 
-**Einmalig eintragen.** Der Meldung liegt `windfenster.ics` mit genau den neu
-gemeldeten Fenstern bei — bei Telegram als Datei, bei E-Mail als Anhang. Öffnen,
-und Outlook legt die Termine an. Auf dem Dashboard gibt es denselben Download.
+**Einmalig eintragen.** Der Meldung liegt **je Fenster eine eigene Datei** bei,
+benannt nach Datum, Spot und Uhrzeit (`2026-09-16_Estavayer_12-20Uhr.ics`). Bei
+Telegram kommen sie als Dateigruppe, bei E-Mail als Anhänge. Öffnen genügt, der
+Termin steht.
+
+Getrennte Dateien statt einer gemeinsamen, weil Outlook beim Öffnen einer Datei
+mit mehreren Terminen nicht alle zur Auswahl anbietet — und weil du so einzeln
+entscheiden kannst, welches Fenster überhaupt in den Kalender soll.
+
+Auf dem Dashboard liegt zusätzlich der gesammelte Download aller Fenster.
 
 Die Termine blockieren die Zeit standardmässig als **gebucht**. Wer sie lieber
 unverbindlich hätte, setzt die Variable `KALENDER_STATUS` auf `TENTATIVE` — dann
@@ -260,6 +327,80 @@ stehen sie als *Mit Vorbehalt* im Kalender, was einer Prognose ehrlicher entspri
 
 Ein Fenster behält über alle Läufe dieselbe Kennung. Ein erneuter Import
 aktualisiert deshalb den bestehenden Termin, statt einen zweiten daneben zu legen.
+
+---
+
+## Reisemodus
+
+Neben den gespeicherten Seen kann das Dashboard auch **irgendwo auf der Welt**
+suchen: Ort eingeben, Umkreis wählen, und es zeigt die besten Windfenster im
+Umkreis — mit derselben Rangliste, derselben Karte, derselben Bewertung.
+
+Der Umschalter steht oben auf der Seite. Den Ort findest du auf drei Wegen: über
+die Suche, über **Mein Standort**, oder indem du auf die Karte tippst.
+
+### Woher die Spots kommen
+
+Es gibt kein Spotverzeichnis dahinter. Statt Namen nachzuschlagen, misst das Tool
+**Geometrie**: Aus den Karten von OpenStreetMap wird eine Wassermaske gebaut, und
+von jeder Uferstelle aus wird in acht Richtungen gemessen, wie weit das Wasser
+gegen den Wind reicht — die *Anlaufstrecke*.
+
+Diese eine Zahl leistet zweierlei auf einmal:
+
+- sie schliesst **ablandigen Wind** aus, denn gegen den Wind läge dann Land
+- sie verwirft **Pfützen**, auf denen sich ohnehin keine Welle aufbaut
+
+Übrig bleiben Uferstellen mit den Richtungen, aus denen dort überhaupt etwas
+gehen kann. Dass Torbole bei Südwind läuft und Riva bei Nordwind, fällt so von
+selbst heraus, ohne dass es jemand eingetragen hätte.
+
+Für die Prognose ausserhalb der Schweiz wählt Open-Meteo das beste verfügbare
+Modell — in Europa, Nordamerika, Skandinavien und Japan sind das 1 bis 3 km
+Gitterweite, anderswo 9 bis 25 km. Zeiten stehen dann in **Ortszeit** am Spot,
+auch im Kalender.
+
+### Was der Reisemodus nicht weiss
+
+Er kennt Wasser und Ufer, sonst nichts. Ob man dort hinkommt, ob es einen
+Einstieg gibt, ob Baden oder Starten erlaubt ist, ob eine Strömung steht, ob ein
+Hafen im Weg liegt — davon weiss er nichts. Er liefert Kandidaten, keine
+Freigabe. Ein Blick auf die Karte und eine kurze Suche vor Ort gehören dazu.
+
+Ausserdem erkennt die Wassermaske die Farbe des OpenStreetMap-Standardstils.
+Ändert sich dieser Stil grundlegend, muss die Erkennung nachgezogen werden; das
+Tool merkt es und meldet sich, wenn im Umkreis auffällig wenig erkannt wurde.
+
+### Meldungen für einen Ort einschalten
+
+Das Dashboard rechnet den Reisemodus **im Browser** — es meldet von sich aus
+nichts. Damit ein Ort auch per Telegram, Mail oder SMS gemeldet wird, muss er in
+`spots.json` scharf gestellt werden:
+
+1. Im Reisemodus den Ort suchen und **Spots suchen** drücken
+2. Unten erscheint **Für Meldungen übernehmen** mit einem fertigen Block
+3. **Block kopieren**, in `spots.json` den vorhandenen `"reise"`-Block ersetzen,
+   **Commit changes**
+
+```jsonc
+"reise": {
+  "aktiv": true,
+  "ort": "Tarifa",
+  "lat": 36.0143,
+  "lon": -5.6044,
+  "umkreisKm": 25,
+  "minFetchKm": 1.2,   // so viel Wasser muss gegen den Wind liegen
+  "maxSpots": 6
+}
+```
+
+Ab dem nächsten Lauf kommen diese Spots zu den Seen dazu: gleiche Rangliste,
+gleiche Meldung, eigene Kalendertermine. Nach der Reise `"aktiv": false` setzen —
+dann ist alles wieder wie vorher.
+
+Gefundene Stellen werden in `state/reise.json` gemerkt und erst neu gesucht, wenn
+sich Ort, Umkreis oder Einstellungen ändern. Das spart Zeit und schont die
+Kachelserver von OpenStreetMap, die ein Gemeingut sind.
 
 ---
 
@@ -439,9 +580,18 @@ prognose-test.json             Echter Prognosestand zum Testen ohne Netz
 docs/index.html                Erzeugtes Dashboard (GitHub Pages)
 docs/fenster.ics               Kalender zum Abonnieren
 ics.mjs                        Kalenderdatei bauen (RFC 5545)
+spotsuche.mjs                  Reisemodus: Wassermaske aus Kacheln, Anlaufstrecke, Uferpunkte
+reise.mjs                      Reisemodus im Lauf: suchen, merken, in Spots übersetzen
+browserbau.mjs                 Legt lib.mjs und spotsuche.mjs unverändert in die Seite
 docs/.nojekyll                 Sagt Pages, die Seite unverändert auszuliefern
 state/gemeldet.json            Welche Fenster schon gemeldet wurden
+state/reise.json               Gefundene Stellen des aktiven Reiseorts
 ```
+
+Dashboard und Meldung rechnen **denselben Code**: `browserbau.mjs` kopiert
+`lib.mjs` und `spotsuche.mjs` beim Bauen in die Seite, statt die Formeln dort ein
+zweites Mal zu führen. Das ist keine Kosmetik — als beide Fassungen einmal
+auseinanderliefen, zeigte das Dashboard eine andere Rangfolge als die Meldung.
 
 ---
 

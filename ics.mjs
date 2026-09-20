@@ -105,15 +105,19 @@ function entschaerfe(s) {
 }
 
 function baueEvent(f, { zone, status, stempel, dashboardUrl }) {
-  const beginn = zuUtc(f.datum, f.von, zone);
-  const ende = zuUtc(f.datum, f.bis, zone);
+  // Fenster aus dem Reisemodus tragen ihre eigene Zeitzone: 14 Uhr in Tarifa
+  // ist nicht 14 Uhr in Bern, und im Kalender muss der richtige Block stehen.
+  const ortszone = f.zeitzone || zone;
+  const beginn = zuUtc(f.datum, f.von, ortszone);
+  const ende = zuUtc(f.datum, f.bis, ortszone);
 
   const platz = f.rang != null && f.rang <= 3 ? `#${f.rang} ` : "";
   const titel = `${platz}Wingfoil ${f.spotKurz || f.spotName} — ${f.wind} kn ${f.richtung}`;
   const beschreibung = [
     `${f.spotName} · ${f.see}`,
     `${f.wind} kn Mittelwind, Böen ${f.boe} kn, Richtung ${f.richtung}`,
-    `Fenster ${uhr(f.von)}–${uhr(f.bis)} Uhr (${f.stunden} h), Modell ${f.modell}`,
+    `Fenster ${uhr(f.von)}–${uhr(f.bis)} Uhr${f.zeitzone ? ` Ortszeit (${f.zeitzone})` : ""}` +
+      ` (${f.stunden} h), Modell ${f.modell}`,
     f.punkte != null
       ? `Bewertung ${f.punkte}/100 — Wind ${f.teile.wind}, Dauer ${f.teile.dauer}, ` +
         `Böen ${f.teile.boeen}, Nähe ${f.teile.naehe}`

@@ -1,13 +1,23 @@
-import { tagLabel, uhr } from "./lib.mjs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { alsBrowserQuelle } from "./browserbau.mjs";
+
+const HIER = dirname(fileURLToPath(import.meta.url));
 
 /**
- * Baut die statische Dashboard-Seite. Alle Daten werden eingebettet,
- * die Seite lädt zur Laufzeit nichts nach und funktioniert offline.
+ * Baut die statische Dashboard-Seite.
+ *
+ * Die Prognosedaten sind eingebettet — die Standardansicht lädt zur Laufzeit
+ * nichts nach. Der Reisemodus dagegen rechnet im Browser: er holt sich
+ * Kartenkacheln und Prognose selbst, und zwar mit denselben Modulen, die auch
+ * der Lauf benutzt. Sie werden dafür hier hineinkopiert, nicht abgeschrieben.
  */
-export function baueSeite({ spots, kriterien, reihen, treffer, stand }) {
+export async function baueSeite({ spots, kriterien, reihen, treffer, stand, reise }) {
   const nutzdaten = {
     kriterien,
     stand,
+    reise: reise || null,
     spots: spots.map((s) => ({
       id: s.id,
       name: s.name,
@@ -18,12 +28,17 @@ export function baueSeite({ spots, kriterien, reihen, treffer, stand }) {
       aktiv: s.aktiv !== false,
       minWindKn: s.minWindKn ?? kriterien.minWindKn,
       notiz: s.notiz ?? "",
+      reise: s.reise === true,
+      strecken: s.strecken || null,
     })),
     reihen,
   };
 
-  const seen = [...new Set(spots.map((s) => s.see))];
-  const naechstes = treffer[0] ?? null;
+  const module = await alsBrowserQuelle([
+    { pfad: join(HIER, "lib.mjs"), name: "Kern" },
+    { pfad: join(HIER, "spotsuche.mjs"), name: "Suche" },
+  ]);
+
 
   return `<!doctype html>
 <html lang="de">
@@ -238,6 +253,61 @@ h1{font-size:19px;font-weight:800;letter-spacing:-.015em;font-stretch:112%}
 .cell.na{background:transparent}
 .hours span{text-align:center;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--ink-3)}
 
+/* Reisemodus */
+.modus{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:22px}
+.modus button{
+  font:600 12px Archivo,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  padding:8px 15px;border:1px solid var(--line-strong);border-radius:2px;
+  background:var(--surface);color:var(--ink-2);cursor:pointer;
+}
+.modus button:hover{border-color:var(--accent);color:var(--accent)}
+.modus button.an{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.modus button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.modus-hinweis{font-size:12.5px;color:var(--ink-3);margin-left:auto;text-align:right}
+
+.reise{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:15px 16px 16px}
+.reise-zeile{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.reise-zeile+.reise-zeile{margin-top:11px}
+.reise input[type=search]{
+  flex:1;min-width:220px;font:15px "Source Sans 3",system-ui,sans-serif;
+  padding:9px 11px;border:1px solid var(--line-strong);border-radius:2px;
+  background:var(--surface-2);color:var(--ink);
+}
+.reise input[type=search]:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.reise .umkreis label{font:600 10.5px Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.reise input[type=range]{flex:1;min-width:140px;max-width:300px;accent-color:var(--accent)}
+.reise output{font-weight:600;min-width:54px}
+.knopf{
+  font:600 12px Archivo,sans-serif;letter-spacing:.05em;padding:9px 14px;
+  border:1px solid var(--accent);border-radius:2px;background:var(--accent);
+  color:var(--surface);cursor:pointer;white-space:nowrap;
+}
+.knopf:hover{filter:brightness(1.08)}
+.knopf:disabled{opacity:.42;cursor:default;filter:none}
+.knopf.still{background:var(--surface);color:var(--ink-2);border-color:var(--line-strong)}
+.knopf.still:hover{border-color:var(--accent);color:var(--accent);filter:none}
+.knopf:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ort-treffer{margin-top:10px;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.ort-treffer button{
+  display:block;width:100%;text-align:left;padding:9px 12px;border:0;cursor:pointer;
+  background:var(--surface);color:var(--ink);font:15px "Source Sans 3",system-ui,sans-serif;
+  border-bottom:1px solid var(--line);
+}
+.ort-treffer button:last-child{border-bottom:0}
+.ort-treffer button:hover{background:var(--accent-soft)}
+.ort-treffer .wo{display:block;font-size:12.5px;color:var(--ink-3)}
+.reise-fuss{margin:12px 0 0;font-size:12.5px;color:var(--ink-3);max-width:74ch}
+.reise-status{margin-top:12px;padding:10px 12px;border-radius:2px;background:var(--surface-2);border:1px solid var(--line);font-size:13.5px;color:var(--ink-2)}
+.reise-status.fehler{background:var(--lv3-bg);border-color:var(--lv3);color:var(--lv3)}
+.reise-status.fertig{background:var(--lv2-bg);border-color:var(--lv2);color:var(--lv2)}
+.uebernehmen{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.uebernehmen p{margin:6px 0 9px;font-size:13px;color:var(--ink-2);max-width:74ch}
+.uebernehmen pre{
+  margin:0 0 10px;padding:11px 12px;background:var(--surface-2);border:1px solid var(--line);
+  border-radius:2px;font-size:12.5px;overflow:auto;white-space:pre;
+}
+.zeitzone{font-size:11.5px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
+
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;font-size:12px;color:var(--ink-3);align-items:center}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3);max-width:68ch}
@@ -259,6 +329,44 @@ footer p{margin:0 0 10px}
 </header>
 
 <div class="wrap">
+  <div class="modus" id="modus">
+    <button type="button" class="an" data-modus="standard">Standard</button>
+    <button type="button" data-modus="reise">Reisemodus</button>
+    <span class="modus-hinweis" id="modus-hinweis">Die gespeicherten Seen, zweimal täglich frisch gerechnet.</span>
+  </div>
+
+  <section class="reise" id="reise" hidden>
+    <div class="reise-zeile">
+      <input type="search" id="ort-eingabe" placeholder="Ort suchen — Tarifa, Torbole, Sylt …" autocomplete="off" spellcheck="false">
+      <button type="button" class="knopf" id="ort-suchen">Suchen</button>
+      <button type="button" class="knopf still" id="ort-hier">Mein Standort</button>
+    </div>
+    <div class="ort-treffer" id="ort-treffer" hidden></div>
+
+    <div class="reise-zeile umkreis">
+      <label for="umkreis">Umkreis</label>
+      <input type="range" id="umkreis" min="5" max="60" step="5" value="25">
+      <output id="umkreis-out" class="mono">25 km</output>
+      <button type="button" class="knopf" id="reise-start" disabled>Spots suchen</button>
+    </div>
+
+    <p class="reise-fuss">
+      Kein Spotverzeichnis, sondern Geometrie: aus der Uferform wird gemessen, wie
+      weit das Wasser gegen den Wind reicht. Das schliesst ablandigen Wind aus und
+      verwirft Pfützen — sagt aber nichts über Zugang, Einstieg oder örtliche
+      Verbote. Auch auf die Karte tippen setzt den Mittelpunkt.
+    </p>
+
+    <div class="reise-status" id="reise-status" hidden></div>
+
+    <div class="uebernehmen" id="uebernehmen" hidden>
+      <div class="eyebrow">Für Meldungen übernehmen</div>
+      <p>Diesen Block in <code>spots.json</code> anstelle des vorhandenen <code>"reise"</code>-Blocks einsetzen. Ab dem nächsten Lauf werden diese Spots gemeldet wie die Seen zu Hause.</p>
+      <pre class="mono" id="reise-json"></pre>
+      <button type="button" class="knopf" id="reise-kopieren">Block kopieren</button>
+    </div>
+  </section>
+
   <div id="podium"></div>
 
   <section class="karte-box" id="karte-box" hidden>
@@ -316,86 +424,42 @@ footer p{margin:0 0 10px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script id="daten" type="application/json">${jsonEinbetten(nutzdaten)}</script>
 <script>
+${module}
+</script>
+<script>
 (function(){
   var D = JSON.parse(document.getElementById("daten").textContent);
-  var OKT = ["N","NO","O","SO","S","SW","W","NW"];
   var WT = ["So","Mo","Di","Mi","Do","Fr","Sa"];
-  var SEEN = ${JSON.stringify(seen)};
   var K = D.kriterien;
+  // Reihenfolge der Seeabschnitte: so, wie die Spots in der Konfiguration stehen.
+  function seenListe(){
+    var out = [];
+    D.spots.forEach(function(s){ if (out.indexOf(s.see) < 0) out.push(s.see); });
+    return out;
+  }
   var STUNDEN = [];
   for (var h = K.stundeVon; h <= K.stundeBis; h++) STUNDEN.push(h);
 
-  function oktant(g){ g=((g%360)+360)%360; return OKT[Math.round(g/45)%8]; }
+  function oktant(g){ return Kern.oktant(g); }
   function tag(datum){
     var p = datum.split("-").map(Number);
     var d = new Date(p[0], p[1]-1, p[2]);
     return { kurz: WT[d.getDay()], datum: p[2]+"."+p[1]+"." };
   }
-  function stufe(z, spot, schwelle){
-    var passt = spot.dirs.indexOf(oktant(z.grad)) >= 0;
-    if (!passt) return (z.wind >= schwelle || z.boe >= K.minGustKn) ? 1 : 0;
-    if (z.wind >= schwelle + 6) return 3;
-    if (z.wind >= schwelle) return 2;
-    if (z.wind >= schwelle - 3 || z.boe >= K.minGustKn) return 1;
-    return 0;
+  // Stufe, Fenster und Bewertung kommen aus lib.mjs — demselben Modul, mit dem
+  // der Lauf die Meldung rechnet. Vorher stand die Formel hier ein zweites Mal,
+  // von Hand abgeschrieben; als die beiden auseinanderliefen, zeigte das
+  // Dashboard eine andere Rangfolge als die Meldung. Der Regler unten verstellt
+  // nur die Schwelle, also wird sie dem Spot als minWindKn untergeschoben.
+  function mitSchwelle(spot, schwelle){
+    var kopie = {};
+    for (var k in spot) if (Object.prototype.hasOwnProperty.call(spot, k)) kopie[k] = spot[k];
+    kopie.minWindKn = schwelle;
+    return kopie;
   }
-  function fenster(zeilen, spot, schwelle){
-    var out = [], nachTag = {};
-    zeilen.forEach(function(z){ (nachTag[z.datum] = nachTag[z.datum] || []).push(z); });
-    Object.keys(nachTag).sort().forEach(function(datum){
-      var liste = nachTag[datum].slice().sort(function(a,b){ return a.stunde-b.stunde; });
-      var block = [];
-      function zu(){
-        if (block.length >= K.minStunden){
-          var sp = block.reduce(function(m,z){ return z.wind > m.wind ? z : m; }, block[0]);
-          out.push({ datum: datum, von: block[0].stunde, bis: block[block.length-1].stunde+1,
-                     stunden: block.length,
-                     wind: sp.wind, boe: Math.max.apply(null, block.map(function(z){return z.boe;})),
-                     richtung: oktant(sp.grad) });
-        }
-        block = [];
-      }
-      liste.forEach(function(z){
-        if (block.length && z.stunde !== block[block.length-1].stunde + 1) zu();
-        if (stufe(z, spot, schwelle) >= 2) block.push(z); else zu();
-      });
-      zu();
-    });
-    return out;
-  }
-
-  // Bewertung — muss dieselbe Formel sein wie in lib.mjs, sonst weicht die
-  // Rangliste im Dashboard von der in der Meldung ab.
-  function bewerte(f, schwelle){
-    var g = K.bewertung || {};
-    var idealUeber = g.idealUeberSchwelle != null ? g.idealUeberSchwelle : 8;
-    var zuvielUeber = g.zuvielUeberSchwelle != null ? g.zuvielUeberSchwelle : 18;
-    var ueber = f.wind - schwelle, wind;
-    if (ueber <= idealUeber) wind = (ueber / idealUeber) * 50;
-    else wind = 50 - Math.min((ueber - idealUeber) / (zuvielUeber - idealUeber), 1) * 20;
-    wind = Math.max(0, Math.min(50, wind));
-
-    var volleDauer = g.dauerVollStunden != null ? g.dauerVollStunden : 6;
-    var dauer = (Math.min(f.stunden, volleDauer) / volleDauer) * 25;
-
-    var gut = g.boeenGut != null ? g.boeenGut : 1.4;
-    var schlecht = g.boeenSchlecht != null ? g.boeenSchlecht : 2.2;
-    var verh = f.wind > 0 ? f.boe / f.wind : 3;
-    var boeen = 15 * (1 - Math.max(0, Math.min(1, (verh - gut) / (schlecht - gut))));
-
-    var naehe = [10, 8, 5, 3][Math.min(tageBis(f.datum), 3)];
-    if (naehe == null) naehe = 3;
-
-    return { punkte: Math.round(wind + dauer + boeen + naehe),
-             teile: { wind: Math.round(wind), dauer: Math.round(dauer),
-                      boeen: Math.round(boeen), naehe: naehe } };
-  }
-  function tageBis(datum){
-    var p = datum.split("-").map(Number), n = new Date();
-    var ziel = Date.UTC(p[0], p[1]-1, p[2]);
-    var start = Date.UTC(n.getFullYear(), n.getMonth(), n.getDate());
-    return Math.max(0, Math.round((ziel - start) / 86400000));
-  }
+  function stufe(z, spot, schwelle){ return Kern.stufe(z, mitSchwelle(spot, schwelle), K); }
+  function fenster(zeilen, spot, schwelle){ return Kern.fenster(zeilen, mitSchwelle(spot, schwelle), K); }
+  function bewerte(f, schwelle){ return Kern.bewerte(f, { minWindKn: schwelle }, K); }
 
   var podiumHost = document.getElementById("podium");
   var host = document.getElementById("seen");
@@ -495,7 +559,7 @@ footer p{margin:0 0 10px}
     podium(global);
     karteZeichnen(parseInt(zeitRegler.value, 10), global);
     host.innerHTML = "";
-    SEEN.forEach(function(see){
+    seenListe().forEach(function(see){
       var spots = D.spots.filter(function(s){ return s.see === see; });
       if (!spots.length) return;
       var sec = document.createElement("section");
@@ -610,7 +674,7 @@ footer p{margin:0 0 10px}
   /* ---------------- Karte ---------------- */
 
   // Alle Prognosestunden über alle Spots, chronologisch und eindeutig.
-  var STUNDENLISTE = (function(){
+  function stundenListe(){
     var gesehen = {}, liste = [];
     Object.keys(D.reihen).forEach(function(id){
       (D.reihen[id] || []).forEach(function(z){
@@ -622,7 +686,8 @@ footer p{margin:0 0 10px}
       return a.datum === b.datum ? a.stunde - b.stunde : (a.datum < b.datum ? -1 : 1);
     });
     return liste;
-  })();
+  }
+  var STUNDENLISTE = stundenListe();
 
   var lkarte = null, nadeln = {}, spielt = null;
 
@@ -640,6 +705,12 @@ footer p{margin:0 0 10px}
       '<div class="scheibe">' + (z ? z.wind : "–") + '</div></div>';
   }
 
+  /** "N 0.8 · NO 3.4 · O 1.3 …" — nur die Richtungen, wo überhaupt Wasser liegt. */
+  function strecken(s){
+    return Kern.OKTANTEN.filter(function(o){ return s[o] >= 0.5; })
+      .map(function(o){ return o + " " + s[o]; }).join(" · ") || "überall unter 0.5";
+  }
+
   function stundeVon(spotId, punkt){
     var reihe = D.reihen[spotId] || [];
     for (var i = 0; i < reihe.length; i++){
@@ -654,13 +725,24 @@ footer p{margin:0 0 10px}
     document.getElementById("karte-box").hidden = false;
     lkarte = L.map("karte", { scrollWheelZoom: false, attributionControl: true });
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 15, minZoom: 7,
+      maxZoom: 15, minZoom: 3,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(lkarte);
 
     // Scrollen auf der Seite soll nicht in der Karte hängenbleiben.
     lkarte.on("click", function(){ lkarte.scrollWheelZoom.enable(); });
     lkarte.on("mouseout", function(){ lkarte.scrollWheelZoom.disable(); });
+
+    nadelnSetzen();
+    setTimeout(function(){ lkarte.invalidateSize(); }, 0);
+    return true;
+  }
+
+  /** Marker zu den aktuell angezeigten Spots — auch nach einem Datenwechsel. */
+  function nadelnSetzen(){
+    if (!lkarte) return;
+    Object.keys(nadeln).forEach(function(id){ lkarte.removeLayer(nadeln[id].marker); });
+    nadeln = {};
 
     var punkte = [];
     D.spots.forEach(function(spot){
@@ -673,9 +755,8 @@ footer p{margin:0 0 10px}
       nadeln[spot.id] = { marker: m, spot: spot };
     });
     if (punkte.length) lkarte.fitBounds(punkte, { padding: [34, 34] });
-    // Der Abschnitt war bis eben ausgeblendet - Leaflet muss neu messen.
+    // Der Abschnitt war eben noch ausgeblendet - Leaflet muss neu messen.
     setTimeout(function(){ lkarte.invalidateSize(); }, 0);
-    return true;
   }
 
   function karteZeichnen(index, schwelle){
@@ -704,7 +785,8 @@ footer p{margin:0 0 10px}
         (z
           ? z.wind + " kn, Böen " + z.boe + " kn<br>Richtung " + oktant(z.grad) + " (" + z.grad + "°)" +
             "<br>fahrbar bei " + n.spot.dirs.join(" ")
-          : "keine Prognose für diese Stunde")
+          : "keine Prognose für diese Stunde") +
+        (n.spot.strecken ? '<br><span class="zeitzone">Anlaufstrecke km: ' + strecken(n.spot.strecken) + '</span>' : "")
       );
     });
   }
@@ -712,9 +794,9 @@ footer p{margin:0 0 10px}
   var zeitRegler = document.getElementById("zeit");
   var abspielKnopf = document.getElementById("abspielen");
 
-  if (karteAufbauen()){
-    zeitRegler.max = String(STUNDENLISTE.length - 1);
-    // Startpunkt: die Stunde des besten Fensters, nicht stumpf die erste.
+  /** Zeitregler auf die Stunde des besten Fensters stellen, nicht stumpf auf die erste. */
+  function reglerStellen(){
+    zeitRegler.max = String(Math.max(0, STUNDENLISTE.length - 1));
     var beste = alleTreffer(parseInt(slider.value, 10))[0];
     var start = 0;
     if (beste){
@@ -723,29 +805,274 @@ footer p{margin:0 0 10px}
       }
     }
     zeitRegler.value = String(start);
-
-    zeitRegler.addEventListener("input", function(){
-      anhalten();
-      karteZeichnen(parseInt(zeitRegler.value, 10), parseInt(slider.value, 10));
-    });
-
-    abspielKnopf.addEventListener("click", function(){
-      if (spielt) { anhalten(); return; }
-      abspielKnopf.classList.add("laeuft");
-      abspielKnopf.textContent = "❚❚";
-      spielt = setInterval(function(){
-        var n = (parseInt(zeitRegler.value, 10) + 1) % STUNDENLISTE.length;
-        zeitRegler.value = String(n);
-        karteZeichnen(n, parseInt(slider.value, 10));
-      }, 700);
-    });
   }
+
+  zeitRegler.addEventListener("input", function(){
+    anhalten();
+    karteZeichnen(parseInt(zeitRegler.value, 10), parseInt(slider.value, 10));
+  });
+
+  abspielKnopf.addEventListener("click", function(){
+    if (spielt) { anhalten(); return; }
+    if (!STUNDENLISTE.length) return;
+    abspielKnopf.classList.add("laeuft");
+    abspielKnopf.textContent = "❚❚";
+    spielt = setInterval(function(){
+      var n = (parseInt(zeitRegler.value, 10) + 1) % STUNDENLISTE.length;
+      zeitRegler.value = String(n);
+      karteZeichnen(n, parseInt(slider.value, 10));
+    }, 700);
+  });
+
+  if (karteAufbauen()) reglerStellen();
 
   function anhalten(){
     if (!spielt) return;
     clearInterval(spielt); spielt = null;
     abspielKnopf.classList.remove("laeuft");
     abspielKnopf.textContent = "▶";
+  }
+
+  /* ---------------- Reisemodus ---------------- */
+
+  // Die Seen von zu Hause bleiben liegen, damit der Weg zurück nichts kostet.
+  var ZUHAUSE = { spots: D.spots, reihen: D.reihen };
+
+  /**
+   * Der Reisemodus ersetzt schlicht die Daten und lässt dieselbe Darstellung
+   * noch einmal laufen. Keine zweite Rangliste, keine zweite Karte, keine
+   * zweite Bewertung — was hier steht, ist dieselbe Rechnung wie für zu Hause.
+   */
+  function setzeDaten(spots, reihen){
+    anhalten();
+    D.spots = spots;
+    D.reihen = reihen;
+    STUNDENLISTE = stundenListe();
+    if (!lkarte) karteAufbauen(); else nadelnSetzen();
+    reglerStellen();
+    zeichne();
+  }
+
+  (function reisemodus(){
+    var box = document.getElementById("reise");
+    var leiste = document.getElementById("modus");
+    var hinweis = document.getElementById("modus-hinweis");
+    var eingabe = document.getElementById("ort-eingabe");
+    var trefferHost = document.getElementById("ort-treffer");
+    var umkreis = document.getElementById("umkreis");
+    var umkreisAus = document.getElementById("umkreis-out");
+    var startKnopf = document.getElementById("reise-start");
+    var status = document.getElementById("reise-status");
+    var uebernehmen = document.getElementById("uebernehmen");
+    var jsonFeld = document.getElementById("reise-json");
+    var kopieren = document.getElementById("reise-kopieren");
+    if (!box || typeof Suche === "undefined") return;
+
+    var ort = null;
+    var laeuft = false;
+    var offen = false;
+
+    merkenLaden();
+    umkreisAus.textContent = umkreis.value + " km";
+
+    leiste.addEventListener("click", function(e){
+      var knopf = e.target.closest ? e.target.closest("button[data-modus]") : null;
+      if (!knopf) return;
+      umschalten(knopf.getAttribute("data-modus"));
+    });
+
+    umkreis.addEventListener("input", function(){
+      umkreisAus.textContent = umkreis.value + " km";
+      try { localStorage.setItem("seewind-umkreis", umkreis.value); } catch (e) {}
+    });
+
+    document.getElementById("ort-suchen").addEventListener("click", suchen);
+    eingabe.addEventListener("keydown", function(e){ if (e.key === "Enter") { e.preventDefault(); suchen(); } });
+    document.getElementById("ort-hier").addEventListener("click", hierher);
+    startKnopf.addEventListener("click", starten);
+    kopieren.addEventListener("click", function(){ inZwischenablage(jsonFeld.textContent, kopieren, "Block kopieren"); });
+
+    // Auf die Karte tippen setzt den Mittelpunkt — aber nur im Reisemodus,
+    // sonst verschöbe ein Klick auf einen Spot zu Hause das halbe Dashboard.
+    if (lkarte) {
+      lkarte.on("click", function(e){
+        if (!offen || laeuft) return;
+        setzeOrt({
+          name: e.latlng.lat.toFixed(3) + ", " + e.latlng.lng.toFixed(3),
+          lat: e.latlng.lat, lon: e.latlng.lng
+        });
+        melde("Mittelpunkt gesetzt. Jetzt „Spots suchen“.");
+      });
+    }
+
+    function umschalten(name){
+      offen = name === "reise";
+      Array.prototype.forEach.call(leiste.querySelectorAll("button[data-modus]"), function(b){
+        b.classList.toggle("an", b.getAttribute("data-modus") === name);
+      });
+      box.hidden = !offen;
+      hinweis.textContent = offen
+        ? "Rechnet im Browser, hier und jetzt — gemeldet wird erst, wenn du den Ort unten übernimmst."
+        : "Die gespeicherten Seen, zweimal täglich frisch gerechnet.";
+      if (!offen) setzeDaten(ZUHAUSE.spots, ZUHAUSE.reihen);
+      else if (D.spots === ZUHAUSE.spots && ort) melde("Ort gemerkt: " + ort.name + ". „Spots suchen“ rechnet neu.");
+    }
+
+    async function suchen(){
+      var text = eingabe.value.trim();
+      if (text.length < 2) return;
+      trefferHost.hidden = true;
+      melde("Ort suchen …");
+      try {
+        var url = "https://geocoding-api.open-meteo.com/v1/search?count=6&language=de&format=json&name=" +
+          encodeURIComponent(text);
+        var r = await fetch(url);
+        if (!r.ok) throw new Error("Die Ortssuche antwortete mit " + r.status + ".");
+        var daten = await r.json();
+        var liste = daten.results || [];
+        if (!liste.length) { melde("Nichts gefunden zu „" + text + "“.", "fehler"); return; }
+        status.hidden = true;
+        trefferHost.innerHTML = "";
+        liste.forEach(function(o){
+          var b = document.createElement("button");
+          b.type = "button";
+          b.innerHTML = escapeHtml(o.name) +
+            '<span class="wo">' + escapeHtml([o.admin1, o.country].filter(Boolean).join(", ")) +
+            " · " + o.latitude.toFixed(3) + ", " + o.longitude.toFixed(3) + "</span>";
+          b.addEventListener("click", function(){
+            trefferHost.hidden = true;
+            setzeOrt({ name: o.name, lat: o.latitude, lon: o.longitude });
+            starten();
+          });
+          trefferHost.appendChild(b);
+        });
+        trefferHost.hidden = false;
+      } catch (e) {
+        melde("Ortssuche fehlgeschlagen: " + (e.message || e), "fehler");
+      }
+    }
+
+    function hierher(){
+      if (!navigator.geolocation) { melde("Dieses Gerät gibt den Standort nicht her.", "fehler"); return; }
+      melde("Standort abfragen …");
+      navigator.geolocation.getCurrentPosition(
+        function(p){
+          setzeOrt({ name: "Mein Standort", lat: p.coords.latitude, lon: p.coords.longitude });
+          starten();
+        },
+        function(){ melde("Standort nicht bekommen — der Zugriff wurde abgelehnt oder ist blockiert.", "fehler"); },
+        { timeout: 10000, maximumAge: 300000 }
+      );
+    }
+
+    function setzeOrt(neu){
+      ort = neu;
+      eingabe.value = neu.name;
+      startKnopf.disabled = false;
+      try { localStorage.setItem("seewind-ort", JSON.stringify(neu)); } catch (e) {}
+    }
+
+    function merkenLaden(){
+      try {
+        var g = JSON.parse(localStorage.getItem("seewind-ort") || "null");
+        if (g && isFinite(g.lat) && isFinite(g.lon)) { ort = g; eingabe.value = g.name || ""; startKnopf.disabled = false; }
+        var u = localStorage.getItem("seewind-umkreis");
+        if (u) umkreis.value = u;
+      } catch (e) {}
+    }
+
+    async function starten(){
+      if (!ort || laeuft) return;
+      laeuft = true;
+      startKnopf.disabled = true;
+      uebernehmen.hidden = true;
+      try {
+        var o = Suche.ortAusKonfig({
+          ort: ort.name, lat: ort.lat, lon: ort.lon,
+          umkreisKm: parseInt(umkreis.value, 10), maxSpots: 6
+        });
+
+        melde("Karte laden …");
+        var wasserkarte = await Suche.ladeWasserkarte({
+          lat: o.lat, lon: o.lon, umkreisKm: o.umkreisKm,
+          fortschritt: function(fertig, alle){ melde("Karte laden … " + fertig + " von " + alle + " Kacheln"); }
+        });
+        if (wasserkarte.fehlendeKacheln.length > alle10Prozent(wasserkarte)) {
+          throw new Error("Zu viele Kartenkacheln fehlen — der Kachelserver antwortet gerade nicht. Später nochmal.");
+        }
+
+        melde("Ufer vermessen …");
+        var punkte = Suche.findeUferpunkte(wasserkarte, o);
+        if (!punkte.length) {
+          throw new Error(
+            "Im Umkreis von " + o.umkreisKm + " km liegt kein Ufer, an dem genug Wasser " +
+            "gegen den Wind steht. Grösserer Umkreis, oder hier ist wirklich nichts."
+          );
+        }
+        var spots = Suche.baueSpots(punkte, o);
+
+        melde("Prognose holen für " + spots.length + " Stellen …");
+        var reihen = await Kern.holePrognose(spots, K);
+
+        setzeDaten(spots, reihen);
+        var zone = spots.map(function(s){ return s.zeitzone; }).filter(Boolean)[0];
+        melde(
+          spots.length + " Stellen um " + o.name + " gefunden" +
+          (zone && zone !== K.zeitzone ? " — Zeiten in Ortszeit (" + zone + ")." : "."),
+          "fertig"
+        );
+        jsonFeld.textContent = jsonBlock(o);
+        uebernehmen.hidden = false;
+      } catch (e) {
+        melde(e.message || String(e), "fehler");
+      } finally {
+        laeuft = false;
+        startKnopf.disabled = false;
+      }
+    }
+
+    function alle10Prozent(k){
+      var kacheln = (k.breite / 256) * (k.hoehe / 256);
+      return Math.max(1, Math.round(kacheln * 0.1));
+    }
+
+    function jsonBlock(o){
+      return '"reise": ' + JSON.stringify({
+        aktiv: true,
+        ort: o.name,
+        lat: Math.round(o.lat * 10000) / 10000,
+        lon: Math.round(o.lon * 10000) / 10000,
+        umkreisKm: o.umkreisKm,
+        minFetchKm: o.minFetchKm,
+        maxSpots: o.maxSpots
+      }, null, 2);
+    }
+
+    function melde(text, art){
+      status.className = "reise-status" + (art ? " " + art : "");
+      status.textContent = text;
+      status.hidden = false;
+    }
+  })();
+
+  function escapeHtml(s){
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function inZwischenablage(text, knopf, zurueck){
+    var fertig = function(){
+      knopf.classList.add("ok");
+      knopf.textContent = "kopiert";
+      setTimeout(function(){ knopf.classList.remove("ok"); knopf.textContent = zurueck; }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(fertig, function(){});
+      return;
+    }
+    var t = document.createElement("textarea");
+    t.value = text; document.body.appendChild(t); t.select();
+    try { document.execCommand("copy"); fertig(); } catch (e) {}
+    document.body.removeChild(t);
   }
 
   try {

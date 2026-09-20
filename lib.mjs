@@ -13,25 +13,64 @@ export function oktant(grad) {
 
 const API = "https://api.open-meteo.com/v1/forecast";
 
+export const MODELLNAMEN = { ch1: "ICON-CH1", ch2: "ICON-CH2", global: "Best-Match" };
+
 /**
- * Holt beide MeteoSchweiz-Modelle in je einem Aufruf für alle Spots.
- * ICON-CH1 (1 km) reicht rund 33 Stunden, danach übernimmt ICON-CH2 (2 km).
+ * Holt die Prognose für alle Spots.
+ *
+ * Zwei Sorten Spots, zwei Datenwege:
+ *
+ *   quelle "ch" (Standard) — die MeteoSchweiz-Modelle ICON-CH1 (1 km, rund
+ *     33 Stunden) und ICON-CH2 (2 km, darüber hinaus). Nur über der Schweiz
+ *     und den Alpen brauchbar, dort aber das Beste, was es gibt.
+ *
+ *   quelle "global" — für Orte im Reisemodus, irgendwo auf der Welt. Open-Meteo
+ *     wählt dort selbst das beste verfügbare Modell. In Europa, Nordamerika,
+ *     Skandinavien und Japan sind das 1 bis 3 km, sonst 9 bis 25 km.
+ *
+ * Nebenwirkung, bewusst: Bei "global" trägt diese Funktion die vom Dienst
+ * gemeldete Zeitzone in den Spot ein. Ein Fenster in Tarifa soll in spanischer
+ * Ortszeit im Kalender stehen, nicht in Schweizer.
  */
 export async function holePrognose(spots, kriterien, fetchImpl = fetch) {
-  const lat = spots.map((s) => s.lat).join(",");
-  const lon = spots.map((s) => s.lon).join(",");
-  const basis =
-    `${API}?latitude=${lat}&longitude=${lon}` +
-    `&hourly=wind_speed_10m,wind_gusts_10m,wind_direction_10m` +
-    `&wind_speed_unit=kn&timezone=${encodeURIComponent(kriterien.zeitzone)}` +
-    `&forecast_days=${kriterien.prognoseTage}&models=`;
+  const schweizer = spots.filter((s) => (s.quelle || "ch") !== "global");
+  const globale = spots.filter((s) => (s.quelle || "ch") === "global");
 
+  const [a, b] = await Promise.all([
+    schweizer.length ? holeSchweiz(schweizer, kriterien, fetchImpl) : {},
+    globale.length ? holeGlobal(globale, kriterien, fetchImpl) : {},
+  ]);
+  return { ...a, ...b };
+}
+
+async function holeSchweiz(spots, kriterien, fetchImpl) {
+  const basis = anfrage(spots, kriterien, kriterien.zeitzone) + "&models=";
   const [fein, grob] = await Promise.all([
     hole(fetchImpl, basis + "meteoswiss_icon_ch1"),
     hole(fetchImpl, basis + "meteoswiss_icon_ch2"),
   ]);
-
   return verschmelze(spots, fein, grob, kriterien);
+}
+
+async function holeGlobal(spots, kriterien, fetchImpl) {
+  // timezone=auto: die Stunden kommen in der Ortszeit des jeweiligen Punktes.
+  const daten = await hole(fetchImpl, anfrage(spots, kriterien, "auto"));
+  spots.forEach((spot, i) => {
+    if (daten[i]?.timezone) spot.zeitzone = daten[i].timezone;
+  });
+  // Kein feines Modell: die grobe Reihe trägt allein.
+  return verschmelze(spots, [], daten, kriterien, new Date(), "global");
+}
+
+function anfrage(spots, kriterien, zone) {
+  const lat = spots.map((s) => s.lat).join(",");
+  const lon = spots.map((s) => s.lon).join(",");
+  return (
+    `${API}?latitude=${lat}&longitude=${lon}` +
+    `&hourly=wind_speed_10m,wind_gusts_10m,wind_direction_10m` +
+    `&wind_speed_unit=kn&timezone=${encodeURIComponent(zone)}` +
+    `&forecast_days=${kriterien.prognoseTage}`
+  );
 }
 
 async function hole(fetchImpl, url) {
@@ -46,11 +85,14 @@ async function hole(fetchImpl, url) {
 }
 
 /** Aus beiden Modellläufen eine Zeitreihe je Spot bauen. */
-export function verschmelze(spots, fein, grob, kriterien, jetzt = new Date()) {
-  const grenze = lokalerStempel(jetzt);
+export function verschmelze(spots, fein, grob, kriterien, jetzt = new Date(), grobName = "ch2") {
   const ergebnis = {};
 
   spots.forEach((spot, i) => {
+    // Die Stunden kommen in Ortszeit; abgeschnitten wird deshalb auch nach
+    // Ortszeit. Der GitHub-Runner läuft in UTC — ohne das hätte das Dashboard
+    // im Sommer zwei bereits vergangene Stunden angezeigt.
+    const grenze = lokalerStempel(jetzt, spot.zeitzone || kriterien.zeitzone);
     const f = fein[i]?.hourly;
     const g = grob[i]?.hourly;
     if (!g) {
@@ -81,7 +123,7 @@ export function verschmelze(spots, fein, grob, kriterien, jetzt = new Date()) {
         wind: Math.round(wind),
         boe: Math.round(boe ?? 0),
         grad: Math.round(richtung ?? 0),
-        modell: feinBrauchbar ? "ch1" : "ch2",
+        modell: feinBrauchbar ? "ch1" : grobName,
       });
     });
     ergebnis[spot.id] = zeilen;
@@ -95,10 +137,20 @@ function istLeer(h, k) {
   return h.wind_speed_10m[k] === 0 && h.wind_gusts_10m[k] === 0 && h.wind_direction_10m[k] === 0;
 }
 
-/** "2026-09-15T14:00" in lokaler Zeit, als Vergleichsschwelle. */
-function lokalerStempel(d) {
-  const p = (n) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:00`;
+/** "2026-09-15T14:00" in der angegebenen Zeitzone, als Vergleichsschwelle. */
+function lokalerStempel(d, zone) {
+  const f = new Intl.DateTimeFormat("en-CA", {
+    timeZone: zone || undefined,
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+  });
+  const p = {};
+  for (const teil of f.formatToParts(d)) p[teil.type] = teil.value;
+  const stunde = String(Number(p.hour) % 24).padStart(2, "0");
+  return `${p.year}-${p.month}-${p.day}T${stunde}:00`;
 }
 
 /**
@@ -143,6 +195,10 @@ export function fenster(zeilen, spot, kriterien) {
           see: spot.see,
           lat: spot.lat,
           lon: spot.lon,
+          // Nur gesetzt, wo sie von der Schweizer Zeit abweicht — dann sind
+          // "von" und "bis" Ortszeit am Spot, und der Kalender muss es wissen.
+          zeitzone: spot.zeitzone || "",
+          quelle: spot.quelle || "ch",
           datum,
           von: block[0].stunde,
           bis: block[block.length - 1].stunde + 1,
@@ -150,7 +206,7 @@ export function fenster(zeilen, spot, kriterien) {
           wind: spitze.wind,
           boe: Math.max(...block.map((z) => z.boe)),
           richtung: oktant(spitze.grad),
-          modell: block.every((z) => z.modell === "ch1") ? "ICON-CH1" : "ICON-CH1/CH2",
+          modell: [...new Set(block.map((z) => MODELLNAMEN[z.modell] || z.modell))].join("/"),
         });
       }
       block = [];

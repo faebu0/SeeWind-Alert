@@ -1,9 +1,9 @@
 {
   "name": "wingfoil-alert",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Meldet Windfenster fürs Wingfoilen an Schweizer Seen und baut ein statisches Dashboard.",
+  "description": "Meldet Windfenster fürs Wingfoilen an Schweizer Seen, sucht auf Reisen selbst Spots im Umkreis und baut ein statisches Dashboard.",
   "engines": {
     "node": ">=20"
   },
