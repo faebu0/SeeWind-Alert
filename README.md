@@ -9,7 +9,7 @@ Läuft vollständig auf GitHub Actions. Kein Server, keine Kosten, keine laufend
 Software auf deinem Rechner.
 
 Auf Reisen sucht es sich die Spots selbst: Ort eingeben, Umkreis wählen, und ein
-Knopf schaltet sie für die Meldung scharf — im Dashboard oder direkt in Telegram.
+Knopf schaltet sie für die Meldung scharf — über den Bot, ohne weitere Zugänge.
 
 **Datenquelle:** MeteoSchweiz ICON-CH1 (1 km Gitter, rund 33 Stunden voraus) und
 ICON-CH2 (2 km, bis vier Tage) über [Open-Meteo](https://open-meteo.com/) — ohne
@@ -382,59 +382,48 @@ Tool merkt es und meldet sich, wenn im Umkreis auffällig wenig erkannt wurde.
 
 Das Dashboard rechnet den Reisemodus **im Browser** und meldet von sich aus
 nichts. Damit ein Ort auch per Telegram, Mail oder SMS gemeldet wird, muss er in
-die Liste `reiseorte.json`. Dafür gibt es zwei Knöpfe und einen Handweg.
+die Liste `reiseorte.json`. Dafür gibt es genau einen Knopf.
 
-**Im Dashboard.** Nach der Suche steht unten **Übernehmen**. Ein Klick, und der
-Ort ist in der Liste — vorausgesetzt, du hast einmalig einen Zugangsschlüssel
-hinterlegt (siehe unten). Darunter stehen alle übernommenen Orte mit
-*ausschalten* und *entfernen*.
+Nach der Suche steht unten **An Telegram senden**. Der Link öffnet deinen
+Bot-Chat; ein Tipp auf START, und der Ort ist übernommen. Der Bot antwortet mit
+der Liste, in der jeder Ort seine Knöpfe hat:
 
-**In Telegram.** Neben *Übernehmen* steht **An Telegram senden**. Der Link
-öffnet deinen Bot-Chat; ein Tipp auf START, und der Ort ist übernommen. Im Chat
-zeigt `/orte` jederzeit die Liste mit Knöpfen zum Ein- und Ausschalten. Dieser
-Weg braucht keinen zusätzlichen Schlüssel — nur den Bot, den du schon hast.
+```
+Tarifa ist übernommen.
+
+▶ Tarifa · 25 km
+▫ Torbole · 20 km · aus
+
+[Tarifa ausschalten]  [entfernen]
+[Torbole einschalten] [entfernen]
+[aktualisieren]
+```
+
+`/orte` holt diese Liste jederzeit wieder. Die Nachricht schreibt sich bei jedem
+Druck um, statt sich zu stapeln. *Entfernen* fragt einmal nach.
 
 Damit der Link gebaut werden kann, muss der Botname als Variable
-`TELEGRAM_BOT_NAME` hinterlegt sein (ohne `@`, z.B. `seewind_alarm_bot`).
+`TELEGRAM_BOT_NAME` hinterlegt sein — ohne `@`, also z.B. `seewind_alarm_bot`.
+Fehlt sie, steht das an der Stelle des Knopfes; unsichtbar bleibt er nicht.
 
-**Von Hand.** Unter *von Hand* steht der fertige Eintrag zum Einsetzen in
-`reiseorte.json`. Das geht immer, auch ohne alles andere.
+Im Dashboard steht unter dem Knopf, welche Orte gerade scharf sind — als
+Anzeige, nicht zum Schalten. Eine Seite auf GitHub Pages ist eine Datei ohne
+Rechte; geschaltet wird dort, wo jemand schreiben darf, und das ist der Chat.
 
-### Den Zugangsschlüssel einrichten
-
-Eine Seite auf GitHub Pages ist eine Datei, kein Programm mit Rechten — damit
-ein Knopf dort etwas bewirken kann, braucht sie einen Schlüssel.
-
-1. Auf GitHub unter **Settings → Developer settings → Personal access tokens →
-   Fine-grained tokens** einen Schlüssel erstellen
-2. Nur dieses eine Repository auswählen
-3. Als Recht genügt **Contents: Read and write**
-4. Optional **Actions: Read and write** — damit stösst ein Klick den Lauf sofort
-   an, statt bis zum nächsten Mal zu warten
-5. Im Dashboard unter *Zugang einrichten* Repository und Schlüssel eintragen
-
-Der Schlüssel bleibt im Speicher **dieses Browsers** und geht nirgends sonst
-hin — er steht nicht im Repository, nicht auf dem Server, und er läuft nie
-durch eine Adresszeile, sondern nur als Kopfzeile im Aufruf an GitHub. Zu
-bedenken ist trotzdem: Wer an diesen Browser kommt, kann damit dieses eine
-Repository ändern. Wem das zu viel ist, nimmt den Weg über Telegram — der
-kann genau dasselbe, nur eben ein paar Minuten später.
-
-*Schlüssel löschen* nimmt ihn wieder heraus.
+Wer lieber von Hand arbeitet, bearbeitet `reiseorte.json` direkt im
+GitHub-Browser — `"aktiv": false` schaltet einen Ort aus, ohne ihn zu verlieren.
 
 ### Wie schnell ein Knopfdruck wirkt
 
-| Weg | Wirkung |
-|---|---|
-| Dashboard, Schlüssel mit Actions-Recht | sofort, der Lauf startet |
-| Dashboard, Schlüssel nur mit Contents | beim nächsten regulären Lauf |
-| Telegram-Knopf | beim nächsten Nachsehen, typisch 15–30 Minuten |
-| Von Hand committen | beim nächsten regulären Lauf |
-
 Ein Telegram-Bot bekommt seine Nachrichten nur über einen erreichbaren Server
 oder indem jemand nachfragt. Hier fragt ein eigener Workflow alle fünfzehn
-Minuten nach — deshalb die Verzögerung. Wer nicht warten mag, startet ihn unter
-**Actions → Telegram → Run workflow** von Hand.
+Minuten nach — typisch wirkt ein Druck also nach 15 bis 30 Minuten, denn GitHub
+hält geplante Läufe bei Andrang auch mal auf. Wer nicht warten mag, startet ihn
+unter **Actions → Telegram → Run workflow** von Hand.
+
+Hat sich etwas geändert, rechnet derselbe Job gleich neu durch — die Meldung für
+einen neu übernommenen Ort kommt also mit, ohne auf den nächsten regulären Lauf
+zu warten.
 
 ### Die Liste
 
@@ -572,7 +561,7 @@ Dahinter stecken vier Läufe:
 | `test-seite.mjs` | die fertige Seite in Node, mit nachgebautem DOM und Knopfdrücken |
 | `run.mjs --dry --fixture` | den ganzen Lauf gegen einen gespeicherten Prognosestand |
 
-Keiner davon verschickt etwas oder braucht einen echten Zugangsschlüssel.
+Keiner davon verschickt etwas oder braucht einen echten Bot-Token.
 
 Einzeln:
 
@@ -597,20 +586,24 @@ Schreib ihm in Telegram einmal selbst, dann hol dir die Chat-ID über
 
 **Der Job scheitert beim Pushen.** Schreibrechte fehlen, siehe Schritt 4.
 
+**`Cannot find module '…/telegram.mjs'` alle fünfzehn Minuten.** Der Workflow
+`telegram.yml` ist schon da, die Dateien daneben noch nicht — auf GitHub muss man
+den Workflow von Hand anlegen, der Rest kommt per Upload, und die Reihenfolge
+gerät leicht durcheinander. Lade die `.mjs`-Dateien aus dem Paket ins
+Wurzelverzeichnis (neben `run.mjs`, nicht in einen Unterordner). Der Job prüft
+das inzwischen selbst und wartet still, statt zu scheitern.
+
 **Der Telegram-Knopf tut nichts.** Der Workflow *Telegram* sieht alle fünfzehn
 Minuten nach, und GitHub hält geplante Läufe bei Andrang auch mal auf. Unter
 **Actions → Telegram** steht, wann er zuletzt lief; *Run workflow* startet ihn
 sofort. Kommt gar nichts: stimmt `TELEGRAM_CHAT_ID`? Nachrichten aus anderen
 Chats werden bewusst ohne Antwort verworfen.
 
-**„Repository nicht gefunden" im Dashboard.** Entweder stimmt `konto/repository`
-nicht, oder das Repository ist im Fine-grained Token nicht ausgewählt — dort
-muss es einzeln angehakt sein, *All repositories* allein genügt bei manchen
-Konten nicht.
-
-**„Der Schlüssel darf das nicht".** Dem Token fehlt **Contents: Read and write**.
-Fürs sofortige Anstossen braucht es zusätzlich **Actions: Read and write**; ohne
-das wirkt der Knopf trotzdem, nur eben erst beim nächsten Lauf.
+**Der Knopf „An Telegram senden" fehlt.** Die Variable `TELEGRAM_BOT_NAME` ist
+nicht gesetzt oder der Lauf danach nicht durchgelaufen. Eintragen unter
+**Settings → Secrets and variables → Actions → Variables**, dann
+**Actions → Windcheck → Run workflow**. An der Stelle des Knopfes steht dann
+auch im Dashboard, was fehlt.
 
 **Zwei Läufe gleichzeitig.** Windcheck und Telegram teilen sich eine
 Concurrency-Gruppe und warten aufeinander. Kommt es trotzdem einmal zum

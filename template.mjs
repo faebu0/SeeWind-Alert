@@ -310,8 +310,6 @@ h1{font-size:19px;font-weight:800;letter-spacing:-.015em;font-stretch:112%}
   border-radius:2px;font-size:12.5px;overflow:auto;white-space:pre;
 }
 .zeitzone{font-size:11.5px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
-.handweg{margin-top:12px}
-.handweg p{margin:0 0 8px;font-size:13px;color:var(--ink-2)}
 
 /* Gemeldete Orte */
 .orte{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
@@ -335,28 +333,6 @@ h1{font-size:19px;font-weight:800;letter-spacing:-.015em;font-stretch:112%}
 .ort-zeile button:disabled{opacity:.45;cursor:default}
 .ort-zeile button.weg:hover{border-color:var(--lv3);color:var(--lv3)}
 .ort-zeile .fest{font-size:11.5px;color:var(--ink-3)}
-
-/* Zugang */
-.zugang{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.zugang-auf{
-  background:none;border:0;padding:0;cursor:pointer;color:var(--accent);
-  font:600 12.5px Archivo,sans-serif;letter-spacing:.03em;text-align:left;
-}
-.zugang-auf:hover{text-decoration:underline}
-.zugang-form{margin-top:12px}
-.zugang-form p{margin:0 0 10px;font-size:13px;color:var(--ink-2);max-width:74ch}
-.zugang-form ol{margin:0 0 12px;padding-left:20px;font-size:13px;color:var(--ink-2)}
-.zugang-form li{margin-bottom:4px}
-.zugang-form input{
-  flex:1;min-width:210px;font:14px "IBM Plex Mono",monospace;
-  padding:8px 10px;border:1px solid var(--line-strong);border-radius:2px;
-  background:var(--surface-2);color:var(--ink);
-}
-.zugang-form input:focus{outline:2px solid var(--accent);outline-offset:-1px}
-.pfad{
-  display:inline-block;background:var(--surface-2);border:1px solid var(--line);
-  border-radius:3px;padding:0 6px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
-}
 
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;font-size:12px;color:var(--ink-3);align-items:center}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
@@ -413,51 +389,15 @@ footer p{margin:0 0 10px}
       <div class="eyebrow">Für Meldungen übernehmen</div>
       <p id="uebernehmen-text">Übernommene Orte werden bei jedem Lauf mitgerechnet und gemeldet wie die Seen zu Hause.</p>
       <div class="reise-zeile">
-        <button type="button" class="knopf" id="ort-uebernehmen">Übernehmen</button>
-        <a class="knopf still" id="ort-telegram" hidden>An Telegram senden</a>
-        <button type="button" class="knopf still" id="ort-hand">von Hand</button>
+        <a class="knopf" id="ort-telegram" hidden>An Telegram senden</a>
       </div>
-      <div class="handweg" id="handweg" hidden>
-        <p>Diesen Block in <code>reiseorte.json</code> in die Liste <code>"orte"</code> einsetzen und übernehmen.</p>
-        <pre class="mono" id="reise-json"></pre>
-        <button type="button" class="knopf still" id="reise-kopieren">Block kopieren</button>
-      </div>
+      <div class="reise-status fehler" id="ort-telegram-fehlt" hidden></div>
     </div>
 
     <div class="orte" id="orte-block" hidden>
       <div class="eyebrow">Gemeldete Orte</div>
       <div id="orte-liste"></div>
       <p class="reise-fuss" id="orte-fuss"></p>
-    </div>
-
-    <div class="zugang" id="zugang">
-      <button type="button" class="zugang-auf" id="zugang-auf">Zugang einrichten — dann genügt ein Klick</button>
-      <div class="zugang-form" id="zugang-form" hidden>
-        <p>
-          Mit einem GitHub-Zugriffsschlüssel darf diese Seite die Datei
-          <code>reiseorte.json</code> selbst ändern. Der Schlüssel bleibt in
-          <b>diesem Browser</b> und geht nirgends sonst hin — er steht weder im
-          Repository noch auf dem Server.
-        </p>
-        <ol>
-          <li>Auf GitHub unter <span class="pfad">Settings → Developer settings → Personal access tokens → Fine-grained tokens</span> einen Schlüssel erstellen</li>
-          <li>Nur dieses eine Repository auswählen</li>
-          <li>Als Recht genügt <span class="pfad">Contents: Read and write</span>. Wer zusätzlich <span class="pfad">Actions: Read and write</span> gibt, bekommt die Meldung sofort statt beim nächsten Lauf.</li>
-        </ol>
-        <div class="reise-zeile">
-          <input type="text" id="zugang-repo" placeholder="konto/repository" autocomplete="off" spellcheck="false">
-        </div>
-        <div class="reise-zeile">
-          <input type="password" id="zugang-token" placeholder="github_pat_…" autocomplete="off" spellcheck="false">
-          <button type="button" class="knopf" id="zugang-speichern">Prüfen und merken</button>
-          <button type="button" class="knopf still" id="zugang-weg" hidden>Schlüssel löschen</button>
-        </div>
-        <div class="reise-status" id="zugang-status" hidden></div>
-        <p class="reise-fuss">
-          Wer den Schlüssel lieber nicht im Browser hat, nimmt den Weg über
-          Telegram oder setzt den Block von Hand ein — beides steht oben.
-        </p>
-      </div>
     </div>
   </section>
 
@@ -947,142 +887,6 @@ ${module}
     zeichne();
   }
 
-  /* ---------------- Zugang zu GitHub ---------------- */
-
-  /**
-   * Damit ein Knopf auf dieser Seite etwas bewirken kann, muss die Datei
-   * reiseorte.json im Repository geändert werden — und dafür braucht es einen
-   * Schlüssel. Er liegt nur im Speicher dieses Browsers. Wer das nicht will,
-   * nimmt den Weg über Telegram; beide Wege ändern dieselbe Datei.
-   */
-  var GH = (function(){
-    var SCHL = "seewind-gh-schluessel", REPO = "seewind-gh-repo", ZWEIG = "seewind-gh-zweig";
-    var schluessel = null, repo = null, zweig = "main";
-    try {
-      schluessel = localStorage.getItem(SCHL) || null;
-      repo = localStorage.getItem(REPO) || null;
-      zweig = localStorage.getItem(ZWEIG) || "main";
-    } catch (e) {}
-
-    /** Konto und Repository aus der eigenen Adresse raten. */
-    function geraten(){
-      var wirt = location.hostname || "";
-      var treffer = wirt.match(/^([^.]+)\\.github\\.io$/i);
-      if (!treffer) return "";
-      var konto = treffer[1];
-      var erstes = (location.pathname || "/").split("/").filter(Boolean)[0];
-      return konto + "/" + (erstes || wirt);
-    }
-
-    function kopf(){
-      return {
-        "Authorization": "Bearer " + schluessel,
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28"
-      };
-    }
-
-    /**
-     * Ein Aufruf an die GitHub-Schnittstelle.
-     *
-     * fehlendOk ist nicht kosmetisch: GitHub antwortet mit 404, wenn das
-     * Repository fehlt — aber genauso, wenn nur die Datei darin fehlt. Ohne
-     * diese Unterscheidung hätte ein noch nicht hochgeladenes reiseorte.json
-     * die Meldung „Repository nicht gefunden“ ergeben, und man hätte am
-     * falschen Ende gesucht.
-     */
-    async function ruf(pfad, optionen, fehlendOk){
-      var o = optionen || {};
-      o.headers = Object.assign(kopf(), o.headers || {});
-      var r = await fetch("https://api.github.com/repos/" + (repo || "") + pfad, o);
-      if (r.status === 401) throw new Error("Der Schlüssel wird nicht angenommen — abgelaufen oder falsch kopiert.");
-      if (r.status === 403) throw new Error("Der Schlüssel darf das nicht. Fehlt das Recht „Contents: Read and write“?");
-      if (r.status === 404 && !fehlendOk) throw new Error("Repository nicht gefunden — stimmt „" + (repo || "?") + "“, und ist es im Schlüssel ausgewählt?");
-      return r;
-    }
-
-    return {
-      bereit: function(){ return Boolean(schluessel && repo); },
-      repo: function(){ return repo || geraten(); },
-
-      setze: async function(neuerRepo, neuerSchluessel){
-        var altR = repo, altS = schluessel;
-        repo = String(neuerRepo || "").trim().replace(/^https?:\\/\\/github\\.com\\//i, "").replace(/\\/+$/, "");
-        schluessel = String(neuerSchluessel || "").trim();
-        if (!/^[^/\\s]+\\/[^/\\s]+$/.test(repo)) { repo = altR; schluessel = altS; throw new Error("Das Repository gehört als konto/repository angegeben."); }
-        try {
-          // Erst lesen: so scheitert eine falsche Eingabe, bevor irgendetwas
-          // geschrieben wird. Nebenbei kommt der Hauptzweig mit — er heisst
-          // nicht überall "main".
-          var info = await ruf("", {});
-          if (!info.ok) throw new Error("GitHub antwortete mit " + info.status + ".");
-          zweig = (await info.json()).default_branch || "main";
-          var r = await ruf("/contents/reiseorte.json?t=" + Date.now(), {}, true);
-          if (!r.ok && r.status !== 404) throw new Error("GitHub antwortete mit " + r.status + ".");
-        } catch (e) {
-          repo = altR; schluessel = altS;
-          throw e;
-        }
-        try {
-          localStorage.setItem(SCHL, schluessel);
-          localStorage.setItem(REPO, repo);
-          localStorage.setItem(ZWEIG, zweig);
-        } catch (e) {}
-      },
-
-      loesche: function(){
-        schluessel = null; repo = null;
-        try { localStorage.removeItem(SCHL); localStorage.removeItem(REPO); localStorage.removeItem(ZWEIG); } catch (e) {}
-      },
-
-      /** Liest die Orteliste aus dem Repository, samt Kennung für das Schreiben. */
-      hole: async function(){
-        // Fehlt die Datei noch, ist das kein Fehler — dann wird sie eben angelegt.
-        var r = await ruf("/contents/reiseorte.json?t=" + Date.now(), {}, true);
-        if (r.status === 404) return { liste: Orte.leereListe(), sha: null };
-        if (!r.ok) throw new Error("GitHub antwortete mit " + r.status + ".");
-        var d = await r.json();
-        var roh;
-        try { roh = JSON.parse(Orte.ausBase64(d.content)); } catch (e) { roh = null; }
-        return { liste: Orte.leseListe(roh), sha: d.sha };
-      },
-
-      /** Schreibt zurück. Bei einem Zusammenstoss einmal neu lesen und nochmal. */
-      schreibe: async function(bauen, nachricht){
-        for (var versuch = 0; versuch < 2; versuch++){
-          var stand = await this.hole();
-          var neu = bauen(stand.liste);
-          if (!neu) return stand.liste;
-          var koerper = { message: nachricht, content: Orte.zuBase64(JSON.stringify(neu, null, 1) + "\\n") };
-          if (stand.sha) koerper.sha = stand.sha;
-          koerper.branch = zweig;
-          var r = await ruf("/contents/reiseorte.json", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(koerper)
-          });
-          if (r.ok) return neu;
-          // 409 und 422 heissen: jemand war schneller. Einmal nachziehen.
-          if (r.status !== 409 && r.status !== 422) {
-            var fehler = await r.json().catch(function(){ return {}; });
-            throw new Error(fehler.message || ("GitHub antwortete mit " + r.status + "."));
-          }
-        }
-        throw new Error("Die Datei wurde gerade von anderer Seite geändert. Nochmal versuchen.");
-      },
-
-      /** Optional: den Lauf sofort anstossen statt bis zum nächsten Mal zu warten. */
-      stosseAn: async function(){
-        var r = await fetch(
-          "https://api.github.com/repos/" + repo + "/actions/workflows/windcheck.yml/dispatches",
-          { method: "POST", headers: Object.assign(kopf(), { "Content-Type": "application/json" }),
-            body: JSON.stringify({ ref: zweig }) }
-        );
-        return r.ok;
-      }
-    };
-  })();
-
   (function reisemodus(){
     var box = document.getElementById("reise");
     var leiste = document.getElementById("modus");
@@ -1094,8 +898,6 @@ ${module}
     var startKnopf = document.getElementById("reise-start");
     var status = document.getElementById("reise-status");
     var uebernehmen = document.getElementById("uebernehmen");
-    var jsonFeld = document.getElementById("reise-json");
-    var kopieren = document.getElementById("reise-kopieren");
     if (!box || typeof Suche === "undefined") return;
 
     var ort = null;
@@ -1124,97 +926,28 @@ ${module}
     eingabe.addEventListener("keydown", function(e){ if (e.key === "Enter") { e.preventDefault(); suchen(); } });
     document.getElementById("ort-hier").addEventListener("click", hierher);
     startKnopf.addEventListener("click", starten);
-    kopieren.addEventListener("click", function(){ inZwischenablage(jsonFeld.textContent, kopieren, "Block kopieren"); });
 
-    /* ---- Übernehmen, Ortsliste, Zugang ---- */
+    /* ---- Telegram-Knopf und Ortsliste ---- */
 
-    var uebernehmenKnopf = document.getElementById("ort-uebernehmen");
+    var uebernehmen = document.getElementById("uebernehmen");
     var telegramLink = document.getElementById("ort-telegram");
-    var handKnopf = document.getElementById("ort-hand");
-    var handWeg = document.getElementById("handweg");
+    var telegramFehlt = document.getElementById("ort-telegram-fehlt");
     var orteBlock = document.getElementById("orte-block");
     var orteHost = document.getElementById("orte-liste");
     var orteFuss = document.getElementById("orte-fuss");
-    var zugangAuf = document.getElementById("zugang-auf");
-    var zugangForm = document.getElementById("zugang-form");
-    var zugangRepo = document.getElementById("zugang-repo");
-    var zugangToken = document.getElementById("zugang-token");
-    var zugangStatus = document.getElementById("zugang-status");
-    var zugangWeg = document.getElementById("zugang-weg");
-    var gefundenerOrt = null;
 
-    zugangRepo.value = GH.repo();
-    zugangAuf.addEventListener("click", function(){
-      zugangForm.hidden = !zugangForm.hidden;
-      if (!zugangForm.hidden) zugangToken.focus();
-    });
-    document.getElementById("zugang-speichern").addEventListener("click", zugangSpeichern);
-    zugangToken.addEventListener("keydown", function(e){ if (e.key === "Enter"){ e.preventDefault(); zugangSpeichern(); } });
-    zugangWeg.addEventListener("click", function(){
-      GH.loesche();
-      zugangToken.value = "";
-      zeigeZugang();
-      meldeZugang("Der Schlüssel ist aus diesem Browser entfernt.");
-    });
-    handKnopf.addEventListener("click", function(){ handWeg.hidden = !handWeg.hidden; });
-    uebernehmenKnopf.addEventListener("click", ortUebernehmen);
-
-    zeigeZugang();
     zeichneOrte();
 
-    async function zugangSpeichern(){
-      meldeZugang("Wird geprüft …");
-      try {
-        await GH.setze(zugangRepo.value, zugangToken.value);
-        zugangToken.value = "";
-        zeigeZugang();
-        meldeZugang("Der Zugang steht. Ab jetzt genügt ein Klick.", "fertig");
-        await frischeOrte();
-      } catch (e) {
-        meldeZugang(e.message || String(e), "fehler");
-      }
-    }
-
-    function meldeZugang(text, art){
-      zugangStatus.className = "reise-status" + (art ? " " + art : "");
-      zugangStatus.textContent = text;
-      zugangStatus.hidden = false;
-    }
-
-    function zeigeZugang(){
-      var da = GH.bereit();
-      zugangAuf.textContent = da
-        ? "Zugang eingerichtet für " + GH.repo() + " — ändern"
-        : "Zugang einrichten — dann genügt ein Klick";
-      zugangWeg.hidden = !da;
-      zugangRepo.value = GH.repo();
-      uebernehmenKnopf.textContent = da ? "Übernehmen" : "Übernehmen (Zugang nötig)";
-      zeichneOrte();
-    }
-
-    /** Nach jeder Änderung den echten Stand aus dem Repository nachladen. */
-    async function frischeOrte(){
-      if (!GH.bereit()) return;
-      try {
-        orteListe = (await GH.hole()).liste;
-        zeichneOrte();
-      } catch (e) {
-        meldeZugang(e.message || String(e), "fehler");
-      }
-    }
-
+    /**
+     * Die Orte, wie sie beim letzten Lauf galten. Ändern lässt sich das hier
+     * nicht: eine Seite auf GitHub Pages ist eine Datei ohne Rechte. Geschaltet
+     * wird im Telegram-Chat mit /orte — dort sitzt der, der schreiben darf.
+     */
     function zeichneOrte(){
       var hat = orteListe.orte.length > 0;
-      orteBlock.hidden = !hat && !GH.bereit();
+      orteBlock.hidden = !hat;
       orteHost.innerHTML = "";
-
-      if (!hat){
-        var leer = document.createElement("p");
-        leer.className = "reise-fuss";
-        leer.style.marginTop = "6px";
-        leer.textContent = "Noch kein Ort übernommen.";
-        orteHost.appendChild(leer);
-      }
+      if (!hat) return;
 
       orteListe.orte.forEach(function(o){
         var zeile = document.createElement("div");
@@ -1223,139 +956,55 @@ ${module}
           '<span class="punkt"></span>' +
           '<span class="wo"></span>' +
           '<span class="wie">' + o.umkreisKm + ' km</span>' +
-          '<span class="sp"></span>';
+          '<span class="sp"></span>' +
+          '<span class="fest">' + (o.aktiv ? "scharf" : "aus") + '</span>';
         zeile.querySelector(".wo").textContent = o.ort;
-
-        if (GH.bereit()){
-          var schalter = document.createElement("button");
-          schalter.type = "button";
-          schalter.textContent = o.aktiv ? "ausschalten" : "einschalten";
-          schalter.addEventListener("click", function(){ schalteOrt(o, !o.aktiv, zeile); });
-          var weg = document.createElement("button");
-          weg.type = "button";
-          weg.className = "weg";
-          weg.textContent = "entfernen";
-          weg.addEventListener("click", function(){ entferneOrt(o, weg, zeile); });
-          zeile.appendChild(schalter);
-          zeile.appendChild(weg);
-        } else {
-          var fest = document.createElement("span");
-          fest.className = "fest";
-          fest.textContent = o.aktiv ? "scharf" : "aus";
-          zeile.appendChild(fest);
-        }
         orteHost.appendChild(zeile);
       });
 
-      var altBlock = D.altBlock;
-      orteFuss.textContent = GH.bereit()
-        ? "Änderungen wirken beim nächsten Lauf — oder sofort, wenn der Schlüssel auch Actions darf."
-        : (hat ? "Zum Schalten braucht es den Zugang unten, oder /orte im Telegram-Chat." : "");
-      if (altBlock){
+      if (D.altBlock){
         var hinweis = document.createElement("div");
         hinweis.className = "ort-zeile";
         hinweis.innerHTML = '<span class="punkt"></span><span class="wo"></span>' +
           '<span class="wie">aus spots.json</span><span class="sp"></span>' +
           '<span class="fest">nur dort änderbar</span>';
-        hinweis.querySelector(".wo").textContent = altBlock.ort || "Reiseort";
+        hinweis.querySelector(".wo").textContent = D.altBlock.ort || "Reiseort";
         orteHost.appendChild(hinweis);
       }
+
+      orteFuss.textContent = D.botName
+        ? "Ein- und Ausschalten: /orte im Chat mit deinem Bot."
+        : "Stand vom letzten Lauf.";
     }
 
-    async function schalteOrt(o, an, zeile){
-      if (!GH.bereit()) return;
-      sperre(zeile, true);
-      try {
-        orteListe = await GH.schreibe(
-          function(liste){ return Orte.schalte(liste, o.id, an).liste; },
-          (an ? "Reiseort an: " : "Reiseort aus: ") + o.ort
-        );
-        zeichneOrte();
-        meldeZugang(o.ort + (an ? " ist wieder scharf." : " ist aus."), "fertig");
-        if (an) await vielleichtAnstossen();
-      } catch (e) {
-        sperre(zeile, false);
-        meldeZugang(e.message || String(e), "fehler");
-      }
-    }
-
-    async function entferneOrt(o, knopf, zeile){
-      if (!GH.bereit()) return;
-      // Zwei Klicks, damit nichts aus Versehen verschwindet.
-      if (knopf.dataset.sicher !== "1"){
-        knopf.dataset.sicher = "1";
-        knopf.textContent = "wirklich?";
-        setTimeout(function(){
-          if (knopf.dataset.sicher === "1"){ knopf.dataset.sicher = ""; knopf.textContent = "entfernen"; }
-        }, 4000);
+    /**
+     * Der Knopf braucht den Botnamen — ohne ihn liesse sich der Link nicht
+     * bauen. Früher blieb er dann einfach unsichtbar, und man suchte an der
+     * falschen Stelle. Jetzt steht da, was fehlt.
+     */
+    function zeigeTelegramKnopf(ort){
+      if (!D.botName){
+        telegramLink.hidden = true;
+        telegramFehlt.textContent =
+          "Für diesen Knopf fehlt die Variable TELEGRAM_BOT_NAME — unter " +
+          "Settings → Secrets and variables → Actions → Variables eintragen " +
+          "(Botname ohne @), dann einen Lauf starten. Bis dahin: im Bot-Chat " +
+          "/orte tippen, dort lässt sich alles von Hand schalten.";
+        telegramFehlt.hidden = false;
         return;
       }
-      sperre(zeile, true);
-      try {
-        orteListe = await GH.schreibe(
-          function(liste){ return Orte.entferne(liste, o.id).liste; },
-          "Reiseort entfernt: " + o.ort
-        );
-        zeichneOrte();
-        meldeZugang(o.ort + " ist aus der Liste.", "fertig");
-      } catch (e) {
-        sperre(zeile, false);
-        meldeZugang(e.message || String(e), "fehler");
-      }
-    }
-
-    function sperre(zeile, an){
-      Array.prototype.forEach.call(zeile.querySelectorAll("button"), function(b){ b.disabled = an; });
-    }
-
-    async function ortUebernehmen(){
-      if (!gefundenerOrt) return;
-      if (!GH.bereit()){
-        zugangForm.hidden = false;
-        zugangToken.focus();
-        meldeZugang("Dafür braucht es einmalig den Zugang unten — oder den Weg über Telegram.", "fehler");
+      var nutzlast = Orte.packeOrt(ort);
+      if (!nutzlast){
+        telegramLink.hidden = true;
+        telegramFehlt.textContent = "Dieser Ort lässt sich nicht als Link verpacken — bitte melden.";
+        telegramFehlt.hidden = false;
         return;
       }
-      uebernehmenKnopf.disabled = true;
-      var alterText = uebernehmenKnopf.textContent;
-      uebernehmenKnopf.textContent = "wird übernommen …";
-      try {
-        orteListe = await GH.schreibe(
-          function(liste){ return Orte.ergaenze(liste, gefundenerOrt).liste; },
-          "Reiseort übernommen: " + gefundenerOrt.ort
-        );
-        zeichneOrte();
-        melde(gefundenerOrt.ort + " ist übernommen und wird ab sofort mitgemeldet.", "fertig");
-        await vielleichtAnstossen();
-      } catch (e) {
-        melde(e.message || String(e), "fehler");
-      } finally {
-        uebernehmenKnopf.disabled = false;
-        uebernehmenKnopf.textContent = alterText;
-      }
-    }
-
-    /** Wenn der Schlüssel es hergibt, den Lauf gleich anstossen. */
-    async function vielleichtAnstossen(){
-      try {
-        var los = await GH.stosseAn();
-        if (los) melde("Der Lauf ist angestossen — die Meldung kommt in ein paar Minuten.", "fertig");
-      } catch (e) {
-        // Ohne das Recht auf Actions geht es eben beim nächsten regulären Lauf.
-      }
-    }
-
-    // Auf die Karte tippen setzt den Mittelpunkt — aber nur im Reisemodus,
-    // sonst verschöbe ein Klick auf einen Spot zu Hause das halbe Dashboard.
-    if (lkarte) {
-      lkarte.on("click", function(e){
-        if (!offen || laeuft) return;
-        setzeOrt({
-          name: e.latlng.lat.toFixed(3) + ", " + e.latlng.lng.toFixed(3),
-          lat: e.latlng.lat, lon: e.latlng.lng
-        });
-        melde("Mittelpunkt gesetzt. Jetzt „Spots suchen“.");
-      });
+      telegramLink.href = "https://t.me/" + D.botName + "?start=" + nutzlast;
+      telegramLink.target = "_blank";
+      telegramLink.rel = "noopener";
+      telegramLink.hidden = false;
+      telegramFehlt.hidden = true;
     }
 
     function umschalten(name){
@@ -1474,24 +1123,16 @@ ${module}
           (zone && zone !== K.zeitzone ? " — Zeiten in Ortszeit (" + zone + ")." : "."),
           "fertig"
         );
-        gefundenerOrt = {
+        var uebernehmenOrt = {
           ort: o.name, lat: o.lat, lon: o.lon,
           umkreisKm: o.umkreisKm, minFetchKm: o.minFetchKm, maxSpots: o.maxSpots
         };
-        jsonFeld.textContent = JSON.stringify(Orte.pruefeOrt(gefundenerOrt), null, 1);
         document.getElementById("uebernehmen-text").textContent =
           "„" + o.name + "“ als Meldeort übernehmen — dann kommt er bei jedem Lauf mit, " +
-          "wie die Seen zu Hause. Abschalten geht jederzeit in der Liste darunter.";
+          "wie die Seen zu Hause. Der Link öffnet deinen Bot-Chat; ein Tipp auf START " +
+          "genügt. Ausschalten später mit /orte im selben Chat.";
+        zeigeTelegramKnopf(uebernehmenOrt);
 
-        // Der Weg ohne Schlüssel: ein Link, der den Ort im Bot-Chat öffnet.
-        if (D.botName){
-          var nutzlast = Orte.packeOrt(gefundenerOrt);
-          telegramLink.href = "https://t.me/" + D.botName + "?start=" + nutzlast;
-          telegramLink.target = "_blank";
-          telegramLink.rel = "noopener";
-          telegramLink.hidden = !nutzlast;
-        }
-        handWeg.hidden = true;
         uebernehmen.hidden = false;
       } catch (e) {
         melde(e.message || String(e), "fehler");

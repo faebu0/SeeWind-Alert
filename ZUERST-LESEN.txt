@@ -1,31 +1,37 @@
-Seewind — Knopf für Reiseorte
-=============================
+Seewind — Reiseorte über Telegram
+=================================
 
-ERSETZEN (einfach drüberkopieren):
-  alle .mjs-Dateien, package.json, README.md
-  .github/workflows/windcheck.yml      (Concurrency-Gruppe und ein Push-Kniff)
+WICHTIG ZUERST: die Variable setzen, sonst gibt es den Knopf nicht.
+  Settings -> Secrets and variables -> Actions -> Variables -> New variable
+    Name:  TELEGRAM_BOT_NAME
+    Wert:  dein Botname OHNE @, z.B. seewind_alarm_bot
+  Den Namen findest du in Telegram im Profil deines Bots (@...) oder beim
+  BotFather unter /mybots.
 
-NEU DAZU:
-  orte.mjs, telegram.mjs, reiseorte.json
-  test-orte.mjs, test-reise.mjs, test-seite.mjs, test-telegram.mjs
-  .github/workflows/telegram.yml       -> muss wieder von Hand angelegt werden:
-                                          Add file -> Create new file ->
-                                          Dateiname exakt
-                                          .github/workflows/telegram.yml
+
+ERSETZEN (Wurzelverzeichnis, einfach drüberkopieren):
+  browserbau.mjs  ics.mjs  lib.mjs  melder.mjs  reise.mjs
+  run.mjs  smtp.mjs  spotsuche.mjs  template.mjs
+  package.json  README.md
+
+NEU DAZU (dasselbe Verzeichnis, neben run.mjs — NICHT in einen Unterordner):
+  orte.mjs  telegram.mjs  reiseorte.json
+  test-orte.mjs  test-reise.mjs  test-seite.mjs  test-telegram.mjs
+
+WORKFLOWS (Add file -> Create new file, Dateiname exakt eintippen):
+  .github/workflows/windcheck.yml     ersetzen
+  .github/workflows/telegram.yml      ersetzen bzw. neu anlegen
 
 NICHT ANFASSEN:
   spots.json      deine Spots und Kriterien bleiben, wie sie sind.
-                  Ein alter "reise"-Block darin gilt weiterhin.
   state/          der Meldestand.
   docs/           wird beim nächsten Lauf neu geschrieben.
 
-NEUE VARIABLE (Settings -> Secrets and variables -> Actions -> Variables):
-  TELEGRAM_BOT_NAME = dein Botname ohne @, z.B. seewind_alarm_bot
-  Nur nötig für den Knopf "An Telegram senden" im Dashboard.
-
 DANACH:
   1. Actions -> Windcheck -> Run workflow (ohne Haken) — baut das Dashboard neu
-  2. Im Dashboard: Reisemodus -> Ort suchen -> Übernehmen
-     Beim ersten Mal fragt es nach dem Zugangsschlüssel; die Anleitung dazu
-     steht direkt daneben und ausführlich im README unter "Reisemodus".
-  3. Oder ohne Schlüssel: "An Telegram senden", dann im Chat /orte
+  2. Dashboard -> Reisemodus -> Ort suchen -> "An Telegram senden"
+  3. Im Bot-Chat auf START tippen. Fertig.
+  4. /orte zeigt die Liste mit Knöpfen zum Ein- und Ausschalten.
+
+Ein Knopfdruck in Telegram wirkt nicht sofort: ein Workflow sieht alle 15
+Minuten nach. Schneller geht es mit Actions -> Telegram -> Run workflow.

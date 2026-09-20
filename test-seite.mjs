@@ -263,32 +263,9 @@ klickeModus(standardKnopf);
 sag("Und wieder schliessen", $("reise").hidden === true);
 klickeModus(reiseKnopf);
 
-/* ---- Ohne Zugang ---- */
-sag("Ohne Zugang steht es am Knopf", /Zugang nötig/.test($("ort-uebernehmen").textContent),
-  $("ort-uebernehmen").textContent);
-sag("Repository wird aus der Adresse geraten", $("zugang-repo").value === "schwendimann/seewind",
-  $("zugang-repo").value);
-
-/* ---- Zugang einrichten, gegen nachgestelltes GitHub ---- */
+/* ---- Suchen wie ein Mensch ---- */
 let dateiImRepo = null;
 antworten = {
-  "/contents/reiseorte.json": (o) => {
-    if ((o.method || "GET") === "PUT") {
-      const k = JSON.parse(o.body);
-      dateiImRepo = {
-        inhalt: Buffer.from(k.content, "base64").toString("utf8"),
-        sha: "sha" + Date.now(),
-      };
-      return antwort(200, { content: { sha: dateiImRepo.sha } });
-    }
-    if (!dateiImRepo) return antwort(404, { message: "Not Found" });
-    return antwort(200, {
-      sha: dateiImRepo.sha,
-      content: Buffer.from(dateiImRepo.inhalt, "utf8").toString("base64"),
-    });
-  },
-  "/dispatches": () => antwort(403, { message: "kein Actions-Recht" }),
-  "api.github.com/repos/schwendimann/seewind": () => antwort(200, { default_branch: "main" }),
   "geocoding-api.open-meteo.com": () => antwort(200, {
     results: [{
       name: "Tarifa", latitude: 36.0139, longitude: -5.6069,
@@ -297,19 +274,6 @@ antworten = {
   }),
 };
 
-$("zugang-repo").value = "schwendimann/seewind";
-$("zugang-token").value = "nachgestellter-schluessel";
-$("zugang-speichern").click();
-await warte();
-sag("Zugang wird angenommen", /Zugang steht/.test($("zugang-status").textContent),
-  $("zugang-status").textContent);
-sag("Der Schlüssel liegt nur im Browserspeicher", speicher.has("seewind-gh-schluessel"));
-sag("Knopfbeschriftung ohne Klammer", $("ort-uebernehmen").textContent === "Übernehmen");
-sag("Kein Schlüssel im Netzpfad", netzrufe.every((r) => !r.url.includes("nachgestellter-schluessel")));
-sag("Schlüssel geht als Kopfzeile mit",
-  netzrufe.some((r) => (r.kopf.Authorization || "").includes("nachgestellter-schluessel")));
-
-/* ---- Suchen wie ein Mensch ---- */
 $("ort-eingabe").value = "Tarifa";
 $("ort-suchen").click();
 await warte();
@@ -321,69 +285,53 @@ await warte(); await warte();
 sag("Suche läuft durch", /gefunden/.test($("reise-status").textContent), $("reise-status").textContent);
 sag("Ortszeit wird genannt", /Ortszeit/.test($("reise-status").textContent));
 sag("Übernehmen taucht auf", $("uebernehmen").hidden === false);
-// Der Link erscheint nur, wenn beim Bauen ein Botname gesetzt war.
+
+/* ---- Der einzige Knopf: Telegram ---- */
 const botName = JSON.parse(daten).botName;
 if (botName) {
-  sag("Telegram-Link zeigt auf den Bot", $("ort-telegram").hidden === false &&
-    $("ort-telegram").href.startsWith("https://t.me/" + botName + "?start="), $("ort-telegram").href);
+  sag("Telegram-Knopf zeigt auf den Bot",
+    $("ort-telegram").hidden === false &&
+    $("ort-telegram").href.startsWith("https://t.me/" + botName + "?start="),
+    $("ort-telegram").href);
   const nutzlast = $("ort-telegram").href.split("start=")[1] || "";
   sag("Nutzlast ist kurz genug und url-sicher",
     nutzlast.length > 0 && nutzlast.length <= 64 && /^[A-Za-z0-9_-]+$/.test(nutzlast),
     nutzlast.length + " Zeichen");
+  sag("Kein Hinweis auf Fehlendes", $("ort-telegram-fehlt").hidden === true);
+  sag("Der Ort kommt beim Auspacken heil an",
+    umgebung.Orte.entpackeOrt(nutzlast).ort === "Tarifa");
+  sag("Link öffnet in einem neuen Tab, ohne Rückverweis",
+    $("ort-telegram").target === "_blank" && $("ort-telegram").rel === "noopener");
 } else {
-  sag("Ohne Botnamen bleibt der Link versteckt", $("ort-telegram").hidden === true);
+  sag("Ohne Botnamen bleibt der Knopf weg", $("ort-telegram").hidden === true);
+  sag("Und es steht da, was fehlt",
+    $("ort-telegram-fehlt").hidden === false &&
+    /TELEGRAM_BOT_NAME/.test($("ort-telegram-fehlt").textContent),
+    $("ort-telegram-fehlt").textContent.slice(0, 60));
 }
-sag("Handweg zeigt einen Eintrag für die Liste",
-  $("reise-json").textContent.includes('"ort"') && !$("reise-json").textContent.includes('"reise"'));
 
-/* ---- Übernehmen ---- */
-$("ort-uebernehmen").click();
-await warte(); await warte();
-sag("Ort ist übernommen", /übernommen/.test($("reise-status").textContent), $("reise-status").textContent);
-sag("Datei im Repository geschrieben", Boolean(dateiImRepo));
-const geschrieben = dateiImRepo ? JSON.parse(dateiImRepo.inhalt) : { orte: [] };
-sag("Ein Ort in der Datei, scharf",
-  geschrieben.orte.length === 1 && geschrieben.orte[0].aktiv === true,
-  JSON.stringify(geschrieben.orte.map((o) => o.ort + ":" + o.aktiv)));
-sag("Beim Schreiben ging der Zweig mit",
-  netzrufe.some((r) => r.methode === "PUT" && JSON.parse(r.koerper).branch === "main"));
-sag("Anstossen wurde versucht und darf scheitern",
-  netzrufe.some((r) => r.url.includes("/dispatches")));
+/* ---- Kein GitHub-Zugang mehr, kein Schlüssel im Browser ---- */
+sag("Die Seite fragt nirgends nach einem Schlüssel",
+  !seite.includes("Zugang einrichten") && !seite.includes("seewind-gh-schluessel"));
+sag("Und ruft GitHub gar nicht erst auf",
+  netzrufe.every((r) => !r.url.includes("api.github.com")),
+  netzrufe.map((r) => r.url.split("/")[2]).join(", "));
 
-/* ---- Die Liste ---- */
-const zeilen = () => $("orte-liste").kinder.filter((k) => k.klassen.has("ort-zeile"));
-const knoepfeIn = (z) => z.kinder.filter((k) => k.tagName === "BUTTON");
-sag("Liste zeigt den Ort", zeilen().length === 1);
-
-let schalter = zeilen()[0] && knoepfeIn(zeilen()[0])[0];
-sag("Schalter heisst ausschalten", Boolean(schalter) && schalter.textContent === "ausschalten",
-  schalter && schalter.textContent);
-
-if (schalter) schalter.click();
-await warte(); await warte();
-sag("Ausgeschaltet, auch in der Datei", JSON.parse(dateiImRepo.inhalt).orte[0].aktiv === false);
-schalter = knoepfeIn(zeilen()[0])[0];
-sag("Schalter heisst jetzt einschalten", schalter.textContent === "einschalten", schalter.textContent);
-
-schalter.click();
-await warte(); await warte();
-sag("Wieder scharf", JSON.parse(dateiImRepo.inhalt).orte[0].aktiv === true);
-
-/* ---- Entfernen braucht zwei Klicks ---- */
-const weg = knoepfeIn(zeilen()[0])[1];
-weg.click();
-await warte();
-sag("Erster Klick fragt nach",
-  weg.textContent === "wirklich?" && JSON.parse(dateiImRepo.inhalt).orte.length === 1,
-  weg.textContent);
-weg.click();
-await warte(); await warte();
-sag("Zweiter Klick entfernt", JSON.parse(dateiImRepo.inhalt).orte.length === 0);
-sag("Liste ist leer", zeilen().length === 0);
-
-/* ---- Zugang wieder löschen ---- */
-$("zugang-weg").click();
-sag("Schlüssel ist weg", !speicher.has("seewind-gh-schluessel"));
-sag("Knopf sagt wieder Zugang nötig", /Zugang nötig/.test($("ort-uebernehmen").textContent));
+/* ---- Die Liste zeigt den Stand vom letzten Lauf ---- */
+const eingebaut = JSON.parse(daten).orte || [];
+const zeilen = $("orte-liste").kinder.filter((k) => k.klassen.has("ort-zeile"));
+if (eingebaut.length) {
+  sag("Liste zeigt jeden Ort", zeilen.length === eingebaut.length,
+    zeilen.length + " von " + eingebaut.length);
+  sag("Ausgeschaltete sind als solche zu erkennen",
+    zeilen.filter((z) => z.klassen.has("aus")).length ===
+      eingebaut.filter((o) => !o.aktiv).length);
+  sag("Kein Schaltknopf in der Liste — das macht Telegram",
+    zeilen.every((z) => z.kinder.every((k) => k.tagName !== "BUTTON")));
+  sag("Und die Liste sagt, wo geschaltet wird",
+    !botName || /\/orte/.test($("orte-fuss").textContent), $("orte-fuss").textContent);
+} else {
+  sag("Ohne übernommene Orte bleibt die Liste weg", $("orte-block").hidden === true);
+}
 
 schluss();
