@@ -30,8 +30,29 @@ jobs:
     steps:
       - uses: actions/checkout@v7
  
+      # Diese Datei hier muss man auf GitHub von Hand anlegen, der Rest kommt
+      # per Upload — die beiden Schritte geraten leicht in die falsche
+      # Reihenfolge. Ohne diese Prüfung liefe der Job dann alle fünfzehn
+      # Minuten in ein "Cannot find module" und schickte eine Fehlermeldung.
+      - name: Sind die Dateien da?
+        id: da
+        run: |
+          fehlend=""
+          for f in telegram.mjs orte.mjs melder.mjs lib.mjs smtp.mjs; do
+            [ -f "$f" ] || fehlend="$fehlend $f"
+          done
+          if [ -n "$fehlend" ]; then
+            echo "::warning::Noch nicht im Repository:$fehlend — dieser Job wartet, bis die Dateien da sind."
+            echo "Noch nicht im Repository:$fehlend"
+            echo "Lade die Dateien aus dem Update-Paket hoch, dann läuft der Job von selbst weiter."
+            echo "bereit=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "bereit=true" >> "$GITHUB_OUTPUT"
+          fi
+ 
       - name: Befehle abholen
         id: befehle
+        if: steps.da.outputs.bereit == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -66,10 +87,15 @@ jobs:
         run: node run.mjs
  
       - name: Änderungen sichern
+        if: steps.da.outputs.bereit == 'true'
         run: |
           git config user.name "windcheck"
           git config user.email "actions@users.noreply.github.com"
-          git add reiseorte.json docs state
+          # reiseorte.json gibt es nur, wenn schon ein Reiseort übernommen
+          # wurde — "git add" auf einen fehlenden Pfad wäre ein Fehler.
+          pfade="docs state"
+          [ -e reiseorte.json ] && pfade="reiseorte.json $pfade"
+          git add $pfade
           if git diff --quiet --staged; then
             echo "Keine Änderung."
           else
