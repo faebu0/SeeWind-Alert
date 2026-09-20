@@ -9,14 +9,14 @@ REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
 UID:yvonand-2026-09-21-12@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260921T100000Z
 DTEND:20260921T120000Z
 SUMMARY:Wingfoil Yvonand — 11 kn NO
-DESCRIPTION:Yvonand · Neuenburgersee\n11 kn Mittelwind\, Böen 18 kn\, Ric
- htung NO\nFenster 12–14 Uhr (2 h)\, Modell ICON-CH1\nBewertung 27/100 
- — Wind 0\, Dauer 8\, Böen 11\, Nähe 8\nPrognose\, keine Zusage — vor
-  der Fahrt nochmal nachsehen.
+DESCRIPTION:Yvonand · Neuenburgersee\n11 kn Mittelwind\, Böen 19 kn\, Ric
+ htung NO\nFenster 12–14 Uhr (2 h)\, Modell ICON-CH1\nBewertung 25/100 
+ — Wind 0\, Dauer 8\, Böen 9\, Nähe 8\nPrognose\, keine Zusage — vor 
+ der Fahrt nochmal nachsehen.
 LOCATION:Yvonand\, Neuenburgersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
@@ -26,14 +26,14 @@ GEO:46.8;6.74
 END:VEVENT
 BEGIN:VEVENT
 UID:estavayer-2026-09-21-17@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260921T150000Z
 DTEND:20260921T170000Z
-SUMMARY:Wingfoil Estavayer — 11 kn NO
-DESCRIPTION:Estavayer-le-Lac · Neuenburgersee\n11 kn Mittelwind\, Böen 18
-  kn\, Richtung NO\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH1/ICON-CH2\nB
- ewertung 27/100 — Wind 0\, Dauer 8\, Böen 11\, Nähe 8\nPrognose\, kein
- e Zusage — vor der Fahrt nochmal nachsehen.
+SUMMARY:Wingfoil Estavayer — 11 kn O
+DESCRIPTION:Estavayer-le-Lac · Neuenburgersee\n11 kn Mittelwind\, Böen 20
+  kn\, Richtung O\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH1\nBewertung 2
+ 3/100 — Wind 0\, Dauer 8\, Böen 7\, Nähe 8\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
 LOCATION:Estavayer-le-Lac\, Neuenburgersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
@@ -43,7 +43,7 @@ GEO:46.848;6.848
 END:VEVENT
 BEGIN:VEVENT
 UID:vully-2026-09-22-08@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260922T060000Z
 DTEND:20260922T170000Z
 SUMMARY:Wingfoil Vully — 14 kn NO
@@ -60,7 +60,7 @@ GEO:46.945;7.077
 END:VEVENT
 BEGIN:VEVENT
 UID:yvonand-2026-09-22-09@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260922T070000Z
 DTEND:20260922T180000Z
 SUMMARY:#1 Wingfoil Yvonand — 16 kn NO
@@ -77,7 +77,7 @@ GEO:46.8;6.74
 END:VEVENT
 BEGIN:VEVENT
 UID:erlach-2026-09-22-10@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260922T080000Z
 DTEND:20260922T170000Z
 SUMMARY:#2 Wingfoil Erlach — 14 kn NO
@@ -94,7 +94,7 @@ GEO:47.045;7.095
 END:VEVENT
 BEGIN:VEVENT
 UID:estavayer-2026-09-22-10@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260922T080000Z
 DTEND:20260922T180000Z
 SUMMARY:#3 Wingfoil Estavayer — 14 kn NO
@@ -111,7 +111,7 @@ GEO:46.848;6.848
 END:VEVENT
 BEGIN:VEVENT
 UID:ipsach-2026-09-22-14@seewind
-DTSTAMP:20260920T105435Z
+DTSTAMP:20260920T110017Z
 DTSTART:20260922T120000Z
 DTEND:20260922T140000Z
 SUMMARY:Wingfoil Ipsach — 11 kn O
