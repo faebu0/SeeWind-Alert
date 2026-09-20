@@ -1,16 +1,4 @@
 {
  "_hinweis": "Wird vom Dashboard und von Telegram gepflegt. Von Hand aendern geht auch: aktiv true oder false schaltet einen Ort ein und aus.",
- "orte": [
-  {
-   "id": "porto-pollo-4119-933",
-   "ort": "Porto Pollo",
-   "lat": 41.1879,
-   "lon": 9.3252,
-   "umkreisKm": 25,
-   "minFetchKm": 1.2,
-   "maxSpots": 6,
-   "aktiv": true,
-   "seit": "2026-09-20T11:16:29Z"
-  }
- ]
+ "orte": []
 }
