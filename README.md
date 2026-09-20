@@ -8,9 +8,13 @@ abonnieren kann**.
 Läuft vollständig auf GitHub Actions. Kein Server, keine Kosten, keine laufende
 Software auf deinem Rechner.
 
+Auf Reisen sucht es sich die Spots selbst: Ort eingeben, Umkreis wählen, und ein
+Knopf schaltet sie für die Meldung scharf — im Dashboard oder direkt in Telegram.
+
 **Datenquelle:** MeteoSchweiz ICON-CH1 (1 km Gitter, rund 33 Stunden voraus) und
 ICON-CH2 (2 km, bis vier Tage) über [Open-Meteo](https://open-meteo.com/) — ohne
-Schlüssel, ohne Registrierung.
+Schlüssel, ohne Registrierung. Ausserhalb der Schweiz das jeweils beste
+verfügbare Modell.
 
 ---
 
@@ -56,13 +60,15 @@ Danach sollte das Repository so aussehen — vier Ordner und ein paar Dateien:
 
 ```
 .github/workflows/windcheck.yml
+.github/workflows/telegram.yml
 docs/index.html
 docs/prognose.json
 docs/.nojekyll
 state/gemeldet.json
-browserbau.mjs  ics.mjs  lib.mjs  melder.mjs  reise.mjs
-run.mjs  smtp.mjs  spotsuche.mjs  template.mjs
-spots.json  package.json  prognose-test.json  README.md
+browserbau.mjs  ics.mjs  lib.mjs  melder.mjs  orte.mjs
+reise.mjs  run.mjs  smtp.mjs  spotsuche.mjs  telegram.mjs  template.mjs
+test-orte.mjs  test-reise.mjs  test-seite.mjs  test-telegram.mjs
+spots.json  reiseorte.json  package.json  prognose-test.json  README.md
 ```
 
 Liegen `run.mjs` und `windcheck.yml` nebeneinander im Wurzelverzeichnis, ist der
@@ -191,6 +197,7 @@ Dazu unter **Variables** (das sind keine Geheimnisse):
 | `MAIL_ABSENDER` | Absenderadresse, z.B. `Seewind <wind@example.ch>`; ohne Angabe wird `SMTP_BENUTZER` genommen |
 | `SMS_ABSENDER` | Absendername oder -nummer, Standard `Seewind` |
 | `SMS_MAX_ZEICHEN` | Standard `160`, also genau eine SMS. `320` erlaubt zwei |
+| `TELEGRAM_BOT_NAME` | Botname ohne `@` — nur nötig für den Knopf „An Telegram senden" |
 | `DASHBOARD_URL` | Adresse des Dashboards, erscheint in Mail und Telegram |
 | `KALENDER_STATUS` | `BUSY` (Standard), `TENTATIVE` oder `FREE` — wie die Termine in Outlook zählen |
 
@@ -371,36 +378,93 @@ Ausserdem erkennt die Wassermaske die Farbe des OpenStreetMap-Standardstils.
 Ändert sich dieser Stil grundlegend, muss die Erkennung nachgezogen werden; das
 Tool merkt es und meldet sich, wenn im Umkreis auffällig wenig erkannt wurde.
 
-### Meldungen für einen Ort einschalten
+### Meldungen für einen Ort einschalten — ein Knopf
 
-Das Dashboard rechnet den Reisemodus **im Browser** — es meldet von sich aus
+Das Dashboard rechnet den Reisemodus **im Browser** und meldet von sich aus
 nichts. Damit ein Ort auch per Telegram, Mail oder SMS gemeldet wird, muss er in
-`spots.json` scharf gestellt werden:
+die Liste `reiseorte.json`. Dafür gibt es zwei Knöpfe und einen Handweg.
 
-1. Im Reisemodus den Ort suchen und **Spots suchen** drücken
-2. Unten erscheint **Für Meldungen übernehmen** mit einem fertigen Block
-3. **Block kopieren**, in `spots.json` den vorhandenen `"reise"`-Block ersetzen,
-   **Commit changes**
+**Im Dashboard.** Nach der Suche steht unten **Übernehmen**. Ein Klick, und der
+Ort ist in der Liste — vorausgesetzt, du hast einmalig einen Zugangsschlüssel
+hinterlegt (siehe unten). Darunter stehen alle übernommenen Orte mit
+*ausschalten* und *entfernen*.
+
+**In Telegram.** Neben *Übernehmen* steht **An Telegram senden**. Der Link
+öffnet deinen Bot-Chat; ein Tipp auf START, und der Ort ist übernommen. Im Chat
+zeigt `/orte` jederzeit die Liste mit Knöpfen zum Ein- und Ausschalten. Dieser
+Weg braucht keinen zusätzlichen Schlüssel — nur den Bot, den du schon hast.
+
+Damit der Link gebaut werden kann, muss der Botname als Variable
+`TELEGRAM_BOT_NAME` hinterlegt sein (ohne `@`, z.B. `seewind_alarm_bot`).
+
+**Von Hand.** Unter *von Hand* steht der fertige Eintrag zum Einsetzen in
+`reiseorte.json`. Das geht immer, auch ohne alles andere.
+
+### Den Zugangsschlüssel einrichten
+
+Eine Seite auf GitHub Pages ist eine Datei, kein Programm mit Rechten — damit
+ein Knopf dort etwas bewirken kann, braucht sie einen Schlüssel.
+
+1. Auf GitHub unter **Settings → Developer settings → Personal access tokens →
+   Fine-grained tokens** einen Schlüssel erstellen
+2. Nur dieses eine Repository auswählen
+3. Als Recht genügt **Contents: Read and write**
+4. Optional **Actions: Read and write** — damit stösst ein Klick den Lauf sofort
+   an, statt bis zum nächsten Mal zu warten
+5. Im Dashboard unter *Zugang einrichten* Repository und Schlüssel eintragen
+
+Der Schlüssel bleibt im Speicher **dieses Browsers** und geht nirgends sonst
+hin — er steht nicht im Repository, nicht auf dem Server, und er läuft nie
+durch eine Adresszeile, sondern nur als Kopfzeile im Aufruf an GitHub. Zu
+bedenken ist trotzdem: Wer an diesen Browser kommt, kann damit dieses eine
+Repository ändern. Wem das zu viel ist, nimmt den Weg über Telegram — der
+kann genau dasselbe, nur eben ein paar Minuten später.
+
+*Schlüssel löschen* nimmt ihn wieder heraus.
+
+### Wie schnell ein Knopfdruck wirkt
+
+| Weg | Wirkung |
+|---|---|
+| Dashboard, Schlüssel mit Actions-Recht | sofort, der Lauf startet |
+| Dashboard, Schlüssel nur mit Contents | beim nächsten regulären Lauf |
+| Telegram-Knopf | beim nächsten Nachsehen, typisch 15–30 Minuten |
+| Von Hand committen | beim nächsten regulären Lauf |
+
+Ein Telegram-Bot bekommt seine Nachrichten nur über einen erreichbaren Server
+oder indem jemand nachfragt. Hier fragt ein eigener Workflow alle fünfzehn
+Minuten nach — deshalb die Verzögerung. Wer nicht warten mag, startet ihn unter
+**Actions → Telegram → Run workflow** von Hand.
+
+### Die Liste
 
 ```jsonc
-"reise": {
-  "aktiv": true,
-  "ort": "Tarifa",
-  "lat": 36.0143,
-  "lon": -5.6044,
-  "umkreisKm": 25,
-  "minFetchKm": 1.2,   // so viel Wasser muss gegen den Wind liegen
-  "maxSpots": 6
+{
+  "orte": [
+    {
+      "id": "tarifa-3601-m561",
+      "ort": "Tarifa",
+      "lat": 36.0139,
+      "lon": -5.6069,
+      "umkreisKm": 25,
+      "minFetchKm": 1.2,   // so viel Wasser muss gegen den Wind liegen
+      "maxSpots": 6,
+      "aktiv": true        // false lässt den Ort stehen, meldet ihn aber nicht
+    }
+  ]
 }
 ```
 
-Ab dem nächsten Lauf kommen diese Spots zu den Seen dazu: gleiche Rangliste,
-gleiche Meldung, eigene Kalendertermine. Nach der Reise `"aktiv": false` setzen —
-dann ist alles wieder wie vorher.
+Bis zu zwölf Orte, jeder einzeln schaltbar. Die Kennung entsteht aus Name und
+Koordinaten: derselbe Ort zweimal übernommen gibt keinen zweiten Eintrag.
 
-Gefundene Stellen werden in `state/reise.json` gemerkt und erst neu gesucht, wenn
-sich Ort, Umkreis oder Einstellungen ändern. Das spart Zeit und schont die
+Gefundene Stellen werden in `state/reise.json` gemerkt und erst neu gesucht,
+wenn sich Ort, Umkreis oder Einstellungen ändern. Das spart Zeit und schont die
 Kachelserver von OpenStreetMap, die ein Gemeingut sind.
+
+Wer früher den `reise`-Block in `spots.json` benutzt hat: der gilt weiterhin und
+kommt als zusätzlicher Ort dazu. Ändern lässt er sich aber nur dort, nicht über
+die Knöpfe.
 
 ---
 
@@ -492,23 +556,31 @@ Gemeldet werden nur die fahrbaren.
 
 ## Lokal testen
 
-Node 20 oder neuer, keine Abhängigkeiten. Auf GitHub läuft der Job mit dem Node, das der Runner mitbringt — es wird bewusst kein `setup-node` verwendet, damit eine Action weniger veralten kann.
+Node 20 oder neuer, keine Abhängigkeiten, kein Netz nötig.
 
 ```bash
-node run.mjs --dry                              # echte Prognose, nichts senden
-node run.mjs --dry --fixture prognose-test.json # gespeicherte Daten, nichts senden
-node run.mjs                                    # voller Lauf
-node run.mjs --dry --kanal aspsms                # Kanal erzwingen, nur anzeigen
-node run.mjs --test                                 # Testmeldung verschicken
+npm test        # alle Prüfungen nacheinander
 ```
 
-Mit `--dry` siehst du den fertigen Text samt Zeichenzahl, ohne dass eine SMS
-bezahlt wird.
+Dahinter stecken vier Läufe:
 
-Ohne gesetzte Telegram-Variablen gibt jeder Lauf die Nachricht nur auf der
-Konsole aus und verschickt nichts.
+| Datei | prüft |
+|---|---|
+| `test-orte.mjs` | Orteliste: ergänzen, schalten, entfernen, kaputte Dateien überstehen |
+| `test-reise.mjs` | mehrere Orte suchen, merken, und was bei Ausfällen passiert |
+| `test-telegram.mjs` | den ganzen Telegram-Ablauf gegen einen nachgebauten Bot-Server |
+| `test-seite.mjs` | die fertige Seite in Node, mit nachgebautem DOM und Knopfdrücken |
+| `run.mjs --dry --fixture` | den ganzen Lauf gegen einen gespeicherten Prognosestand |
 
----
+Keiner davon verschickt etwas oder braucht einen echten Zugangsschlüssel.
+
+Einzeln:
+
+```bash
+node run.mjs --dry                             # echte Prognose, Nachricht nur auf der Konsole
+node run.mjs --dry --fixture prognose-test.json # ganz ohne Netz
+node telegram.mjs --dry                        # Telegram lesen, nichts schreiben
+```
 
 ## Wenn etwas nicht läuft
 
@@ -524,6 +596,31 @@ Schreib ihm in Telegram einmal selbst, dann hol dir die Chat-ID über
 **`Unauthorized` bei Telegram.** Der Token stimmt nicht.
 
 **Der Job scheitert beim Pushen.** Schreibrechte fehlen, siehe Schritt 4.
+
+**Der Telegram-Knopf tut nichts.** Der Workflow *Telegram* sieht alle fünfzehn
+Minuten nach, und GitHub hält geplante Läufe bei Andrang auch mal auf. Unter
+**Actions → Telegram** steht, wann er zuletzt lief; *Run workflow* startet ihn
+sofort. Kommt gar nichts: stimmt `TELEGRAM_CHAT_ID`? Nachrichten aus anderen
+Chats werden bewusst ohne Antwort verworfen.
+
+**„Repository nicht gefunden" im Dashboard.** Entweder stimmt `konto/repository`
+nicht, oder das Repository ist im Fine-grained Token nicht ausgewählt — dort
+muss es einzeln angehakt sein, *All repositories* allein genügt bei manchen
+Konten nicht.
+
+**„Der Schlüssel darf das nicht".** Dem Token fehlt **Contents: Read and write**.
+Fürs sofortige Anstossen braucht es zusätzlich **Actions: Read and write**; ohne
+das wirkt der Knopf trotzdem, nur eben erst beim nächsten Lauf.
+
+**Zwei Läufe gleichzeitig.** Windcheck und Telegram teilen sich eine
+Concurrency-Gruppe und warten aufeinander. Kommt es trotzdem einmal zum
+Zusammenstoss, zieht der zweite mit `git pull --rebase` nach und pusht erneut.
+
+**Du benutzt Telegram gar nicht.** Dann läuft der Telegram-Workflow zwar alle
+fünfzehn Minuten an, merkt aber in ein paar Sekunden, dass kein Bot-Token
+hinterlegt ist, und hört auf. Stört es trotzdem: unter **Actions → Telegram →
+⋯ → Disable workflow** abschalten, oder `.github/workflows/telegram.yml`
+löschen. Alles andere läuft weiter.
 
 **Pages-Build bricht ab mit `No such file or directory ... /docs`.** Der Ordner
 `docs` fehlt im Repository. Entweder ist der Upload flach geraten (siehe
@@ -582,10 +679,19 @@ docs/fenster.ics               Kalender zum Abonnieren
 ics.mjs                        Kalenderdatei bauen (RFC 5545)
 spotsuche.mjs                  Reisemodus: Wassermaske aus Kacheln, Anlaufstrecke, Uferpunkte
 reise.mjs                      Reisemodus im Lauf: suchen, merken, in Spots übersetzen
-browserbau.mjs                 Legt lib.mjs und spotsuche.mjs unverändert in die Seite
+orte.mjs                       Die Orteliste: ergänzen, schalten, entfernen, prüfen
+reiseorte.json                 Die scharf gestellten Reiseorte — von Knöpfen gepflegt
+telegram.mjs                   Befehle und Knöpfe aus Telegram abarbeiten
+telegram.yml                   liegt unter .github/workflows/ — sieht alle 15 Minuten nach
+browserbau.mjs                 Legt lib.mjs, spotsuche.mjs und orte.mjs in die Seite
+test-orte.mjs                  Prüft die Orteliste
+test-reise.mjs                 Prüft die Spotsuche über mehrere Orte
+test-telegram.mjs              Prüft den Telegram-Ablauf gegen einen nachgebauten Bot
+test-seite.mjs                 Lässt die fertige Seite in Node laufen und drückt die Knöpfe
 docs/.nojekyll                 Sagt Pages, die Seite unverändert auszuliefern
 state/gemeldet.json            Welche Fenster schon gemeldet wurden
-state/reise.json               Gefundene Stellen des aktiven Reiseorts
+state/reise.json               Gefundene Stellen je Reiseort
+state/telegram.json            Bis wohin die Telegram-Nachrichten abgearbeitet sind
 ```
 
 Dashboard und Meldung rechnen **denselben Code**: `browserbau.mjs` kopiert

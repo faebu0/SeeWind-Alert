@@ -471,7 +471,7 @@ function blobVon(datei) {
 
 async function telegramFormular(methode, formular, env, fetchImpl) {
   const res = await fetchImpl(
-    `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/${methode}`,
+    telegramUrl(methode, env),
     { method: "POST", body: formular }
   );
   const antwort = await res.json().catch(() => ({}));
@@ -480,9 +480,46 @@ async function telegramFormular(methode, formular, env, fetchImpl) {
   }
 }
 
+/**
+ * Ein Aufruf an die Bot-Schnittstelle. Öffentlich, weil `telegram.mjs` für die
+ * Knöpfe dieselbe Tür benutzt — zwei Fassungen desselben Aufrufs wären zwei
+ * Stellen, an denen die Fehlerbehandlung auseinanderlaufen kann.
+ */
+export async function telegramApi(methode, nutzlast, env = process.env, fetchImpl = fetch) {
+  if (!env.TELEGRAM_BOT_TOKEN) throw new Error("TELEGRAM_BOT_TOKEN fehlt.");
+  const res = await fetchImpl(
+    telegramUrl(methode, env),
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nutzlast),
+    }
+  );
+  const antwort = await res.json().catch(() => ({}));
+  if (!res.ok || antwort.ok === false) {
+    throw new Error(antwort.description || `${methode}: ${res.status}`);
+  }
+  return antwort.result;
+}
+
+/**
+ * Adresse eines Bot-Aufrufs. Die Basis ist absichtlich umstellbar: so lässt
+ * sich der ganze Ablauf gegen einen nachgebauten Server prüfen, ohne dass ein
+ * Test echte Nachrichten verschickt.
+ */
+export function telegramUrl(methode, env = process.env) {
+  const basis = (env.TELEGRAM_API_BASE || "https://api.telegram.org").replace(/\/+$/, "");
+  return `${basis}/bot${env.TELEGRAM_BOT_TOKEN}/${methode}`;
+}
+
+/** Die hinterlegten Empfänger — und damit zugleich, wer etwas ändern darf. */
+export function telegramEmpfaenger(env = process.env) {
+  return liste(env.TELEGRAM_CHAT_ID);
+}
+
 async function sendeTelegramAn(chatId, text, env, fetchImpl) {
   const res = await fetchImpl(
-    `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+    telegramUrl("sendMessage", env),
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },

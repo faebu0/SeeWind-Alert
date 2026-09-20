@@ -10,6 +10,6 @@
   "scripts": {
     "check": "node run.mjs",
     "dry": "node run.mjs --dry",
-    "test": "node run.mjs --dry --fixture prognose-test.json"
+    "test": "node test-orte.mjs && node test-reise.mjs && node test-telegram.mjs && node test-seite.mjs && node run.mjs --dry --fixture prognose-test.json"
   }
 }

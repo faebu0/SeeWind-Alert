@@ -19,9 +19,11 @@ import { baueSeite } from "./template.mjs";
 import { melde, testMeldung, waehleKanal, pruefeZugang } from "./melder.mjs";
 import { baueIcs, baueIcsEinzeln } from "./ics.mjs";
 import { reiseSpots } from "./reise.mjs";
+import { leseListe, aktiveOrte } from "./orte.mjs";
 
 const WURZEL = dirname(fileURLToPath(import.meta.url));
 const KONFIG = join(WURZEL, "spots.json");
+const ORTE = join(WURZEL, "reiseorte.json");
 const STAND = join(WURZEL, "state", "gemeldet.json");
 const REISESTAND = join(WURZEL, "state", "reise.json");
 const SEITE = join(WURZEL, "docs", "index.html");
@@ -61,14 +63,16 @@ async function main() {
   const kriterien = konfig.kriterien;
   if (konfig.bewertung) kriterien.bewertung = konfig.bewertung;
 
-  // Reisemodus: ist ein Ort scharf gestellt, kommen die dort gefundenen Spots
-  // zu den festen dazu und werden genauso gemeldet.
+  // Reisemodus: für jeden scharf gestellten Ort kommen die dort gefundenen
+  // Spots zu den festen dazu und werden genauso gemeldet.
+  const orte = aktiveOrte(leseListe(await ladeJson(ORTE)), konfig.reise);
   let gefunden = [];
-  if (konfig.reise?.aktiv) {
+  if (orte.length) {
+    console.log(`Reisemodus: ${orte.length} ${orte.length === 1 ? "Ort" : "Orte"} scharf.`);
     try {
-      gefunden = await reiseSpots(konfig.reise, { cache: REISESTAND });
-      console.log(`Reisemodus: ${gefunden.length} Spots um ${konfig.reise.ort || "den Ort"}.`);
-      gefunden.forEach((s) => console.log(`  ${s.name} · ${s.dirs.join(" ")}`));
+      const ergebnis = await reiseSpots(orte, { cache: REISESTAND });
+      gefunden = ergebnis.spots;
+      console.log(`  zusammen ${gefunden.length} Stellen.`);
     } catch (err) {
       // Ein Ausfall der Kartenkacheln darf die Seen zu Hause nicht mitreissen.
       console.warn(`Reisemodus übersprungen: ${err.message}`);
@@ -112,7 +116,9 @@ async function main() {
       reihen,
       treffer,
       stand,
-      reise: konfig.reise || null,
+      orte: leseListe(await ladeJson(ORTE)).orte,
+      altBlock: konfig.reise || null,
+      botName: process.env.TELEGRAM_BOT_NAME || "",
     })
   );
   await writeFile(ROHDATEN, JSON.stringify({ stand, kriterien, reihen, treffer }, null, 1));
@@ -181,6 +187,16 @@ function neuesterStempel(reihen) {
     if (zeilen.length && (!erste || zeilen[0].zeit < erste)) erste = zeilen[0].zeit;
   }
   return erste ?? new Date().toISOString().slice(0, 16);
+}
+
+async function ladeJson(pfad) {
+  if (!existsSync(pfad)) return null;
+  try {
+    return JSON.parse(await readFile(pfad, "utf8"));
+  } catch (err) {
+    console.warn(`${pfad} ist nicht lesbar (${err.message}) — wird übergangen.`);
+    return null;
+  }
 }
 
 async function ladeStand() {

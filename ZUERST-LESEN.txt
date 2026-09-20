@@ -1,0 +1,31 @@
+Seewind — Knopf für Reiseorte
+=============================
+
+ERSETZEN (einfach drüberkopieren):
+  alle .mjs-Dateien, package.json, README.md
+  .github/workflows/windcheck.yml      (Concurrency-Gruppe und ein Push-Kniff)
+
+NEU DAZU:
+  orte.mjs, telegram.mjs, reiseorte.json
+  test-orte.mjs, test-reise.mjs, test-seite.mjs, test-telegram.mjs
+  .github/workflows/telegram.yml       -> muss wieder von Hand angelegt werden:
+                                          Add file -> Create new file ->
+                                          Dateiname exakt
+                                          .github/workflows/telegram.yml
+
+NICHT ANFASSEN:
+  spots.json      deine Spots und Kriterien bleiben, wie sie sind.
+                  Ein alter "reise"-Block darin gilt weiterhin.
+  state/          der Meldestand.
+  docs/           wird beim nächsten Lauf neu geschrieben.
+
+NEUE VARIABLE (Settings -> Secrets and variables -> Actions -> Variables):
+  TELEGRAM_BOT_NAME = dein Botname ohne @, z.B. seewind_alarm_bot
+  Nur nötig für den Knopf "An Telegram senden" im Dashboard.
+
+DANACH:
+  1. Actions -> Windcheck -> Run workflow (ohne Haken) — baut das Dashboard neu
+  2. Im Dashboard: Reisemodus -> Ort suchen -> Übernehmen
+     Beim ersten Mal fragt es nach dem Zugangsschlüssel; die Anleitung dazu
+     steht direkt daneben und ausführlich im README unter "Reisemodus".
+  3. Oder ohne Schlüssel: "An Telegram senden", dann im Chat /orte
