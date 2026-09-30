@@ -7,38 +7,4 @@ X-WR-CALNAME:Seewind — Windfenster
 X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
-BEGIN:VEVENT
-UID:erlach-2026-10-02-12@seewind
-DTSTAMP:20260929T151129Z
-DTSTART:20261002T100000Z
-DTEND:20261002T120000Z
-SUMMARY:#1 Wingfoil Erlach — 11 kn NO
-DESCRIPTION:Erlach / Lüscherz · Bielersee\n11 kn Mittelwind\, Böen 19 kn
- \, Richtung NO\nFenster 12–14 Uhr (2 h)\, Modell ICON-CH2\nBewertung 20/
- 100 — Wind 0\, Dauer 8\, Böen 9\, Nähe 3\nPrognose\, keine Zusage — 
- vor der Fahrt nochmal nachsehen.
-LOCATION:Erlach / Lüscherz\, Bielersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:47.045;7.095
-END:VEVENT
-BEGIN:VEVENT
-UID:vully-2026-10-02-12@seewind
-DTSTAMP:20260929T151129Z
-DTSTART:20261002T100000Z
-DTEND:20261002T120000Z
-SUMMARY:#2 Wingfoil Vully — 11 kn NO
-DESCRIPTION:Praz / Vully · Murtensee\n11 kn Mittelwind\, Böen 19 kn\, Ric
- htung NO\nFenster 12–14 Uhr (2 h)\, Modell ICON-CH2\nBewertung 20/100 
- — Wind 0\, Dauer 8\, Böen 9\, Nähe 3\nPrognose\, keine Zusage — vor 
- der Fahrt nochmal nachsehen.
-LOCATION:Praz / Vully\, Murtensee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:46.945;7.077
-END:VEVENT
 END:VCALENDAR
