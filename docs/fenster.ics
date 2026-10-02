@@ -8,37 +8,20 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:erlach-2026-10-02-11@seewind
-DTSTAMP:20261001T151017Z
-DTSTART:20261002T090000Z
-DTEND:20261002T110000Z
+UID:erlach-2026-10-02-10@seewind
+DTSTAMP:20261002T050540Z
+DTSTART:20261002T080000Z
+DTEND:20261002T120000Z
 SUMMARY:#1 Wingfoil Erlach — 12 kn NO
-DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 22 kn
- \, Richtung NO\nFenster 11–13 Uhr (2 h)\, Modell ICON-CH1\nBewertung 29/
- 100 — Wind 6\, Dauer 8\, Böen 7\, Nähe 8\nPrognose\, keine Zusage — 
- vor der Fahrt nochmal nachsehen.
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 21 kn
+ \, Richtung NO\nFenster 10–14 Uhr (4 h)\, Modell ICON-CH1\nBewertung 41/
+ 100 — Wind 6\, Dauer 17\, Böen 8\, Nähe 10\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
 LOCATION:Erlach / Lüscherz\, Bielersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
 GEO:47.045;7.095
-END:VEVENT
-BEGIN:VEVENT
-UID:yvonand-2026-10-02-11@seewind
-DTSTAMP:20261001T151017Z
-DTSTART:20261002T090000Z
-DTEND:20261002T120000Z
-SUMMARY:#2 Wingfoil Yvonand — 11 kn NO
-DESCRIPTION:Yvonand · Neuenburgersee\n11 kn Mittelwind\, Böen 20 kn\, Ric
- htung NO\nFenster 11–14 Uhr (3 h)\, Modell ICON-CH1\nBewertung 28/100 
- — Wind 0\, Dauer 13\, Böen 7\, Nähe 8\nPrognose\, keine Zusage — vor
-  der Fahrt nochmal nachsehen.
-LOCATION:Yvonand\, Neuenburgersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:46.8;6.74
 END:VEVENT
 END:VCALENDAR
