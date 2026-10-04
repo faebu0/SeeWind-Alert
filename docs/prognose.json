@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-03T20:00",
+ "stand": "2026-10-04T12:00",
  "kriterien": {
   "minWindKn": 11,
   "minGustKn": 16,
@@ -12,92 +12,38 @@
  "reihen": {
   "thun-gwatt": [
    {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 6,
-    "grad": 228,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 3,
-    "boe": 5,
-    "grad": 196,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 2,
-    "boe": 6,
-    "grad": 235,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 1,
-    "boe": 4,
-    "grad": 286,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 2,
-    "boe": 5,
-    "grad": 325,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 6,
-    "grad": 330,
-    "modell": "ch1"
-   },
-   {
     "zeit": "2026-10-04T12:00",
     "datum": "2026-10-04",
     "stunde": 12,
     "wind": 3,
-    "boe": 7,
-    "grad": 339,
+    "boe": 8,
+    "grad": 333,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T13:00",
     "datum": "2026-10-04",
     "stunde": 13,
-    "wind": 3,
-    "boe": 7,
-    "grad": 333,
+    "wind": 4,
+    "boe": 9,
+    "grad": 328,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T14:00",
     "datum": "2026-10-04",
     "stunde": 14,
-    "wind": 5,
+    "wind": 6,
     "boe": 12,
-    "grad": 316,
+    "grad": 325,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T15:00",
     "datum": "2026-10-04",
     "stunde": 15,
-    "wind": 7,
-    "boe": 14,
+    "wind": 8,
+    "boe": 16,
     "grad": 309,
     "modell": "ch1"
    },
@@ -106,7 +52,7 @@
     "datum": "2026-10-04",
     "stunde": 16,
     "wind": 7,
-    "boe": 14,
+    "boe": 15,
     "grad": 302,
     "modell": "ch1"
    },
@@ -114,9 +60,9 @@
     "zeit": "2026-10-04T17:00",
     "datum": "2026-10-04",
     "stunde": 17,
-    "wind": 6,
+    "wind": 5,
     "boe": 14,
-    "grad": 292,
+    "grad": 314,
     "modell": "ch1"
    },
    {
@@ -124,72 +70,72 @@
     "datum": "2026-10-04",
     "stunde": 18,
     "wind": 4,
-    "boe": 12,
-    "grad": 255,
+    "boe": 11,
+    "grad": 300,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T19:00",
     "datum": "2026-10-04",
     "stunde": 19,
-    "wind": 5,
-    "boe": 13,
-    "grad": 121,
+    "wind": 3,
+    "boe": 8,
+    "grad": 225,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T20:00",
     "datum": "2026-10-04",
     "stunde": 20,
-    "wind": 7,
-    "boe": 13,
-    "grad": 114,
+    "wind": 3,
+    "boe": 7,
+    "grad": 156,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T21:00",
     "datum": "2026-10-04",
     "stunde": 21,
-    "wind": 6,
-    "boe": 13,
-    "grad": 134,
+    "wind": 3,
+    "boe": 7,
+    "grad": 171,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T08:00",
     "datum": "2026-10-05",
     "stunde": 8,
-    "wind": 1,
-    "boe": 2,
-    "grad": 301,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 6,
+    "grad": 250,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T09:00",
     "datum": "2026-10-05",
     "stunde": 9,
-    "wind": 1,
-    "boe": 2,
-    "grad": 270,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 6,
+    "grad": 331,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T10:00",
     "datum": "2026-10-05",
     "stunde": 10,
-    "wind": 2,
+    "wind": 1,
     "boe": 4,
-    "grad": 307,
-    "modell": "ch2"
+    "grad": 333,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T11:00",
     "datum": "2026-10-05",
     "stunde": 11,
-    "wind": 2,
-    "boe": 5,
-    "grad": 315,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 4,
+    "grad": 72,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T12:00",
@@ -197,79 +143,79 @@
     "stunde": 12,
     "wind": 2,
     "boe": 5,
-    "grad": 319,
-    "modell": "ch2"
+    "grad": 360,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
     "datum": "2026-10-05",
     "stunde": 13,
-    "wind": 3,
-    "boe": 6,
-    "grad": 307,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 8,
+    "grad": 353,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
     "wind": 4,
-    "boe": 7,
-    "grad": 295,
-    "modell": "ch2"
+    "boe": 9,
+    "grad": 321,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T15:00",
     "datum": "2026-10-05",
     "stunde": 15,
-    "wind": 3,
-    "boe": 7,
-    "grad": 317,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 10,
+    "grad": 325,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T16:00",
     "datum": "2026-10-05",
     "stunde": 16,
-    "wind": 4,
-    "boe": 7,
-    "grad": 313,
-    "modell": "ch2"
+    "wind": 6,
+    "boe": 12,
+    "grad": 328,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T17:00",
     "datum": "2026-10-05",
     "stunde": 17,
-    "wind": 4,
-    "boe": 7,
-    "grad": 315,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 12,
+    "grad": 331,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
     "stunde": 18,
-    "wind": 3,
-    "boe": 8,
-    "grad": 315,
+    "wind": 4,
+    "boe": 9,
+    "grad": 295,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T19:00",
     "datum": "2026-10-05",
     "stunde": 19,
-    "wind": 1,
+    "wind": 2,
     "boe": 6,
-    "grad": 292,
+    "grad": 302,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T20:00",
     "datum": "2026-10-05",
     "stunde": 20,
-    "wind": 1,
-    "boe": 3,
-    "grad": 51,
+    "wind": 2,
+    "boe": 4,
+    "grad": 40,
     "modell": "ch2"
    },
    {
@@ -278,7 +224,7 @@
     "stunde": 21,
     "wind": 1,
     "boe": 3,
-    "grad": 59,
+    "grad": 45,
     "modell": "ch2"
    },
    {
@@ -287,7 +233,7 @@
     "stunde": 8,
     "wind": 1,
     "boe": 2,
-    "grad": 297,
+    "grad": 270,
     "modell": "ch2"
    },
    {
@@ -304,8 +250,8 @@
     "datum": "2026-10-06",
     "stunde": 10,
     "wind": 2,
-    "boe": 4,
-    "grad": 299,
+    "boe": 3,
+    "grad": 306,
     "modell": "ch2"
    },
    {
@@ -314,43 +260,43 @@
     "stunde": 11,
     "wind": 2,
     "boe": 4,
-    "grad": 311,
+    "grad": 319,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T12:00",
     "datum": "2026-10-06",
     "stunde": 12,
-    "wind": 2,
+    "wind": 3,
     "boe": 5,
-    "grad": 318,
+    "grad": 324,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T13:00",
     "datum": "2026-10-06",
     "stunde": 13,
-    "wind": 3,
-    "boe": 6,
-    "grad": 313,
+    "wind": 4,
+    "boe": 7,
+    "grad": 325,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T14:00",
     "datum": "2026-10-06",
     "stunde": 14,
-    "wind": 4,
-    "boe": 8,
-    "grad": 309,
+    "wind": 5,
+    "boe": 10,
+    "grad": 324,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T15:00",
     "datum": "2026-10-06",
     "stunde": 15,
-    "wind": 5,
-    "boe": 9,
-    "grad": 313,
+    "wind": 6,
+    "boe": 11,
+    "grad": 327,
     "modell": "ch2"
    },
    {
@@ -358,26 +304,26 @@
     "datum": "2026-10-06",
     "stunde": 16,
     "wind": 5,
-    "boe": 10,
-    "grad": 318,
+    "boe": 11,
+    "grad": 335,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T17:00",
     "datum": "2026-10-06",
     "stunde": 17,
-    "wind": 5,
-    "boe": 10,
-    "grad": 313,
+    "wind": 4,
+    "boe": 9,
+    "grad": 332,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T18:00",
     "datum": "2026-10-06",
     "stunde": 18,
-    "wind": 3,
-    "boe": 9,
-    "grad": 292,
+    "wind": 2,
+    "boe": 7,
+    "grad": 307,
     "modell": "ch2"
    },
    {
@@ -385,127 +331,199 @@
     "datum": "2026-10-06",
     "stunde": 19,
     "wind": 1,
-    "boe": 6,
-    "grad": 217,
+    "boe": 4,
+    "grad": 225,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T20:00",
     "datum": "2026-10-06",
     "stunde": 20,
-    "wind": 3,
+    "wind": 2,
     "boe": 4,
-    "grad": 81,
+    "grad": 90,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T21:00",
     "datum": "2026-10-06",
     "stunde": 21,
+    "wind": 1,
+    "boe": 3,
+    "grad": 68,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 1,
+    "boe": 3,
+    "grad": 360,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 2,
+    "boe": 4,
+    "grad": 284,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 1,
+    "boe": 4,
+    "grad": 292,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 2,
+    "boe": 4,
+    "grad": 297,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
     "wind": 3,
     "boe": 6,
-    "grad": 111,
+    "grad": 325,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 5,
+    "boe": 8,
+    "grad": 324,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 5,
+    "boe": 9,
+    "grad": 331,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 7,
+    "boe": 12,
+    "grad": 342,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 7,
+    "boe": 13,
+    "grad": 348,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 5,
+    "boe": 11,
+    "grad": 341,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 4,
+    "boe": 8,
+    "grad": 331,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 6,
+    "grad": 345,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 4,
+    "grad": 7,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 1,
+    "boe": 3,
+    "grad": 352,
     "modell": "ch2"
    }
   ],
   "spiez": [
    {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 5,
-    "grad": 241,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 4,
-    "boe": 7,
-    "grad": 191,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 3,
-    "boe": 7,
-    "grad": 205,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 2,
-    "boe": 6,
-    "grad": 259,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 3,
-    "boe": 5,
-    "grad": 309,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 7,
-    "grad": 325,
-    "modell": "ch1"
-   },
-   {
     "zeit": "2026-10-04T12:00",
     "datum": "2026-10-04",
     "stunde": 12,
     "wind": 3,
-    "boe": 7,
-    "grad": 351,
+    "boe": 9,
+    "grad": 324,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T13:00",
     "datum": "2026-10-04",
     "stunde": 13,
-    "wind": 2,
-    "boe": 6,
-    "grad": 5,
+    "wind": 3,
+    "boe": 7,
+    "grad": 343,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T14:00",
     "datum": "2026-10-04",
     "stunde": 14,
-    "wind": 3,
-    "boe": 7,
-    "grad": 340,
+    "wind": 5,
+    "boe": 11,
+    "grad": 319,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T15:00",
     "datum": "2026-10-04",
     "stunde": 15,
-    "wind": 7,
-    "boe": 13,
-    "grad": 309,
+    "wind": 8,
+    "boe": 15,
+    "grad": 307,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T16:00",
     "datum": "2026-10-04",
     "stunde": 16,
-    "wind": 6,
-    "boe": 13,
-    "grad": 297,
+    "wind": 7,
+    "boe": 15,
+    "grad": 305,
     "modell": "ch1"
    },
    {
@@ -513,26 +531,26 @@
     "datum": "2026-10-04",
     "stunde": 17,
     "wind": 5,
-    "boe": 13,
-    "grad": 279,
+    "boe": 14,
+    "grad": 300,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T18:00",
     "datum": "2026-10-04",
     "stunde": 18,
-    "wind": 3,
-    "boe": 10,
-    "grad": 208,
+    "wind": 4,
+    "boe": 9,
+    "grad": 273,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T19:00",
     "datum": "2026-10-04",
     "stunde": 19,
-    "wind": 4,
-    "boe": 13,
-    "grad": 164,
+    "wind": 3,
+    "boe": 7,
+    "grad": 180,
     "modell": "ch1"
    },
    {
@@ -540,27 +558,27 @@
     "datum": "2026-10-04",
     "stunde": 20,
     "wind": 4,
-    "boe": 10,
-    "grad": 143,
+    "boe": 8,
+    "grad": 167,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T21:00",
     "datum": "2026-10-04",
     "stunde": 21,
-    "wind": 5,
-    "boe": 9,
-    "grad": 171,
+    "wind": 4,
+    "boe": 7,
+    "grad": 205,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T08:00",
     "datum": "2026-10-05",
     "stunde": 8,
-    "wind": 4,
-    "boe": 8,
-    "grad": 209,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 7,
+    "grad": 220,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T09:00",
@@ -568,26 +586,26 @@
     "stunde": 9,
     "wind": 2,
     "boe": 7,
-    "grad": 214,
-    "modell": "ch2"
+    "grad": 275,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T10:00",
     "datum": "2026-10-05",
     "stunde": 10,
-    "wind": 1,
-    "boe": 4,
-    "grad": 326,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 5,
+    "grad": 311,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T11:00",
     "datum": "2026-10-05",
     "stunde": 11,
-    "wind": 2,
-    "boe": 5,
-    "grad": 328,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 4,
+    "grad": 53,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T12:00",
@@ -595,79 +613,79 @@
     "stunde": 12,
     "wind": 2,
     "boe": 5,
-    "grad": 343,
-    "modell": "ch2"
+    "grad": 360,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
     "datum": "2026-10-05",
     "stunde": 13,
-    "wind": 2,
-    "boe": 5,
-    "grad": 328,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 6,
+    "grad": 344,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
     "wind": 2,
-    "boe": 5,
-    "grad": 306,
-    "modell": "ch2"
+    "boe": 6,
+    "grad": 360,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T15:00",
     "datum": "2026-10-05",
     "stunde": 15,
-    "wind": 2,
-    "boe": 5,
-    "grad": 311,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 10,
+    "grad": 324,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T16:00",
     "datum": "2026-10-05",
     "stunde": 16,
-    "wind": 3,
-    "boe": 7,
-    "grad": 278,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 12,
+    "grad": 322,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T17:00",
     "datum": "2026-10-05",
     "stunde": 17,
-    "wind": 3,
-    "boe": 7,
-    "grad": 256,
-    "modell": "ch2"
+    "wind": 4,
+    "boe": 11,
+    "grad": 311,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
     "stunde": 18,
-    "wind": 3,
-    "boe": 7,
-    "grad": 216,
+    "wind": 4,
+    "boe": 9,
+    "grad": 236,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T19:00",
     "datum": "2026-10-05",
     "stunde": 19,
-    "wind": 4,
+    "wind": 3,
     "boe": 7,
-    "grad": 198,
+    "grad": 211,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T20:00",
     "datum": "2026-10-05",
     "stunde": 20,
-    "wind": 4,
+    "wind": 3,
     "boe": 7,
-    "grad": 193,
+    "grad": 191,
     "modell": "ch2"
    },
    {
@@ -676,7 +694,7 @@
     "stunde": 21,
     "wind": 4,
     "boe": 8,
-    "grad": 207,
+    "grad": 205,
     "modell": "ch2"
    },
    {
@@ -685,7 +703,7 @@
     "stunde": 8,
     "wind": 4,
     "boe": 9,
-    "grad": 203,
+    "grad": 201,
     "modell": "ch2"
    },
    {
@@ -721,43 +739,43 @@
     "stunde": 12,
     "wind": 2,
     "boe": 5,
-    "grad": 349,
+    "grad": 338,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T13:00",
     "datum": "2026-10-06",
     "stunde": 13,
-    "wind": 2,
+    "wind": 3,
     "boe": 6,
-    "grad": 340,
+    "grad": 324,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T14:00",
     "datum": "2026-10-06",
     "stunde": 14,
-    "wind": 3,
-    "boe": 6,
-    "grad": 318,
+    "wind": 4,
+    "boe": 9,
+    "grad": 309,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T15:00",
     "datum": "2026-10-06",
     "stunde": 15,
-    "wind": 3,
-    "boe": 8,
-    "grad": 298,
+    "wind": 5,
+    "boe": 11,
+    "grad": 310,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T16:00",
     "datum": "2026-10-06",
     "stunde": 16,
-    "wind": 3,
-    "boe": 8,
-    "grad": 280,
+    "wind": 5,
+    "boe": 11,
+    "grad": 312,
     "modell": "ch2"
    },
    {
@@ -765,8 +783,8 @@
     "datum": "2026-10-06",
     "stunde": 17,
     "wind": 4,
-    "boe": 8,
-    "grad": 264,
+    "boe": 10,
+    "grad": 295,
     "modell": "ch2"
    },
    {
@@ -775,7 +793,7 @@
     "stunde": 18,
     "wind": 3,
     "boe": 8,
-    "grad": 218,
+    "grad": 220,
     "modell": "ch2"
    },
    {
@@ -783,8 +801,8 @@
     "datum": "2026-10-06",
     "stunde": 19,
     "wind": 3,
-    "boe": 6,
-    "grad": 196,
+    "boe": 7,
+    "grad": 193,
     "modell": "ch2"
    },
    {
@@ -793,7 +811,7 @@
     "stunde": 20,
     "wind": 4,
     "boe": 8,
-    "grad": 203,
+    "grad": 205,
     "modell": "ch2"
    },
    {
@@ -804,70 +822,142 @@
     "boe": 10,
     "grad": 208,
     "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 4,
+    "boe": 9,
+    "grad": 197,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 4,
+    "boe": 9,
+    "grad": 204,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 1,
+    "boe": 8,
+    "grad": 225,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 1,
+    "boe": 5,
+    "grad": 51,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 2,
+    "boe": 5,
+    "grad": 360,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 4,
+    "boe": 8,
+    "grad": 322,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 4,
+    "boe": 8,
+    "grad": 317,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 5,
+    "boe": 11,
+    "grad": 315,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 5,
+    "boe": 11,
+    "grad": 303,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 4,
+    "boe": 10,
+    "grad": 273,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 3,
+    "boe": 7,
+    "grad": 254,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 7,
+    "grad": 211,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 5,
+    "grad": 214,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 1,
+    "boe": 3,
+    "grad": 231,
+    "modell": "ch2"
    }
   ],
   "neuhaus": [
    {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 3,
-    "boe": 7,
-    "grad": 48,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 3,
-    "boe": 5,
-    "grad": 40,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 1,
-    "boe": 2,
-    "grad": 74,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 2,
-    "boe": 3,
-    "grad": 234,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 2,
-    "boe": 7,
-    "grad": 232,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 4,
-    "boe": 8,
-    "grad": 236,
-    "modell": "ch1"
-   },
-   {
     "zeit": "2026-10-04T12:00",
     "datum": "2026-10-04",
     "stunde": 12,
-    "wind": 3,
-    "boe": 8,
-    "grad": 237,
+    "wind": 4,
+    "boe": 10,
+    "grad": 242,
     "modell": "ch1"
    },
    {
@@ -875,17 +965,17 @@
     "datum": "2026-10-04",
     "stunde": 13,
     "wind": 3,
-    "boe": 7,
-    "grad": 233,
+    "boe": 8,
+    "grad": 242,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T14:00",
     "datum": "2026-10-04",
     "stunde": 14,
-    "wind": 4,
+    "wind": 3,
     "boe": 8,
-    "grad": 234,
+    "grad": 227,
     "modell": "ch1"
    },
    {
@@ -894,25 +984,25 @@
     "stunde": 15,
     "wind": 4,
     "boe": 9,
-    "grad": 212,
+    "grad": 225,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T16:00",
     "datum": "2026-10-04",
     "stunde": 16,
-    "wind": 6,
-    "boe": 12,
-    "grad": 218,
+    "wind": 7,
+    "boe": 14,
+    "grad": 235,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T17:00",
     "datum": "2026-10-04",
     "stunde": 17,
-    "wind": 7,
-    "boe": 14,
-    "grad": 214,
+    "wind": 8,
+    "boe": 15,
+    "grad": 233,
     "modell": "ch1"
    },
    {
@@ -921,80 +1011,80 @@
     "stunde": 18,
     "wind": 5,
     "boe": 15,
-    "grad": 67,
+    "grad": 237,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T19:00",
     "datum": "2026-10-04",
     "stunde": 19,
-    "wind": 4,
-    "boe": 10,
-    "grad": 63,
+    "wind": 3,
+    "boe": 23,
+    "grad": 350,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T20:00",
     "datum": "2026-10-04",
     "stunde": 20,
-    "wind": 4,
-    "boe": 8,
-    "grad": 45,
+    "wind": 5,
+    "boe": 10,
+    "grad": 12,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T21:00",
     "datum": "2026-10-04",
     "stunde": 21,
-    "wind": 5,
-    "boe": 9,
-    "grad": 53,
+    "wind": 3,
+    "boe": 8,
+    "grad": 39,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T08:00",
     "datum": "2026-10-05",
     "stunde": 8,
-    "wind": 2,
-    "boe": 4,
-    "grad": 41,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 2,
+    "grad": 90,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T09:00",
     "datum": "2026-10-05",
     "stunde": 9,
     "wind": 1,
-    "boe": 3,
-    "grad": 360,
-    "modell": "ch2"
+    "boe": 1,
+    "grad": 225,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T10:00",
     "datum": "2026-10-05",
     "stunde": 10,
-    "wind": 1,
-    "boe": 2,
-    "grad": 180,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 8,
+    "grad": 253,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T11:00",
     "datum": "2026-10-05",
     "stunde": 11,
     "wind": 1,
-    "boe": 3,
-    "grad": 217,
-    "modell": "ch2"
+    "boe": 5,
+    "grad": 162,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T12:00",
     "datum": "2026-10-05",
     "stunde": 12,
-    "wind": 2,
-    "boe": 5,
-    "grad": 221,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 4,
+    "grad": 202,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
@@ -1002,115 +1092,115 @@
     "stunde": 13,
     "wind": 2,
     "boe": 5,
-    "grad": 217,
-    "modell": "ch2"
+    "grad": 221,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
-    "wind": 4,
-    "boe": 8,
-    "grad": 223,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 7,
+    "grad": 234,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T15:00",
     "datum": "2026-10-05",
     "stunde": 15,
-    "wind": 4,
-    "boe": 9,
-    "grad": 213,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 7,
+    "grad": 227,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T16:00",
     "datum": "2026-10-05",
     "stunde": 16,
-    "wind": 3,
-    "boe": 9,
-    "grad": 204,
-    "modell": "ch2"
+    "wind": 6,
+    "boe": 12,
+    "grad": 207,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T17:00",
     "datum": "2026-10-05",
     "stunde": 17,
-    "wind": 4,
-    "boe": 8,
-    "grad": 204,
-    "modell": "ch2"
+    "wind": 7,
+    "boe": 12,
+    "grad": 219,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
     "stunde": 18,
-    "wind": 3,
-    "boe": 8,
-    "grad": 184,
+    "wind": 5,
+    "boe": 11,
+    "grad": 217,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T19:00",
     "datum": "2026-10-05",
     "stunde": 19,
-    "wind": 1,
-    "boe": 5,
-    "grad": 101,
+    "wind": 3,
+    "boe": 10,
+    "grad": 210,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T20:00",
     "datum": "2026-10-05",
     "stunde": 20,
-    "wind": 4,
+    "wind": 3,
     "boe": 6,
-    "grad": 27,
+    "grad": 40,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T21:00",
     "datum": "2026-10-05",
     "stunde": 21,
-    "wind": 4,
-    "boe": 7,
-    "grad": 30,
+    "wind": 3,
+    "boe": 6,
+    "grad": 36,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T08:00",
     "datum": "2026-10-06",
     "stunde": 8,
-    "wind": 4,
-    "boe": 7,
-    "grad": 53,
+    "wind": 3,
+    "boe": 6,
+    "grad": 55,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T09:00",
     "datum": "2026-10-06",
     "stunde": 9,
-    "wind": 3,
-    "boe": 7,
-    "grad": 62,
+    "wind": 2,
+    "boe": 5,
+    "grad": 59,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T10:00",
     "datum": "2026-10-06",
     "stunde": 10,
-    "wind": 3,
+    "wind": 2,
     "boe": 5,
-    "grad": 108,
+    "grad": 119,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T11:00",
     "datum": "2026-10-06",
     "stunde": 11,
-    "wind": 2,
-    "boe": 6,
-    "grad": 114,
+    "wind": 1,
+    "boe": 5,
+    "grad": 153,
     "modell": "ch2"
    },
    {
@@ -1119,70 +1209,70 @@
     "stunde": 12,
     "wind": 2,
     "boe": 6,
-    "grad": 198,
+    "grad": 228,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T13:00",
     "datum": "2026-10-06",
     "stunde": 13,
-    "wind": 3,
-    "boe": 7,
-    "grad": 230,
+    "wind": 4,
+    "boe": 9,
+    "grad": 227,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T14:00",
     "datum": "2026-10-06",
     "stunde": 14,
-    "wind": 4,
-    "boe": 9,
-    "grad": 225,
+    "wind": 6,
+    "boe": 13,
+    "grad": 228,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T15:00",
     "datum": "2026-10-06",
     "stunde": 15,
-    "wind": 5,
-    "boe": 10,
-    "grad": 220,
+    "wind": 7,
+    "boe": 14,
+    "grad": 219,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T16:00",
     "datum": "2026-10-06",
     "stunde": 16,
-    "wind": 4,
-    "boe": 10,
-    "grad": 212,
+    "wind": 6,
+    "boe": 14,
+    "grad": 215,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T17:00",
     "datum": "2026-10-06",
     "stunde": 17,
-    "wind": 4,
-    "boe": 9,
-    "grad": 214,
+    "wind": 6,
+    "boe": 13,
+    "grad": 217,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T18:00",
     "datum": "2026-10-06",
     "stunde": 18,
-    "wind": 3,
-    "boe": 9,
-    "grad": 203,
+    "wind": 4,
+    "boe": 12,
+    "grad": 209,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T19:00",
     "datum": "2026-10-06",
     "stunde": 19,
-    "wind": 1,
-    "boe": 6,
-    "grad": 59,
+    "wind": 0,
+    "boe": 9,
+    "grad": 45,
     "modell": "ch2"
    },
    {
@@ -1190,8 +1280,8 @@
     "datum": "2026-10-06",
     "stunde": 20,
     "wind": 3,
-    "boe": 8,
-    "grad": 33,
+    "boe": 7,
+    "grad": 43,
     "modell": "ch2"
    },
    {
@@ -1199,118 +1289,190 @@
     "datum": "2026-10-06",
     "stunde": 21,
     "wind": 4,
-    "boe": 7,
-    "grad": 33,
+    "boe": 8,
+    "grad": 35,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 5,
+    "boe": 9,
+    "grad": 36,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 4,
+    "boe": 10,
+    "grad": 62,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 4,
+    "boe": 9,
+    "grad": 99,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 3,
+    "boe": 8,
+    "grad": 97,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 4,
+    "boe": 9,
+    "grad": 107,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 3,
+    "boe": 9,
+    "grad": 228,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 4,
+    "boe": 10,
+    "grad": 238,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 7,
+    "boe": 15,
+    "grad": 237,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 9,
+    "boe": 17,
+    "grad": 235,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 7,
+    "boe": 17,
+    "grad": 236,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 6,
+    "boe": 15,
+    "grad": 241,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 3,
+    "boe": 11,
+    "grad": 258,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 5,
+    "grad": 61,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 3,
+    "boe": 6,
+    "grad": 30,
     "modell": "ch2"
    }
   ],
   "boenigen": [
    {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 1,
-    "boe": 2,
-    "grad": 360,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 1,
-    "boe": 1,
-    "grad": 243,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 1,
-    "boe": 3,
-    "grad": 72,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 1,
-    "boe": 2,
-    "grad": 236,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 3,
-    "boe": 5,
-    "grad": 215,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 6,
-    "grad": 212,
-    "modell": "ch1"
-   },
-   {
     "zeit": "2026-10-04T12:00",
     "datum": "2026-10-04",
     "stunde": 12,
-    "wind": 4,
-    "boe": 7,
-    "grad": 227,
+    "wind": 5,
+    "boe": 9,
+    "grad": 235,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T13:00",
     "datum": "2026-10-04",
     "stunde": 13,
-    "wind": 3,
-    "boe": 7,
-    "grad": 212,
+    "wind": 4,
+    "boe": 9,
+    "grad": 225,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T14:00",
     "datum": "2026-10-04",
     "stunde": 14,
-    "wind": 3,
-    "boe": 6,
-    "grad": 227,
+    "wind": 4,
+    "boe": 8,
+    "grad": 232,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T15:00",
     "datum": "2026-10-04",
     "stunde": 15,
-    "wind": 6,
+    "wind": 5,
     "boe": 10,
-    "grad": 231,
+    "grad": 236,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T16:00",
     "datum": "2026-10-04",
     "stunde": 16,
-    "wind": 5,
+    "wind": 6,
     "boe": 10,
-    "grad": 238,
+    "grad": 236,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T17:00",
     "datum": "2026-10-04",
     "stunde": 17,
-    "wind": 9,
-    "boe": 15,
-    "grad": 335,
+    "wind": 6,
+    "boe": 11,
+    "grad": 234,
     "modell": "ch1"
    },
    {
@@ -1318,8 +1480,8 @@
     "datum": "2026-10-04",
     "stunde": 18,
     "wind": 3,
-    "boe": 14,
-    "grad": 344,
+    "boe": 9,
+    "grad": 240,
     "modell": "ch1"
    },
    {
@@ -1328,7 +1490,7 @@
     "stunde": 19,
     "wind": 3,
     "boe": 5,
-    "grad": 58,
+    "grad": 231,
     "modell": "ch1"
    },
    {
@@ -1337,44 +1499,44 @@
     "stunde": 20,
     "wind": 1,
     "boe": 5,
-    "grad": 270,
+    "grad": 104,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T21:00",
     "datum": "2026-10-04",
     "stunde": 21,
-    "wind": 0,
-    "boe": 2,
-    "grad": 117,
+    "wind": 1,
+    "boe": 1,
+    "grad": 270,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T08:00",
     "datum": "2026-10-05",
     "stunde": 8,
-    "wind": 2,
-    "boe": 2,
-    "grad": 315,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 4,
+    "grad": 124,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T09:00",
     "datum": "2026-10-05",
     "stunde": 9,
-    "wind": 1,
-    "boe": 2,
-    "grad": 360,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 3,
+    "grad": 234,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T10:00",
     "datum": "2026-10-05",
     "stunde": 10,
-    "wind": 1,
-    "boe": 2,
-    "grad": 162,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 5,
+    "grad": 210,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T11:00",
@@ -1382,70 +1544,70 @@
     "stunde": 11,
     "wind": 1,
     "boe": 3,
-    "grad": 146,
-    "modell": "ch2"
+    "grad": 99,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T12:00",
     "datum": "2026-10-05",
     "stunde": 12,
-    "wind": 0,
-    "boe": 2,
-    "grad": 153,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 4,
+    "grad": 82,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
     "datum": "2026-10-05",
     "stunde": 13,
     "wind": 0,
-    "boe": 2,
-    "grad": 270,
-    "modell": "ch2"
+    "boe": 5,
+    "grad": 153,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
     "wind": 3,
-    "boe": 6,
-    "grad": 234,
-    "modell": "ch2"
+    "boe": 5,
+    "grad": 240,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T15:00",
     "datum": "2026-10-05",
     "stunde": 15,
-    "wind": 3,
-    "boe": 7,
-    "grad": 228,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 9,
+    "grad": 239,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T16:00",
     "datum": "2026-10-05",
     "stunde": 16,
-    "wind": 3,
-    "boe": 6,
+    "wind": 2,
+    "boe": 9,
     "grad": 228,
-    "modell": "ch2"
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T17:00",
     "datum": "2026-10-05",
     "stunde": 17,
     "wind": 2,
-    "boe": 6,
-    "grad": 222,
-    "modell": "ch2"
+    "boe": 4,
+    "grad": 95,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
     "stunde": 18,
-    "wind": 1,
-    "boe": 4,
-    "grad": 169,
+    "wind": 2,
+    "boe": 5,
+    "grad": 203,
     "modell": "ch2"
    },
    {
@@ -1453,35 +1615,35 @@
     "datum": "2026-10-05",
     "stunde": 19,
     "wind": 2,
-    "boe": 3,
-    "grad": 146,
+    "boe": 2,
+    "grad": 162,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T20:00",
     "datum": "2026-10-05",
     "stunde": 20,
-    "wind": 2,
+    "wind": 1,
     "boe": 3,
-    "grad": 191,
+    "grad": 214,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T21:00",
     "datum": "2026-10-05",
     "stunde": 21,
-    "wind": 1,
-    "boe": 3,
-    "grad": 180,
+    "wind": 2,
+    "boe": 2,
+    "grad": 157,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T08:00",
     "datum": "2026-10-06",
     "stunde": 8,
-    "wind": 3,
+    "wind": 2,
     "boe": 4,
-    "grad": 315,
+    "grad": 297,
     "modell": "ch2"
    },
    {
@@ -1489,25 +1651,25 @@
     "datum": "2026-10-06",
     "stunde": 9,
     "wind": 1,
-    "boe": 4,
-    "grad": 243,
+    "boe": 3,
+    "grad": 261,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T10:00",
     "datum": "2026-10-06",
     "stunde": 10,
-    "wind": 1,
-    "boe": 3,
-    "grad": 149,
+    "wind": 0,
+    "boe": 2,
+    "grad": 180,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T11:00",
     "datum": "2026-10-06",
     "stunde": 11,
-    "wind": 2,
-    "boe": 4,
+    "wind": 1,
+    "boe": 2,
     "grad": 90,
     "modell": "ch2"
    },
@@ -1516,35 +1678,35 @@
     "datum": "2026-10-06",
     "stunde": 12,
     "wind": 1,
-    "boe": 4,
-    "grad": 121,
+    "boe": 3,
+    "grad": 180,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T13:00",
     "datum": "2026-10-06",
     "stunde": 13,
-    "wind": 1,
-    "boe": 4,
-    "grad": 180,
+    "wind": 3,
+    "boe": 6,
+    "grad": 234,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T14:00",
     "datum": "2026-10-06",
     "stunde": 14,
-    "wind": 3,
-    "boe": 6,
-    "grad": 243,
+    "wind": 5,
+    "boe": 9,
+    "grad": 245,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T15:00",
     "datum": "2026-10-06",
     "stunde": 15,
-    "wind": 3,
-    "boe": 6,
-    "grad": 252,
+    "wind": 4,
+    "boe": 9,
+    "grad": 233,
     "modell": "ch2"
    },
    {
@@ -1552,26 +1714,26 @@
     "datum": "2026-10-06",
     "stunde": 16,
     "wind": 3,
-    "boe": 6,
-    "grad": 245,
+    "boe": 8,
+    "grad": 234,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T17:00",
     "datum": "2026-10-06",
     "stunde": 17,
-    "wind": 2,
-    "boe": 5,
-    "grad": 229,
+    "wind": 3,
+    "boe": 6,
+    "grad": 219,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T18:00",
     "datum": "2026-10-06",
     "stunde": 18,
-    "wind": 0,
-    "boe": 4,
-    "grad": 153,
+    "wind": 2,
+    "boe": 5,
+    "grad": 187,
     "modell": "ch2"
    },
    {
@@ -1580,16 +1742,16 @@
     "stunde": 19,
     "wind": 2,
     "boe": 3,
-    "grad": 131,
+    "grad": 153,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T20:00",
     "datum": "2026-10-06",
     "stunde": 20,
-    "wind": 1,
-    "boe": 2,
-    "grad": 214,
+    "wind": 2,
+    "boe": 3,
+    "grad": 180,
     "modell": "ch2"
    },
    {
@@ -1597,72 +1759,144 @@
     "datum": "2026-10-06",
     "stunde": 21,
     "wind": 1,
-    "boe": 1,
-    "grad": 252,
+    "boe": 2,
+    "grad": 169,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 2,
+    "boe": 3,
+    "grad": 207,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 3,
+    "boe": 4,
+    "grad": 21,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 2,
+    "boe": 4,
+    "grad": 68,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 1,
+    "boe": 5,
+    "grad": 74,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 2,
+    "boe": 5,
+    "grad": 85,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 2,
+    "boe": 5,
+    "grad": 135,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 3,
+    "boe": 7,
+    "grad": 254,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 5,
+    "boe": 10,
+    "grad": 244,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 5,
+    "boe": 10,
+    "grad": 225,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 3,
+    "boe": 9,
+    "grad": 239,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 2,
+    "boe": 7,
+    "grad": 207,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 1,
+    "boe": 4,
+    "grad": 189,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 2,
+    "grad": 203,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 2,
+    "boe": 4,
+    "grad": 360,
     "modell": "ch2"
    }
   ],
   "ipsach": [
    {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 5,
-    "grad": 5,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 2,
-    "boe": 5,
-    "grad": 75,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 3,
-    "boe": 6,
-    "grad": 82,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 3,
-    "boe": 6,
-    "grad": 79,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 3,
-    "boe": 7,
-    "grad": 78,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 7,
-    "grad": 70,
-    "modell": "ch1"
-   },
-   {
     "zeit": "2026-10-04T12:00",
     "datum": "2026-10-04",
     "stunde": 12,
     "wind": 3,
-    "boe": 7,
+    "boe": 6,
     "grad": 69,
     "modell": "ch1"
    },
@@ -1671,26 +1905,26 @@
     "datum": "2026-10-04",
     "stunde": 13,
     "wind": 3,
-    "boe": 8,
-    "grad": 65,
+    "boe": 7,
+    "grad": 58,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T14:00",
     "datum": "2026-10-04",
     "stunde": 14,
-    "wind": 2,
-    "boe": 6,
-    "grad": 77,
+    "wind": 3,
+    "boe": 8,
+    "grad": 72,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T15:00",
     "datum": "2026-10-04",
     "stunde": 15,
-    "wind": 2,
-    "boe": 5,
-    "grad": 68,
+    "wind": 0,
+    "boe": 6,
+    "grad": 63,
     "modell": "ch1"
    },
    {
@@ -1698,26 +1932,26 @@
     "datum": "2026-10-04",
     "stunde": 16,
     "wind": 2,
-    "boe": 6,
-    "grad": 66,
+    "boe": 5,
+    "grad": 229,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T17:00",
     "datum": "2026-10-04",
     "stunde": 17,
-    "wind": 3,
+    "wind": 1,
     "boe": 5,
-    "grad": 94,
+    "grad": 256,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T18:00",
     "datum": "2026-10-04",
     "stunde": 18,
-    "wind": 3,
-    "boe": 8,
-    "grad": 100,
+    "wind": 1,
+    "boe": 3,
+    "grad": 11,
     "modell": "ch1"
    },
    {
@@ -1725,8 +1959,8 @@
     "datum": "2026-10-04",
     "stunde": 19,
     "wind": 2,
-    "boe": 7,
-    "grad": 360,
+    "boe": 4,
+    "grad": 328,
     "modell": "ch1"
    },
    {
@@ -1735,7 +1969,7 @@
     "stunde": 20,
     "wind": 2,
     "boe": 4,
-    "grad": 30,
+    "grad": 21,
     "modell": "ch1"
    },
    {
@@ -1743,116 +1977,116 @@
     "datum": "2026-10-04",
     "stunde": 21,
     "wind": 2,
-    "boe": 3,
-    "grad": 108,
+    "boe": 4,
+    "grad": 121,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T08:00",
     "datum": "2026-10-05",
     "stunde": 8,
-    "wind": 1,
-    "boe": 1,
-    "grad": 127,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 5,
+    "grad": 80,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T09:00",
     "datum": "2026-10-05",
     "stunde": 9,
     "wind": 1,
-    "boe": 2,
-    "grad": 99,
-    "modell": "ch2"
+    "boe": 5,
+    "grad": 124,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T10:00",
     "datum": "2026-10-05",
     "stunde": 10,
-    "wind": 1,
-    "boe": 3,
-    "grad": 106,
-    "modell": "ch2"
+    "wind": 0,
+    "boe": 2,
+    "grad": 180,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T11:00",
     "datum": "2026-10-05",
     "stunde": 11,
     "wind": 1,
-    "boe": 3,
-    "grad": 135,
-    "modell": "ch2"
+    "boe": 4,
+    "grad": 79,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T12:00",
     "datum": "2026-10-05",
     "stunde": 12,
-    "wind": 1,
-    "boe": 4,
-    "grad": 162,
-    "modell": "ch2"
+    "wind": 2,
+    "boe": 6,
+    "grad": 63,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
     "datum": "2026-10-05",
     "stunde": 13,
-    "wind": 1,
-    "boe": 4,
-    "grad": 162,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 7,
+    "grad": 82,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
-    "wind": 2,
-    "boe": 5,
-    "grad": 209,
-    "modell": "ch2"
+    "wind": 0,
+    "boe": 6,
+    "grad": 117,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T15:00",
     "datum": "2026-10-05",
     "stunde": 15,
     "wind": 2,
-    "boe": 6,
-    "grad": 209,
-    "modell": "ch2"
+    "boe": 5,
+    "grad": 246,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T16:00",
     "datum": "2026-10-05",
     "stunde": 16,
-    "wind": 3,
+    "wind": 2,
     "boe": 6,
-    "grad": 228,
-    "modell": "ch2"
+    "grad": 261,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T17:00",
     "datum": "2026-10-05",
     "stunde": 17,
-    "wind": 1,
+    "wind": 2,
     "boe": 6,
-    "grad": 164,
-    "modell": "ch2"
+    "grad": 248,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
     "stunde": 18,
     "wind": 3,
-    "boe": 5,
-    "grad": 110,
+    "boe": 6,
+    "grad": 86,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T19:00",
     "datum": "2026-10-05",
     "stunde": 19,
-    "wind": 4,
-    "boe": 7,
-    "grad": 349,
+    "wind": 2,
+    "boe": 5,
+    "grad": 331,
     "modell": "ch2"
    },
    {
@@ -1861,52 +2095,52 @@
     "stunde": 20,
     "wind": 4,
     "boe": 7,
-    "grad": 352,
+    "grad": 346,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T21:00",
     "datum": "2026-10-05",
     "stunde": 21,
-    "wind": 3,
+    "wind": 4,
     "boe": 7,
-    "grad": 3,
+    "grad": 354,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T08:00",
     "datum": "2026-10-06",
     "stunde": 8,
-    "wind": 2,
-    "boe": 3,
-    "grad": 111,
+    "wind": 1,
+    "boe": 2,
+    "grad": 124,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T09:00",
     "datum": "2026-10-06",
     "stunde": 9,
-    "wind": 2,
+    "wind": 1,
     "boe": 3,
-    "grad": 104,
+    "grad": 90,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T10:00",
     "datum": "2026-10-06",
     "stunde": 10,
-    "wind": 1,
+    "wind": 2,
     "boe": 4,
-    "grad": 82,
+    "grad": 97,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T11:00",
     "datum": "2026-10-06",
     "stunde": 11,
-    "wind": 2,
-    "boe": 5,
-    "grad": 96,
+    "wind": 1,
+    "boe": 4,
+    "grad": 82,
     "modell": "ch2"
    },
    {
@@ -1914,8 +2148,8 @@
     "datum": "2026-10-06",
     "stunde": 12,
     "wind": 1,
-    "boe": 5,
-    "grad": 112,
+    "boe": 4,
+    "grad": 135,
     "modell": "ch2"
    },
    {
@@ -1924,7 +2158,7 @@
     "stunde": 13,
     "wind": 1,
     "boe": 4,
-    "grad": 172,
+    "grad": 180,
     "modell": "ch2"
    },
    {
@@ -1933,61 +2167,61 @@
     "stunde": 14,
     "wind": 2,
     "boe": 5,
-    "grad": 207,
+    "grad": 209,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T15:00",
     "datum": "2026-10-06",
     "stunde": 15,
+    "wind": 3,
+    "boe": 6,
+    "grad": 225,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T16:00",
+    "datum": "2026-10-06",
+    "stunde": 16,
+    "wind": 3,
+    "boe": 6,
+    "grad": 230,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T17:00",
+    "datum": "2026-10-06",
+    "stunde": 17,
     "wind": 3,
     "boe": 6,
     "grad": 231,
     "modell": "ch2"
    },
    {
-    "zeit": "2026-10-06T16:00",
-    "datum": "2026-10-06",
-    "stunde": 16,
-    "wind": 2,
-    "boe": 6,
-    "grad": 236,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T17:00",
-    "datum": "2026-10-06",
-    "stunde": 17,
-    "wind": 2,
-    "boe": 5,
-    "grad": 243,
-    "modell": "ch2"
-   },
-   {
     "zeit": "2026-10-06T18:00",
     "datum": "2026-10-06",
     "stunde": 18,
-    "wind": 2,
-    "boe": 4,
-    "grad": 284,
+    "wind": 1,
+    "boe": 5,
+    "grad": 261,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T19:00",
     "datum": "2026-10-06",
     "stunde": 19,
-    "wind": 3,
-    "boe": 4,
-    "grad": 333,
+    "wind": 2,
+    "boe": 3,
+    "grad": 342,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T20:00",
     "datum": "2026-10-06",
     "stunde": 20,
-    "wind": 3,
-    "boe": 5,
-    "grad": 8,
+    "wind": 4,
+    "boe": 6,
+    "grad": 347,
     "modell": "ch2"
    },
    {
@@ -1995,109 +2229,181 @@
     "datum": "2026-10-06",
     "stunde": 21,
     "wind": 3,
+    "boe": 6,
+    "grad": 356,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 2,
+    "boe": 3,
+    "grad": 127,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 2,
     "boe": 5,
-    "grad": 360,
+    "grad": 125,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 1,
+    "boe": 4,
+    "grad": 79,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 0,
+    "boe": 4,
+    "grad": 207,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 1,
+    "boe": 3,
+    "grad": 236,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 2,
+    "boe": 4,
+    "grad": 209,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 4,
+    "boe": 8,
+    "grad": 219,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 5,
+    "boe": 9,
+    "grad": 209,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 6,
+    "boe": 12,
+    "grad": 211,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 5,
+    "boe": 11,
+    "grad": 208,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 4,
+    "boe": 9,
+    "grad": 205,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 3,
+    "boe": 8,
+    "grad": 208,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 6,
+    "grad": 189,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 2,
+    "boe": 4,
+    "grad": 165,
     "modell": "ch2"
    }
   ],
   "erlach": [
    {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 4,
-    "grad": 276,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 1,
-    "boe": 4,
-    "grad": 39,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 2,
-    "boe": 5,
-    "grad": 122,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 2,
-    "boe": 5,
-    "grad": 101,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 4,
-    "boe": 8,
-    "grad": 61,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 2,
-    "boe": 9,
-    "grad": 55,
-    "modell": "ch1"
-   },
-   {
     "zeit": "2026-10-04T12:00",
     "datum": "2026-10-04",
     "stunde": 12,
     "wind": 3,
-    "boe": 6,
-    "grad": 45,
+    "boe": 7,
+    "grad": 48,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T13:00",
     "datum": "2026-10-04",
     "stunde": 13,
-    "wind": 1,
+    "wind": 2,
     "boe": 7,
-    "grad": 45,
+    "grad": 35,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T14:00",
     "datum": "2026-10-04",
     "stunde": 14,
-    "wind": 3,
-    "boe": 7,
-    "grad": 48,
+    "wind": 1,
+    "boe": 6,
+    "grad": 18,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T15:00",
     "datum": "2026-10-04",
     "stunde": 15,
-    "wind": 2,
-    "boe": 6,
-    "grad": 48,
+    "wind": 1,
+    "boe": 5,
+    "grad": 76,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T16:00",
     "datum": "2026-10-04",
     "stunde": 16,
-    "wind": 2,
-    "boe": 5,
-    "grad": 21,
+    "wind": 1,
+    "boe": 3,
+    "grad": 309,
     "modell": "ch1"
    },
    {
@@ -2105,966 +2411,170 @@
     "datum": "2026-10-04",
     "stunde": 17,
     "wind": 1,
-    "boe": 4,
-    "grad": 352,
+    "boe": 3,
+    "grad": 27,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T18:00",
     "datum": "2026-10-04",
     "stunde": 18,
-    "wind": 1,
-    "boe": 5,
-    "grad": 194,
+    "wind": 0,
+    "boe": 3,
+    "grad": 333,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T19:00",
     "datum": "2026-10-04",
     "stunde": 19,
-    "wind": 2,
+    "wind": 0,
     "boe": 3,
-    "grad": 276,
+    "grad": 333,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T20:00",
     "datum": "2026-10-04",
     "stunde": 20,
-    "wind": 1,
+    "wind": 2,
     "boe": 4,
-    "grad": 270,
+    "grad": 243,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-04T21:00",
     "datum": "2026-10-04",
     "stunde": 21,
-    "wind": 0,
-    "boe": 2,
-    "grad": 90,
+    "wind": 2,
+    "boe": 4,
+    "grad": 203,
     "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T08:00",
     "datum": "2026-10-05",
     "stunde": 8,
-    "wind": 2,
-    "boe": 4,
-    "grad": 138,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 5,
+    "grad": 270,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T09:00",
     "datum": "2026-10-05",
     "stunde": 9,
     "wind": 2,
-    "boe": 4,
-    "grad": 151,
-    "modell": "ch2"
+    "boe": 3,
+    "grad": 230,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T10:00",
     "datum": "2026-10-05",
     "stunde": 10,
-    "wind": 2,
-    "boe": 3,
-    "grad": 76,
-    "modell": "ch2"
+    "wind": 1,
+    "boe": 4,
+    "grad": 256,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T11:00",
     "datum": "2026-10-05",
     "stunde": 11,
     "wind": 2,
-    "boe": 3,
-    "grad": 60,
-    "modell": "ch2"
+    "boe": 4,
+    "grad": 54,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T12:00",
     "datum": "2026-10-05",
     "stunde": 12,
-    "wind": 1,
-    "boe": 4,
-    "grad": 45,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 7,
+    "grad": 59,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
     "datum": "2026-10-05",
     "stunde": 13,
     "wind": 2,
-    "boe": 4,
-    "grad": 45,
-    "modell": "ch2"
+    "boe": 7,
+    "grad": 49,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
     "wind": 2,
-    "boe": 4,
-    "grad": 7,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T15:00",
-    "datum": "2026-10-05",
-    "stunde": 15,
-    "wind": 1,
-    "boe": 4,
-    "grad": 333,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T16:00",
-    "datum": "2026-10-05",
-    "stunde": 16,
-    "wind": 1,
-    "boe": 3,
-    "grad": 9,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T17:00",
-    "datum": "2026-10-05",
-    "stunde": 17,
-    "wind": 1,
-    "boe": 3,
-    "grad": 329,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T18:00",
-    "datum": "2026-10-05",
-    "stunde": 18,
-    "wind": 1,
-    "boe": 3,
-    "grad": 344,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T19:00",
-    "datum": "2026-10-05",
-    "stunde": 19,
-    "wind": 2,
-    "boe": 2,
-    "grad": 50,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T20:00",
-    "datum": "2026-10-05",
-    "stunde": 20,
-    "wind": 3,
-    "boe": 5,
-    "grad": 74,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T21:00",
-    "datum": "2026-10-05",
-    "stunde": 21,
-    "wind": 3,
-    "boe": 5,
-    "grad": 94,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T08:00",
-    "datum": "2026-10-06",
-    "stunde": 8,
-    "wind": 3,
-    "boe": 4,
-    "grad": 141,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T09:00",
-    "datum": "2026-10-06",
-    "stunde": 9,
-    "wind": 2,
-    "boe": 4,
-    "grad": 135,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T10:00",
-    "datum": "2026-10-06",
-    "stunde": 10,
-    "wind": 2,
-    "boe": 4,
-    "grad": 72,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T11:00",
-    "datum": "2026-10-06",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 5,
-    "grad": 90,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T12:00",
-    "datum": "2026-10-06",
-    "stunde": 12,
-    "wind": 2,
-    "boe": 5,
-    "grad": 35,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T13:00",
-    "datum": "2026-10-06",
-    "stunde": 13,
-    "wind": 1,
-    "boe": 5,
-    "grad": 68,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T14:00",
-    "datum": "2026-10-06",
-    "stunde": 14,
-    "wind": 1,
-    "boe": 3,
-    "grad": 9,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T15:00",
-    "datum": "2026-10-06",
-    "stunde": 15,
-    "wind": 2,
-    "boe": 4,
-    "grad": 337,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T16:00",
-    "datum": "2026-10-06",
-    "stunde": 16,
-    "wind": 2,
-    "boe": 3,
-    "grad": 270,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T17:00",
-    "datum": "2026-10-06",
-    "stunde": 17,
-    "wind": 2,
-    "boe": 3,
-    "grad": 276,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T18:00",
-    "datum": "2026-10-06",
-    "stunde": 18,
-    "wind": 1,
-    "boe": 4,
-    "grad": 315,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T19:00",
-    "datum": "2026-10-06",
-    "stunde": 19,
-    "wind": 2,
-    "boe": 2,
-    "grad": 23,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T20:00",
-    "datum": "2026-10-06",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 3,
-    "grad": 310,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T21:00",
-    "datum": "2026-10-06",
-    "stunde": 21,
-    "wind": 0,
-    "boe": 2,
-    "grad": 225,
-    "modell": "ch2"
-   }
-  ],
-  "estavayer": [
-   {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 3,
-    "grad": 157,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 1,
-    "boe": 4,
-    "grad": 207,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 4,
-    "boe": 6,
-    "grad": 133,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 5,
-    "boe": 8,
-    "grad": 124,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 3,
     "boe": 7,
-    "grad": 108,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 5,
-    "grad": 43,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T12:00",
-    "datum": "2026-10-04",
-    "stunde": 12,
-    "wind": 3,
-    "boe": 6,
     "grad": 10,
     "modell": "ch1"
    },
    {
-    "zeit": "2026-10-04T13:00",
-    "datum": "2026-10-04",
-    "stunde": 13,
-    "wind": 3,
-    "boe": 7,
-    "grad": 4,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T14:00",
-    "datum": "2026-10-04",
-    "stunde": 14,
-    "wind": 3,
-    "boe": 8,
-    "grad": 17,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T15:00",
-    "datum": "2026-10-04",
+    "zeit": "2026-10-05T15:00",
+    "datum": "2026-10-05",
     "stunde": 15,
-    "wind": 3,
-    "boe": 6,
-    "grad": 350,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T16:00",
-    "datum": "2026-10-04",
-    "stunde": 16,
-    "wind": 3,
-    "boe": 6,
-    "grad": 343,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T17:00",
-    "datum": "2026-10-04",
-    "stunde": 17,
     "wind": 2,
     "boe": 5,
-    "grad": 345,
+    "grad": 32,
     "modell": "ch1"
    },
    {
-    "zeit": "2026-10-04T18:00",
-    "datum": "2026-10-04",
-    "stunde": 18,
+    "zeit": "2026-10-05T16:00",
+    "datum": "2026-10-05",
+    "stunde": 16,
+    "wind": 2,
+    "boe": 5,
+    "grad": 342,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T17:00",
+    "datum": "2026-10-05",
+    "stunde": 17,
     "wind": 1,
     "boe": 5,
-    "grad": 360,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T19:00",
-    "datum": "2026-10-04",
-    "stunde": 19,
-    "wind": 1,
-    "boe": 2,
     "grad": 45,
     "modell": "ch1"
    },
    {
-    "zeit": "2026-10-04T20:00",
-    "datum": "2026-10-04",
-    "stunde": 20,
-    "wind": 1,
-    "boe": 2,
-    "grad": 90,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T21:00",
-    "datum": "2026-10-04",
-    "stunde": 21,
-    "wind": 3,
-    "boe": 5,
-    "grad": 135,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-05T08:00",
+    "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
-    "stunde": 8,
-    "wind": 4,
-    "boe": 6,
-    "grad": 122,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T09:00",
-    "datum": "2026-10-05",
-    "stunde": 9,
-    "wind": 3,
-    "boe": 6,
-    "grad": 129,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T10:00",
-    "datum": "2026-10-05",
-    "stunde": 10,
+    "stunde": 18,
     "wind": 2,
-    "boe": 5,
-    "grad": 96,
+    "boe": 3,
+    "grad": 17,
     "modell": "ch2"
    },
    {
-    "zeit": "2026-10-05T11:00",
+    "zeit": "2026-10-05T19:00",
     "datum": "2026-10-05",
-    "stunde": 11,
+    "stunde": 19,
     "wind": 2,
-    "boe": 5,
+    "boe": 4,
     "grad": 52,
     "modell": "ch2"
    },
    {
-    "zeit": "2026-10-05T12:00",
-    "datum": "2026-10-05",
-    "stunde": 12,
-    "wind": 3,
-    "boe": 6,
-    "grad": 28,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T13:00",
-    "datum": "2026-10-05",
-    "stunde": 13,
-    "wind": 3,
-    "boe": 7,
-    "grad": 360,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T14:00",
-    "datum": "2026-10-05",
-    "stunde": 14,
-    "wind": 5,
-    "boe": 8,
-    "grad": 2,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T15:00",
-    "datum": "2026-10-05",
-    "stunde": 15,
-    "wind": 4,
-    "boe": 8,
-    "grad": 347,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T16:00",
-    "datum": "2026-10-05",
-    "stunde": 16,
-    "wind": 3,
-    "boe": 8,
-    "grad": 360,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T17:00",
-    "datum": "2026-10-05",
-    "stunde": 17,
-    "wind": 3,
-    "boe": 5,
-    "grad": 9,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T18:00",
-    "datum": "2026-10-05",
-    "stunde": 18,
-    "wind": 3,
-    "boe": 5,
-    "grad": 8,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T19:00",
-    "datum": "2026-10-05",
-    "stunde": 19,
-    "wind": 1,
-    "boe": 5,
-    "grad": 39,
-    "modell": "ch2"
-   },
-   {
     "zeit": "2026-10-05T20:00",
     "datum": "2026-10-05",
     "stunde": 20,
     "wind": 2,
-    "boe": 3,
-    "grad": 54,
+    "boe": 4,
+    "grad": 354,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T21:00",
     "datum": "2026-10-05",
     "stunde": 21,
-    "wind": 4,
-    "boe": 7,
-    "grad": 85,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T08:00",
-    "datum": "2026-10-06",
-    "stunde": 8,
-    "wind": 3,
-    "boe": 7,
-    "grad": 125,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T09:00",
-    "datum": "2026-10-06",
-    "stunde": 9,
-    "wind": 4,
-    "boe": 6,
-    "grad": 124,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T10:00",
-    "datum": "2026-10-06",
-    "stunde": 10,
-    "wind": 3,
-    "boe": 5,
-    "grad": 110,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T11:00",
-    "datum": "2026-10-06",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 5,
-    "grad": 45,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T12:00",
-    "datum": "2026-10-06",
-    "stunde": 12,
-    "wind": 4,
-    "boe": 7,
-    "grad": 19,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T13:00",
-    "datum": "2026-10-06",
-    "stunde": 13,
-    "wind": 4,
-    "boe": 7,
-    "grad": 9,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T14:00",
-    "datum": "2026-10-06",
-    "stunde": 14,
-    "wind": 2,
-    "boe": 7,
-    "grad": 355,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T15:00",
-    "datum": "2026-10-06",
-    "stunde": 15,
-    "wind": 3,
-    "boe": 6,
-    "grad": 353,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T16:00",
-    "datum": "2026-10-06",
-    "stunde": 16,
-    "wind": 4,
-    "boe": 7,
-    "grad": 6,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T17:00",
-    "datum": "2026-10-06",
-    "stunde": 17,
-    "wind": 3,
-    "boe": 6,
-    "grad": 8,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T18:00",
-    "datum": "2026-10-06",
-    "stunde": 18,
-    "wind": 3,
-    "boe": 5,
-    "grad": 56,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T19:00",
-    "datum": "2026-10-06",
-    "stunde": 19,
-    "wind": 1,
-    "boe": 5,
-    "grad": 16,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T20:00",
-    "datum": "2026-10-06",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 2,
-    "grad": 337,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T21:00",
-    "datum": "2026-10-06",
-    "stunde": 21,
-    "wind": 3,
-    "boe": 4,
-    "grad": 107,
-    "modell": "ch2"
-   }
-  ],
-  "yvonand": [
-   {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 3,
-    "boe": 5,
-    "grad": 162,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 4,
-    "boe": 6,
-    "grad": 167,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 2,
-    "boe": 4,
-    "grad": 185,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 1,
-    "boe": 5,
-    "grad": 162,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
     "wind": 2,
     "boe": 3,
-    "grad": 24,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 4,
-    "boe": 7,
-    "grad": 43,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T12:00",
-    "datum": "2026-10-04",
-    "stunde": 12,
-    "wind": 6,
-    "boe": 10,
-    "grad": 33,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T13:00",
-    "datum": "2026-10-04",
-    "stunde": 13,
-    "wind": 6,
-    "boe": 10,
-    "grad": 35,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T14:00",
-    "datum": "2026-10-04",
-    "stunde": 14,
-    "wind": 4,
-    "boe": 10,
-    "grad": 31,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T15:00",
-    "datum": "2026-10-04",
-    "stunde": 15,
-    "wind": 5,
-    "boe": 9,
-    "grad": 30,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T16:00",
-    "datum": "2026-10-04",
-    "stunde": 16,
-    "wind": 3,
-    "boe": 9,
-    "grad": 25,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T17:00",
-    "datum": "2026-10-04",
-    "stunde": 17,
-    "wind": 2,
-    "boe": 6,
-    "grad": 20,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T18:00",
-    "datum": "2026-10-04",
-    "stunde": 18,
-    "wind": 2,
-    "boe": 4,
-    "grad": 83,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T19:00",
-    "datum": "2026-10-04",
-    "stunde": 19,
-    "wind": 3,
-    "boe": 5,
-    "grad": 141,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T20:00",
-    "datum": "2026-10-04",
-    "stunde": 20,
-    "wind": 4,
-    "boe": 6,
-    "grad": 164,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T21:00",
-    "datum": "2026-10-04",
-    "stunde": 21,
-    "wind": 4,
-    "boe": 6,
-    "grad": 177,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-05T08:00",
-    "datum": "2026-10-05",
-    "stunde": 8,
-    "wind": 3,
-    "boe": 4,
-    "grad": 171,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T09:00",
-    "datum": "2026-10-05",
-    "stunde": 9,
-    "wind": 2,
-    "boe": 4,
-    "grad": 191,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T10:00",
-    "datum": "2026-10-05",
-    "stunde": 10,
-    "wind": 1,
-    "boe": 3,
-    "grad": 326,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T11:00",
-    "datum": "2026-10-05",
-    "stunde": 11,
-    "wind": 3,
-    "boe": 5,
-    "grad": 30,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T12:00",
-    "datum": "2026-10-05",
-    "stunde": 12,
-    "wind": 4,
-    "boe": 8,
-    "grad": 36,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T13:00",
-    "datum": "2026-10-05",
-    "stunde": 13,
-    "wind": 4,
-    "boe": 8,
-    "grad": 28,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T14:00",
-    "datum": "2026-10-05",
-    "stunde": 14,
-    "wind": 5,
-    "boe": 8,
-    "grad": 35,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T15:00",
-    "datum": "2026-10-05",
-    "stunde": 15,
-    "wind": 5,
-    "boe": 9,
-    "grad": 26,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T16:00",
-    "datum": "2026-10-05",
-    "stunde": 16,
-    "wind": 4,
-    "boe": 8,
-    "grad": 41,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T17:00",
-    "datum": "2026-10-05",
-    "stunde": 17,
-    "wind": 3,
-    "boe": 7,
-    "grad": 30,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T18:00",
-    "datum": "2026-10-05",
-    "stunde": 18,
-    "wind": 2,
-    "boe": 5,
-    "grad": 360,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T19:00",
-    "datum": "2026-10-05",
-    "stunde": 19,
-    "wind": 2,
-    "boe": 3,
-    "grad": 114,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T20:00",
-    "datum": "2026-10-05",
-    "stunde": 20,
-    "wind": 3,
-    "boe": 5,
-    "grad": 152,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T21:00",
-    "datum": "2026-10-05",
-    "stunde": 21,
-    "wind": 4,
-    "boe": 6,
-    "grad": 158,
+    "grad": 32,
     "modell": "ch2"
    },
    {
@@ -3073,414 +2583,486 @@
     "stunde": 8,
     "wind": 3,
     "boe": 5,
-    "grad": 180,
+    "grad": 129,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T09:00",
     "datum": "2026-10-06",
     "stunde": 9,
-    "wind": 2,
-    "boe": 4,
-    "grad": 180,
+    "wind": 3,
+    "boe": 5,
+    "grad": 120,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T10:00",
     "datum": "2026-10-06",
     "stunde": 10,
-    "wind": 2,
-    "boe": 4,
-    "grad": 42,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T11:00",
-    "datum": "2026-10-06",
-    "stunde": 11,
-    "wind": 5,
-    "boe": 8,
-    "grad": 36,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T12:00",
-    "datum": "2026-10-06",
-    "stunde": 12,
-    "wind": 5,
-    "boe": 8,
-    "grad": 31,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T13:00",
-    "datum": "2026-10-06",
-    "stunde": 13,
-    "wind": 4,
-    "boe": 8,
-    "grad": 37,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T14:00",
-    "datum": "2026-10-06",
-    "stunde": 14,
-    "wind": 3,
-    "boe": 7,
-    "grad": 40,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T15:00",
-    "datum": "2026-10-06",
-    "stunde": 15,
-    "wind": 3,
-    "boe": 6,
-    "grad": 28,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T16:00",
-    "datum": "2026-10-06",
-    "stunde": 16,
-    "wind": 3,
-    "boe": 6,
-    "grad": 33,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T17:00",
-    "datum": "2026-10-06",
-    "stunde": 17,
-    "wind": 4,
-    "boe": 6,
-    "grad": 47,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T18:00",
-    "datum": "2026-10-06",
-    "stunde": 18,
-    "wind": 2,
-    "boe": 6,
-    "grad": 72,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T19:00",
-    "datum": "2026-10-06",
-    "stunde": 19,
-    "wind": 1,
-    "boe": 3,
-    "grad": 39,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T20:00",
-    "datum": "2026-10-06",
-    "stunde": 20,
-    "wind": 3,
-    "boe": 4,
-    "grad": 150,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-06T21:00",
-    "datum": "2026-10-06",
-    "stunde": 21,
-    "wind": 4,
-    "boe": 7,
-    "grad": 183,
-    "modell": "ch2"
-   }
-  ],
-  "vully": [
-   {
-    "zeit": "2026-10-03T20:00",
-    "datum": "2026-10-03",
-    "stunde": 20,
-    "wind": 3,
-    "boe": 5,
-    "grad": 315,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-03T21:00",
-    "datum": "2026-10-03",
-    "stunde": 21,
-    "wind": 2,
-    "boe": 4,
-    "grad": 333,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T08:00",
-    "datum": "2026-10-04",
-    "stunde": 8,
-    "wind": 2,
-    "boe": 5,
-    "grad": 99,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T09:00",
-    "datum": "2026-10-04",
-    "stunde": 9,
-    "wind": 2,
-    "boe": 5,
-    "grad": 110,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T10:00",
-    "datum": "2026-10-04",
-    "stunde": 10,
-    "wind": 2,
-    "boe": 5,
-    "grad": 112,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T11:00",
-    "datum": "2026-10-04",
-    "stunde": 11,
-    "wind": 2,
-    "boe": 5,
-    "grad": 56,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T12:00",
-    "datum": "2026-10-04",
-    "stunde": 12,
-    "wind": 2,
-    "boe": 5,
-    "grad": 68,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T13:00",
-    "datum": "2026-10-04",
-    "stunde": 13,
-    "wind": 2,
-    "boe": 5,
-    "grad": 328,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T14:00",
-    "datum": "2026-10-04",
-    "stunde": 14,
-    "wind": 1,
-    "boe": 5,
-    "grad": 101,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T15:00",
-    "datum": "2026-10-04",
-    "stunde": 15,
-    "wind": 2,
-    "boe": 5,
-    "grad": 139,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T16:00",
-    "datum": "2026-10-04",
-    "stunde": 16,
-    "wind": 3,
-    "boe": 6,
-    "grad": 188,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T17:00",
-    "datum": "2026-10-04",
-    "stunde": 17,
-    "wind": 1,
-    "boe": 6,
-    "grad": 207,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T18:00",
-    "datum": "2026-10-04",
-    "stunde": 18,
-    "wind": 4,
-    "boe": 9,
-    "grad": 289,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T19:00",
-    "datum": "2026-10-04",
-    "stunde": 19,
-    "wind": 3,
-    "boe": 7,
-    "grad": 298,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T20:00",
-    "datum": "2026-10-04",
-    "stunde": 20,
-    "wind": 2,
-    "boe": 6,
-    "grad": 338,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-04T21:00",
-    "datum": "2026-10-04",
-    "stunde": 21,
-    "wind": 2,
-    "boe": 4,
-    "grad": 45,
-    "modell": "ch1"
-   },
-   {
-    "zeit": "2026-10-05T08:00",
-    "datum": "2026-10-05",
-    "stunde": 8,
-    "wind": 1,
-    "boe": 4,
-    "grad": 98,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T09:00",
-    "datum": "2026-10-05",
-    "stunde": 9,
-    "wind": 1,
-    "boe": 4,
-    "grad": 143,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T10:00",
-    "datum": "2026-10-05",
-    "stunde": 10,
-    "wind": 1,
-    "boe": 4,
-    "grad": 82,
-    "modell": "ch2"
-   },
-   {
-    "zeit": "2026-10-05T11:00",
-    "datum": "2026-10-05",
-    "stunde": 11,
     "wind": 2,
     "boe": 5,
     "grad": 66,
     "modell": "ch2"
    },
    {
+    "zeit": "2026-10-06T11:00",
+    "datum": "2026-10-06",
+    "stunde": 11,
+    "wind": 2,
+    "boe": 4,
+    "grad": 61,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T12:00",
+    "datum": "2026-10-06",
+    "stunde": 12,
+    "wind": 2,
+    "boe": 4,
+    "grad": 50,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T13:00",
+    "datum": "2026-10-06",
+    "stunde": 13,
+    "wind": 2,
+    "boe": 4,
+    "grad": 23,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T14:00",
+    "datum": "2026-10-06",
+    "stunde": 14,
+    "wind": 1,
+    "boe": 4,
+    "grad": 31,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T15:00",
+    "datum": "2026-10-06",
+    "stunde": 15,
+    "wind": 1,
+    "boe": 4,
+    "grad": 333,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T16:00",
+    "datum": "2026-10-06",
+    "stunde": 16,
+    "wind": 2,
+    "boe": 4,
+    "grad": 241,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T17:00",
+    "datum": "2026-10-06",
+    "stunde": 17,
+    "wind": 3,
+    "boe": 5,
+    "grad": 252,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T18:00",
+    "datum": "2026-10-06",
+    "stunde": 18,
+    "wind": 1,
+    "boe": 4,
+    "grad": 329,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T19:00",
+    "datum": "2026-10-06",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 3,
+    "grad": 54,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T20:00",
+    "datum": "2026-10-06",
+    "stunde": 20,
+    "wind": 1,
+    "boe": 3,
+    "grad": 31,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T21:00",
+    "datum": "2026-10-06",
+    "stunde": 21,
+    "wind": 0,
+    "boe": 2,
+    "grad": 63,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 2,
+    "boe": 5,
+    "grad": 121,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 3,
+    "boe": 6,
+    "grad": 101,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 1,
+    "boe": 5,
+    "grad": 124,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 0,
+    "boe": 2,
+    "grad": 45,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 0,
+    "boe": 1,
+    "grad": 333,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 2,
+    "boe": 4,
+    "grad": 235,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 4,
+    "boe": 6,
+    "grad": 238,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 4,
+    "boe": 7,
+    "grad": 237,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 4,
+    "boe": 8,
+    "grad": 235,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 3,
+    "boe": 7,
+    "grad": 222,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 2,
+    "boe": 5,
+    "grad": 261,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 4,
+    "grad": 256,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 1,
+    "boe": 3,
+    "grad": 243,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 2,
+    "boe": 4,
+    "grad": 217,
+    "modell": "ch2"
+   }
+  ],
+  "estavayer": [
+   {
+    "zeit": "2026-10-04T12:00",
+    "datum": "2026-10-04",
+    "stunde": 12,
+    "wind": 4,
+    "boe": 6,
+    "grad": 13,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T13:00",
+    "datum": "2026-10-04",
+    "stunde": 13,
+    "wind": 3,
+    "boe": 6,
+    "grad": 8,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T14:00",
+    "datum": "2026-10-04",
+    "stunde": 14,
+    "wind": 3,
+    "boe": 6,
+    "grad": 7,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T15:00",
+    "datum": "2026-10-04",
+    "stunde": 15,
+    "wind": 2,
+    "boe": 6,
+    "grad": 18,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T16:00",
+    "datum": "2026-10-04",
+    "stunde": 16,
+    "wind": 2,
+    "boe": 5,
+    "grad": 355,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T17:00",
+    "datum": "2026-10-04",
+    "stunde": 17,
+    "wind": 4,
+    "boe": 6,
+    "grad": 360,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T18:00",
+    "datum": "2026-10-04",
+    "stunde": 18,
+    "wind": 3,
+    "boe": 7,
+    "grad": 14,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T19:00",
+    "datum": "2026-10-04",
+    "stunde": 19,
+    "wind": 3,
+    "boe": 5,
+    "grad": 39,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T20:00",
+    "datum": "2026-10-04",
+    "stunde": 20,
+    "wind": 3,
+    "boe": 5,
+    "grad": 108,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T21:00",
+    "datum": "2026-10-04",
+    "stunde": 21,
+    "wind": 4,
+    "boe": 6,
+    "grad": 141,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T08:00",
+    "datum": "2026-10-05",
+    "stunde": 8,
+    "wind": 4,
+    "boe": 6,
+    "grad": 144,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T09:00",
+    "datum": "2026-10-05",
+    "stunde": 9,
+    "wind": 4,
+    "boe": 7,
+    "grad": 129,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T10:00",
+    "datum": "2026-10-05",
+    "stunde": 10,
+    "wind": 3,
+    "boe": 7,
+    "grad": 129,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T11:00",
+    "datum": "2026-10-05",
+    "stunde": 11,
+    "wind": 1,
+    "boe": 4,
+    "grad": 16,
+    "modell": "ch1"
+   },
+   {
     "zeit": "2026-10-05T12:00",
     "datum": "2026-10-05",
     "stunde": 12,
-    "wind": 1,
-    "boe": 5,
-    "grad": 81,
-    "modell": "ch2"
+    "wind": 4,
+    "boe": 7,
+    "grad": 3,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T13:00",
     "datum": "2026-10-05",
     "stunde": 13,
-    "wind": 2,
-    "boe": 5,
-    "grad": 104,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 9,
+    "grad": 12,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T14:00",
     "datum": "2026-10-05",
     "stunde": 14,
-    "wind": 1,
-    "boe": 5,
-    "grad": 135,
-    "modell": "ch2"
+    "wind": 4,
+    "boe": 8,
+    "grad": 357,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T15:00",
     "datum": "2026-10-05",
     "stunde": 15,
-    "wind": 1,
-    "boe": 3,
-    "grad": 180,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 8,
+    "grad": 353,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T16:00",
     "datum": "2026-10-05",
     "stunde": 16,
-    "wind": 1,
-    "boe": 3,
-    "grad": 248,
-    "modell": "ch2"
+    "wind": 5,
+    "boe": 9,
+    "grad": 11,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T17:00",
     "datum": "2026-10-05",
     "stunde": 17,
-    "wind": 1,
-    "boe": 3,
-    "grad": 281,
-    "modell": "ch2"
+    "wind": 3,
+    "boe": 10,
+    "grad": 357,
+    "modell": "ch1"
    },
    {
     "zeit": "2026-10-05T18:00",
     "datum": "2026-10-05",
     "stunde": 18,
-    "wind": 2,
-    "boe": 4,
-    "grad": 311,
+    "wind": 4,
+    "boe": 8,
+    "grad": 12,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T19:00",
     "datum": "2026-10-05",
     "stunde": 19,
-    "wind": 2,
-    "boe": 4,
-    "grad": 328,
+    "wind": 3,
+    "boe": 6,
+    "grad": 14,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T20:00",
     "datum": "2026-10-05",
     "stunde": 20,
-    "wind": 4,
-    "boe": 8,
-    "grad": 19,
+    "wind": 3,
+    "boe": 5,
+    "grad": 56,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-05T21:00",
     "datum": "2026-10-05",
     "stunde": 21,
-    "wind": 4,
-    "boe": 13,
-    "grad": 60,
+    "wind": 3,
+    "boe": 5,
+    "grad": 97,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T08:00",
     "datum": "2026-10-06",
     "stunde": 8,
-    "wind": 2,
-    "boe": 4,
-    "grad": 104,
+    "wind": 4,
+    "boe": 6,
+    "grad": 120,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T09:00",
     "datum": "2026-10-06",
     "stunde": 9,
-    "wind": 1,
-    "boe": 4,
-    "grad": 99,
+    "wind": 3,
+    "boe": 6,
+    "grad": 117,
     "modell": "ch2"
    },
    {
@@ -3489,79 +3071,549 @@
     "stunde": 10,
     "wind": 2,
     "boe": 5,
-    "grad": 67,
+    "grad": 99,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T11:00",
     "datum": "2026-10-06",
     "stunde": 11,
-    "wind": 2,
+    "wind": 3,
     "boe": 5,
-    "grad": 80,
+    "grad": 27,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T12:00",
     "datum": "2026-10-06",
     "stunde": 12,
-    "wind": 2,
-    "boe": 5,
-    "grad": 63,
+    "wind": 3,
+    "boe": 6,
+    "grad": 17,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T13:00",
     "datum": "2026-10-06",
     "stunde": 13,
-    "wind": 1,
-    "boe": 5,
-    "grad": 117,
+    "wind": 3,
+    "boe": 6,
+    "grad": 4,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T14:00",
     "datum": "2026-10-06",
     "stunde": 14,
-    "wind": 2,
-    "boe": 5,
-    "grad": 162,
+    "wind": 3,
+    "boe": 7,
+    "grad": 349,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T15:00",
     "datum": "2026-10-06",
     "stunde": 15,
-    "wind": 1,
-    "boe": 5,
-    "grad": 202,
+    "wind": 3,
+    "boe": 6,
+    "grad": 349,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T16:00",
     "datum": "2026-10-06",
     "stunde": 16,
-    "wind": 1,
-    "boe": 3,
-    "grad": 270,
+    "wind": 3,
+    "boe": 6,
+    "grad": 7,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T17:00",
     "datum": "2026-10-06",
     "stunde": 17,
-    "wind": 0,
-    "boe": 2,
-    "grad": 243,
+    "wind": 2,
+    "boe": 6,
+    "grad": 17,
     "modell": "ch2"
    },
    {
     "zeit": "2026-10-06T18:00",
     "datum": "2026-10-06",
     "stunde": 18,
-    "wind": 0,
+    "wind": 2,
+    "boe": 4,
+    "grad": 6,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T19:00",
+    "datum": "2026-10-06",
+    "stunde": 19,
+    "wind": 1,
+    "boe": 3,
+    "grad": 37,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T20:00",
+    "datum": "2026-10-06",
+    "stunde": 20,
+    "wind": 3,
+    "boe": 5,
+    "grad": 138,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T21:00",
+    "datum": "2026-10-06",
+    "stunde": 21,
+    "wind": 4,
+    "boe": 6,
+    "grad": 142,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 4,
+    "boe": 6,
+    "grad": 115,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 3,
+    "boe": 7,
+    "grad": 117,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 3,
+    "boe": 5,
+    "grad": 107,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 2,
+    "boe": 5,
+    "grad": 95,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 1,
+    "boe": 4,
+    "grad": 56,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 1,
+    "boe": 3,
+    "grad": 304,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 3,
+    "boe": 5,
+    "grad": 270,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 5,
+    "boe": 9,
+    "grad": 260,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 5,
+    "boe": 9,
+    "grad": 248,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 5,
+    "boe": 9,
+    "grad": 247,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 5,
+    "boe": 8,
+    "grad": 239,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 5,
+    "boe": 8,
+    "grad": 235,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 3,
+    "boe": 8,
+    "grad": 217,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 3,
+    "boe": 6,
+    "grad": 231,
+    "modell": "ch2"
+   }
+  ],
+  "yvonand": [
+   {
+    "zeit": "2026-10-04T12:00",
+    "datum": "2026-10-04",
+    "stunde": 12,
+    "wind": 6,
+    "boe": 11,
+    "grad": 29,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T13:00",
+    "datum": "2026-10-04",
+    "stunde": 13,
+    "wind": 4,
+    "boe": 10,
+    "grad": 29,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T14:00",
+    "datum": "2026-10-04",
+    "stunde": 14,
+    "wind": 5,
+    "boe": 8,
+    "grad": 40,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T15:00",
+    "datum": "2026-10-04",
+    "stunde": 15,
+    "wind": 4,
+    "boe": 8,
+    "grad": 27,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T16:00",
+    "datum": "2026-10-04",
+    "stunde": 16,
+    "wind": 4,
+    "boe": 7,
+    "grad": 20,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T17:00",
+    "datum": "2026-10-04",
+    "stunde": 17,
+    "wind": 4,
+    "boe": 7,
+    "grad": 29,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T18:00",
+    "datum": "2026-10-04",
+    "stunde": 18,
+    "wind": 4,
+    "boe": 8,
+    "grad": 47,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T19:00",
+    "datum": "2026-10-04",
+    "stunde": 19,
+    "wind": 4,
+    "boe": 6,
+    "grad": 99,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T20:00",
+    "datum": "2026-10-04",
+    "stunde": 20,
+    "wind": 3,
+    "boe": 6,
+    "grad": 137,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T21:00",
+    "datum": "2026-10-04",
+    "stunde": 21,
+    "wind": 4,
+    "boe": 6,
+    "grad": 164,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T08:00",
+    "datum": "2026-10-05",
+    "stunde": 8,
+    "wind": 3,
+    "boe": 5,
+    "grad": 188,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T09:00",
+    "datum": "2026-10-05",
+    "stunde": 9,
+    "wind": 1,
+    "boe": 5,
+    "grad": 214,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T10:00",
+    "datum": "2026-10-05",
+    "stunde": 10,
+    "wind": 1,
     "boe": 2,
-    "grad": 225,
+    "grad": 349,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T11:00",
+    "datum": "2026-10-05",
+    "stunde": 11,
+    "wind": 3,
+    "boe": 5,
+    "grad": 17,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T12:00",
+    "datum": "2026-10-05",
+    "stunde": 12,
+    "wind": 3,
+    "boe": 7,
+    "grad": 21,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T13:00",
+    "datum": "2026-10-05",
+    "stunde": 13,
+    "wind": 4,
+    "boe": 9,
+    "grad": 29,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T14:00",
+    "datum": "2026-10-05",
+    "stunde": 14,
+    "wind": 6,
+    "boe": 10,
+    "grad": 27,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T15:00",
+    "datum": "2026-10-05",
+    "stunde": 15,
+    "wind": 4,
+    "boe": 10,
+    "grad": 24,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T16:00",
+    "datum": "2026-10-05",
+    "stunde": 16,
+    "wind": 4,
+    "boe": 9,
+    "grad": 27,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T17:00",
+    "datum": "2026-10-05",
+    "stunde": 17,
+    "wind": 5,
+    "boe": 11,
+    "grad": 35,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T18:00",
+    "datum": "2026-10-05",
+    "stunde": 18,
+    "wind": 4,
+    "boe": 8,
+    "grad": 27,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-05T19:00",
+    "datum": "2026-10-05",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 5,
+    "grad": 63,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-05T20:00",
+    "datum": "2026-10-05",
+    "stunde": 20,
+    "wind": 3,
+    "boe": 5,
+    "grad": 149,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-05T21:00",
+    "datum": "2026-10-05",
+    "stunde": 21,
+    "wind": 3,
+    "boe": 6,
+    "grad": 163,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T08:00",
+    "datum": "2026-10-06",
+    "stunde": 8,
+    "wind": 2,
+    "boe": 4,
+    "grad": 180,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T09:00",
+    "datum": "2026-10-06",
+    "stunde": 9,
+    "wind": 1,
+    "boe": 4,
+    "grad": 194,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T10:00",
+    "datum": "2026-10-06",
+    "stunde": 10,
+    "wind": 2,
+    "boe": 3,
+    "grad": 21,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T11:00",
+    "datum": "2026-10-06",
+    "stunde": 11,
+    "wind": 5,
+    "boe": 8,
+    "grad": 25,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T12:00",
+    "datum": "2026-10-06",
+    "stunde": 12,
+    "wind": 4,
+    "boe": 8,
+    "grad": 36,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T13:00",
+    "datum": "2026-10-06",
+    "stunde": 13,
+    "wind": 3,
+    "boe": 6,
+    "grad": 38,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T14:00",
+    "datum": "2026-10-06",
+    "stunde": 14,
+    "wind": 3,
+    "boe": 6,
+    "grad": 25,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T15:00",
+    "datum": "2026-10-06",
+    "stunde": 15,
+    "wind": 3,
+    "boe": 6,
+    "grad": 25,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T16:00",
+    "datum": "2026-10-06",
+    "stunde": 16,
+    "wind": 3,
+    "boe": 5,
+    "grad": 32,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T17:00",
+    "datum": "2026-10-06",
+    "stunde": 17,
+    "wind": 3,
+    "boe": 5,
+    "grad": 55,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T18:00",
+    "datum": "2026-10-06",
+    "stunde": 18,
+    "wind": 1,
+    "boe": 5,
+    "grad": 360,
     "modell": "ch2"
    },
    {
@@ -3570,7 +3622,477 @@
     "stunde": 19,
     "wind": 1,
     "boe": 2,
-    "grad": 37,
+    "grad": 171,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T20:00",
+    "datum": "2026-10-06",
+    "stunde": 20,
+    "wind": 4,
+    "boe": 7,
+    "grad": 172,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T21:00",
+    "datum": "2026-10-06",
+    "stunde": 21,
+    "wind": 4,
+    "boe": 7,
+    "grad": 172,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 4,
+    "boe": 6,
+    "grad": 74,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 4,
+    "boe": 6,
+    "grad": 60,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 3,
+    "boe": 6,
+    "grad": 47,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 3,
+    "boe": 6,
+    "grad": 33,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 2,
+    "boe": 5,
+    "grad": 31,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 0,
+    "boe": 4,
+    "grad": 360,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 2,
+    "boe": 4,
+    "grad": 280,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 4,
+    "boe": 7,
+    "grad": 265,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 4,
+    "boe": 7,
+    "grad": 257,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 3,
+    "boe": 7,
+    "grad": 254,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 3,
+    "boe": 6,
+    "grad": 220,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 3,
+    "boe": 5,
+    "grad": 216,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 4,
+    "boe": 6,
+    "grad": 215,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 3,
+    "boe": 6,
+    "grad": 212,
+    "modell": "ch2"
+   }
+  ],
+  "vully": [
+   {
+    "zeit": "2026-10-04T12:00",
+    "datum": "2026-10-04",
+    "stunde": 12,
+    "wind": 2,
+    "boe": 6,
+    "grad": 79,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T13:00",
+    "datum": "2026-10-04",
+    "stunde": 13,
+    "wind": 1,
+    "boe": 5,
+    "grad": 16,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T14:00",
+    "datum": "2026-10-04",
+    "stunde": 14,
+    "wind": 0,
+    "boe": 4,
+    "grad": 153,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T15:00",
+    "datum": "2026-10-04",
+    "stunde": 15,
+    "wind": 0,
+    "boe": 3,
+    "grad": 333,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T16:00",
+    "datum": "2026-10-04",
+    "stunde": 16,
+    "wind": 1,
+    "boe": 5,
+    "grad": 180,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T17:00",
+    "datum": "2026-10-04",
+    "stunde": 17,
+    "wind": 2,
+    "boe": 4,
+    "grad": 333,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T18:00",
+    "datum": "2026-10-04",
+    "stunde": 18,
+    "wind": 2,
+    "boe": 4,
+    "grad": 330,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T19:00",
+    "datum": "2026-10-04",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 5,
+    "grad": 322,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T20:00",
+    "datum": "2026-10-04",
+    "stunde": 20,
+    "wind": 3,
+    "boe": 5,
+    "grad": 333,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-04T21:00",
+    "datum": "2026-10-04",
+    "stunde": 21,
+    "wind": 1,
+    "boe": 5,
+    "grad": 217,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T08:00",
+    "datum": "2026-10-05",
+    "stunde": 8,
+    "wind": 2,
+    "boe": 4,
+    "grad": 135,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T09:00",
+    "datum": "2026-10-05",
+    "stunde": 9,
+    "wind": 2,
+    "boe": 4,
+    "grad": 157,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T10:00",
+    "datum": "2026-10-05",
+    "stunde": 10,
+    "wind": 1,
+    "boe": 4,
+    "grad": 171,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T11:00",
+    "datum": "2026-10-05",
+    "stunde": 11,
+    "wind": 1,
+    "boe": 3,
+    "grad": 72,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T12:00",
+    "datum": "2026-10-05",
+    "stunde": 12,
+    "wind": 2,
+    "boe": 5,
+    "grad": 68,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T13:00",
+    "datum": "2026-10-05",
+    "stunde": 13,
+    "wind": 1,
+    "boe": 6,
+    "grad": 45,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T14:00",
+    "datum": "2026-10-05",
+    "stunde": 14,
+    "wind": 2,
+    "boe": 6,
+    "grad": 128,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T15:00",
+    "datum": "2026-10-05",
+    "stunde": 15,
+    "wind": 1,
+    "boe": 6,
+    "grad": 117,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T16:00",
+    "datum": "2026-10-05",
+    "stunde": 16,
+    "wind": 2,
+    "boe": 5,
+    "grad": 300,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T17:00",
+    "datum": "2026-10-05",
+    "stunde": 17,
+    "wind": 3,
+    "boe": 6,
+    "grad": 318,
+    "modell": "ch1"
+   },
+   {
+    "zeit": "2026-10-05T18:00",
+    "datum": "2026-10-05",
+    "stunde": 18,
+    "wind": 3,
+    "boe": 5,
+    "grad": 58,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-05T19:00",
+    "datum": "2026-10-05",
+    "stunde": 19,
+    "wind": 3,
+    "boe": 8,
+    "grad": 45,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-05T20:00",
+    "datum": "2026-10-05",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 7,
+    "grad": 42,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-05T21:00",
+    "datum": "2026-10-05",
+    "stunde": 21,
+    "wind": 2,
+    "boe": 7,
+    "grad": 41,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T08:00",
+    "datum": "2026-10-06",
+    "stunde": 8,
+    "wind": 1,
+    "boe": 4,
+    "grad": 121,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T09:00",
+    "datum": "2026-10-06",
+    "stunde": 9,
+    "wind": 2,
+    "boe": 4,
+    "grad": 130,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T10:00",
+    "datum": "2026-10-06",
+    "stunde": 10,
+    "wind": 2,
+    "boe": 4,
+    "grad": 68,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T11:00",
+    "datum": "2026-10-06",
+    "stunde": 11,
+    "wind": 2,
+    "boe": 5,
+    "grad": 56,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T12:00",
+    "datum": "2026-10-06",
+    "stunde": 12,
+    "wind": 1,
+    "boe": 5,
+    "grad": 56,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T13:00",
+    "datum": "2026-10-06",
+    "stunde": 13,
+    "wind": 1,
+    "boe": 4,
+    "grad": 127,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T14:00",
+    "datum": "2026-10-06",
+    "stunde": 14,
+    "wind": 2,
+    "boe": 5,
+    "grad": 167,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T15:00",
+    "datum": "2026-10-06",
+    "stunde": 15,
+    "wind": 1,
+    "boe": 5,
+    "grad": 252,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T16:00",
+    "datum": "2026-10-06",
+    "stunde": 16,
+    "wind": 1,
+    "boe": 4,
+    "grad": 270,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T17:00",
+    "datum": "2026-10-06",
+    "stunde": 17,
+    "wind": 1,
+    "boe": 3,
+    "grad": 270,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T18:00",
+    "datum": "2026-10-06",
+    "stunde": 18,
+    "wind": 1,
+    "boe": 3,
+    "grad": 34,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-06T19:00",
+    "datum": "2026-10-06",
+    "stunde": 19,
+    "wind": 2,
+    "boe": 4,
+    "grad": 13,
     "modell": "ch2"
    },
    {
@@ -3578,8 +4100,8 @@
     "datum": "2026-10-06",
     "stunde": 20,
     "wind": 2,
-    "boe": 3,
-    "grad": 14,
+    "boe": 5,
+    "grad": 68,
     "modell": "ch2"
    },
    {
@@ -3587,8 +4109,134 @@
     "datum": "2026-10-06",
     "stunde": 21,
     "wind": 1,
+    "boe": 5,
+    "grad": 121,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T08:00",
+    "datum": "2026-10-07",
+    "stunde": 8,
+    "wind": 2,
+    "boe": 4,
+    "grad": 49,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T09:00",
+    "datum": "2026-10-07",
+    "stunde": 9,
+    "wind": 2,
+    "boe": 7,
+    "grad": 113,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T10:00",
+    "datum": "2026-10-07",
+    "stunde": 10,
+    "wind": 1,
+    "boe": 4,
+    "grad": 135,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T11:00",
+    "datum": "2026-10-07",
+    "stunde": 11,
+    "wind": 1,
     "boe": 3,
-    "grad": 153,
+    "grad": 162,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T12:00",
+    "datum": "2026-10-07",
+    "stunde": 12,
+    "wind": 1,
+    "boe": 2,
+    "grad": 162,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T13:00",
+    "datum": "2026-10-07",
+    "stunde": 13,
+    "wind": 2,
+    "boe": 5,
+    "grad": 214,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T14:00",
+    "datum": "2026-10-07",
+    "stunde": 14,
+    "wind": 3,
+    "boe": 7,
+    "grad": 225,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T15:00",
+    "datum": "2026-10-07",
+    "stunde": 15,
+    "wind": 3,
+    "boe": 7,
+    "grad": 242,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T16:00",
+    "datum": "2026-10-07",
+    "stunde": 16,
+    "wind": 3,
+    "boe": 7,
+    "grad": 274,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T17:00",
+    "datum": "2026-10-07",
+    "stunde": 17,
+    "wind": 2,
+    "boe": 7,
+    "grad": 241,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T18:00",
+    "datum": "2026-10-07",
+    "stunde": 18,
+    "wind": 3,
+    "boe": 8,
+    "grad": 249,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T19:00",
+    "datum": "2026-10-07",
+    "stunde": 19,
+    "wind": 3,
+    "boe": 8,
+    "grad": 238,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T20:00",
+    "datum": "2026-10-07",
+    "stunde": 20,
+    "wind": 2,
+    "boe": 7,
+    "grad": 207,
+    "modell": "ch2"
+   },
+   {
+    "zeit": "2026-10-07T21:00",
+    "datum": "2026-10-07",
+    "stunde": 21,
+    "wind": 3,
+    "boe": 8,
+    "grad": 216,
     "modell": "ch2"
    }
   ]
