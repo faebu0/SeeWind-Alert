@@ -8,37 +8,37 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:thun-gwatt-2026-10-08-12@seewind
-DTSTAMP:20261005T051830Z
-DTSTART:20261008T100000Z
-DTEND:20261008T140000Z
-SUMMARY:#2 Wingfoil Thun — 13 kn NW
-DESCRIPTION:Thun / Gwatt · Thunersee\n13 kn Mittelwind\, Böen 27 kn\, Ric
- htung NW\nFenster 12–16 Uhr (4 h)\, Modell ICON-CH2\nBewertung 34/100 
- — Wind 13\, Dauer 17\, Böen 2\, Nähe 3\nPrognose\, keine Zusage — vo
- r der Fahrt nochmal nachsehen.
-LOCATION:Thun / Gwatt\, Thunersee
+UID:erlach-2026-10-08-11@seewind
+DTSTAMP:20261005T151130Z
+DTSTART:20261008T090000Z
+DTEND:20261008T110000Z
+SUMMARY:#1 Wingfoil Erlach — 17 kn NW
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n17 kn Mittelwind\, Böen 30 kn
+ \, Richtung NW\nFenster 11–13 Uhr (2 h)\, Modell ICON-CH2\nBewertung 57/
+ 100 — Wind 38\, Dauer 8\, Böen 8\, Nähe 3\nPrognose\, keine Zusage —
+  vor der Fahrt nochmal nachsehen.
+LOCATION:Erlach / Lüscherz\, Bielersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
-GEO:46.7178;7.6335
+GEO:47.045;7.095
 END:VEVENT
 BEGIN:VEVENT
-UID:ipsach-2026-10-08-20@seewind
-DTSTAMP:20261005T051830Z
-DTSTART:20261008T180000Z
-DTEND:20261008T200000Z
-SUMMARY:#1 Wingfoil Ipsach — 16 kn NW
-DESCRIPTION:Ipsach / Nidau · Bielersee\n16 kn Mittelwind\, Böen 30 kn\, R
- ichtung NW\nFenster 20–22 Uhr (2 h)\, Modell ICON-CH2\nBewertung 49/100 
- — Wind 31\, Dauer 8\, Böen 6\, Nähe 3\nPrognose\, keine Zusage — vor
-  der Fahrt nochmal nachsehen.
-LOCATION:Ipsach / Nidau\, Bielersee
+UID:neuhaus-2026-10-08-13@seewind
+DTSTAMP:20261005T151130Z
+DTSTART:20261008T110000Z
+DTEND:20261008T130000Z
+SUMMARY:#2 Wingfoil Neuhaus — 12 kn SW
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n12 kn Mittelwind\, Böen 29 
+ kn\, Richtung SW\nFenster 13–15 Uhr (2 h)\, Modell ICON-CH2\nBewertung 1
+ 8/100 — Wind 6\, Dauer 8\, Böen 0\, Nähe 3\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Neuhaus / Interlaken\, Thunersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
-GEO:47.115;7.227
+GEO:46.685;7.818
 END:VEVENT
 END:VCALENDAR
