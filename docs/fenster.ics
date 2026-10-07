@@ -8,14 +8,14 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:ipsach-2026-10-08-12@seewind
-DTSTAMP:20261007T050653Z
-DTSTART:20261008T100000Z
-DTEND:20261008T130000Z
-SUMMARY:#1 Wingfoil Ipsach — 17 kn NW
-DESCRIPTION:Ipsach / Nidau · Bielersee\n17 kn Mittelwind\, Böen 39 kn\, R
- ichtung NW\nFenster 12–15 Uhr (3 h)\, Modell ICON-CH1\nBewertung 58/100 
- — Wind 38\, Dauer 13\, Böen 0\, Nähe 8\nPrognose\, keine Zusage — vo
+UID:ipsach-2026-10-08-14@seewind
+DTSTAMP:20261007T151800Z
+DTSTART:20261008T120000Z
+DTEND:20261008T150000Z
+SUMMARY:#1 Wingfoil Ipsach — 18 kn NW
+DESCRIPTION:Ipsach / Nidau · Bielersee\n18 kn Mittelwind\, Böen 35 kn\, R
+ ichtung NW\nFenster 14–17 Uhr (3 h)\, Modell ICON-CH1\nBewertung 69/100 
+ — Wind 44\, Dauer 13\, Böen 5\, Nähe 8\nPrognose\, keine Zusage — vo
  r der Fahrt nochmal nachsehen.
 LOCATION:Ipsach / Nidau\, Bielersee
 TRANSP:OPAQUE
@@ -25,14 +25,31 @@ SEQUENCE:0
 GEO:47.115;7.227
 END:VEVENT
 BEGIN:VEVENT
-UID:spiez-2026-10-08-13@seewind
-DTSTAMP:20261007T050653Z
-DTSTART:20261008T110000Z
-DTEND:20261008T130000Z
-SUMMARY:#3 Wingfoil Spiez — 12 kn NW
-DESCRIPTION:Spiez / Faulensee · Thunersee\n12 kn Mittelwind\, Böen 26 kn\
- , Richtung NW\nFenster 13–15 Uhr (2 h)\, Modell ICON-CH1\nBewertung 23/1
- 00 — Wind 6\, Dauer 8\, Böen 1\, Nähe 8\nPrognose\, keine Zusage — v
+UID:estavayer-2026-10-08-14@seewind
+DTSTAMP:20261007T151800Z
+DTSTART:20261008T120000Z
+DTEND:20261008T170000Z
+SUMMARY:#2 Wingfoil Estavayer — 14 kn NW
+DESCRIPTION:Estavayer-le-Lac · Neuenburgersee\n14 kn Mittelwind\, Böen 28
+  kn\, Richtung NW\nFenster 14–19 Uhr (5 h)\, Modell ICON-CH1\nBewertung 
+ 51/100 — Wind 19\, Dauer 21\, Böen 4\, Nähe 8\nPrognose\, keine Zusage
+  — vor der Fahrt nochmal nachsehen.
+LOCATION:Estavayer-le-Lac\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.848;6.848
+END:VEVENT
+BEGIN:VEVENT
+UID:spiez-2026-10-08-15@seewind
+DTSTAMP:20261007T151800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T150000Z
+SUMMARY:Wingfoil Spiez — 11 kn NW
+DESCRIPTION:Spiez / Faulensee · Thunersee\n11 kn Mittelwind\, Böen 23 kn\
+ , Richtung NW\nFenster 15–17 Uhr (2 h)\, Modell ICON-CH1\nBewertung 18/1
+ 00 — Wind 0\, Dauer 8\, Böen 2\, Nähe 8\nPrognose\, keine Zusage — v
  or der Fahrt nochmal nachsehen.
 LOCATION:Spiez / Faulensee\, Thunersee
 TRANSP:OPAQUE
@@ -43,19 +60,53 @@ GEO:46.6815;7.674
 END:VEVENT
 BEGIN:VEVENT
 UID:neuhaus-2026-10-08-15@seewind
-DTSTAMP:20261007T050653Z
+DTSTAMP:20261007T151800Z
 DTSTART:20261008T130000Z
 DTEND:20261008T150000Z
-SUMMARY:#2 Wingfoil Neuhaus — 12 kn SW
-DESCRIPTION:Neuhaus / Interlaken · Thunersee\n12 kn Mittelwind\, Böen 23 
- kn\, Richtung SW\nFenster 15–17 Uhr (2 h)\, Modell ICON-CH2\nBewertung 2
- 8/100 — Wind 6\, Dauer 8\, Böen 5\, Nähe 8\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
+SUMMARY:Wingfoil Neuhaus — 11 kn W
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n11 kn Mittelwind\, Böen 20 
+ kn\, Richtung W\nFenster 15–17 Uhr (2 h)\, Modell ICON-CH1\nBewertung 23
+ /100 — Wind 0\, Dauer 8\, Böen 7\, Nähe 8\nPrognose\, keine Zusage —
+  vor der Fahrt nochmal nachsehen.
 LOCATION:Neuhaus / Interlaken\, Thunersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
 GEO:46.685;7.818
+END:VEVENT
+BEGIN:VEVENT
+UID:boenigen-2026-10-08-15@seewind
+DTSTAMP:20261007T151800Z
+DTSTART:20261008T130000Z
+DTEND:20261008T150000Z
+SUMMARY:Wingfoil Boenigen — 11 kn SW
+DESCRIPTION:Bönigen · Brienzersee\n11 kn Mittelwind\, Böen 19 kn\, Richt
+ ung SW\nFenster 15–17 Uhr (2 h)\, Modell ICON-CH1\nBewertung 25/100 — 
+ Wind 0\, Dauer 8\, Böen 9\, Nähe 8\nPrognose\, keine Zusage — vor der 
+ Fahrt nochmal nachsehen.
+LOCATION:Bönigen\, Brienzersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.688;7.889
+END:VEVENT
+BEGIN:VEVENT
+UID:ipsach-2026-10-08-20@seewind
+DTSTAMP:20261007T151800Z
+DTSTART:20261008T180000Z
+DTEND:20261008T200000Z
+SUMMARY:#3 Wingfoil Ipsach — 13 kn NW
+DESCRIPTION:Ipsach / Nidau · Bielersee\n13 kn Mittelwind\, Böen 27 kn\, R
+ ichtung NW\nFenster 20–22 Uhr (2 h)\, Modell ICON-CH1\nBewertung 31/100 
+ — Wind 13\, Dauer 8\, Böen 2\, Nähe 8\nPrognose\, keine Zusage — vor
+  der Fahrt nochmal nachsehen.
+LOCATION:Ipsach / Nidau\, Bielersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:47.115;7.227
 END:VEVENT
 END:VCALENDAR
