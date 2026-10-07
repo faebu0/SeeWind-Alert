@@ -8,20 +8,54 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:thun-gwatt-2026-10-08-12@seewind
-DTSTAMP:20261006T151109Z
+UID:ipsach-2026-10-08-12@seewind
+DTSTAMP:20261007T050653Z
 DTSTART:20261008T100000Z
 DTEND:20261008T130000Z
-SUMMARY:#1 Wingfoil Thun — 14 kn NW
-DESCRIPTION:Thun / Gwatt · Thunersee\n14 kn Mittelwind\, Böen 26 kn\, Ric
- htung NW\nFenster 12–15 Uhr (3 h)\, Modell ICON-CH2\nBewertung 43/100 
- — Wind 19\, Dauer 13\, Böen 6\, Nähe 5\nPrognose\, keine Zusage — vo
+SUMMARY:#1 Wingfoil Ipsach — 17 kn NW
+DESCRIPTION:Ipsach / Nidau · Bielersee\n17 kn Mittelwind\, Böen 39 kn\, R
+ ichtung NW\nFenster 12–15 Uhr (3 h)\, Modell ICON-CH1\nBewertung 58/100 
+ — Wind 38\, Dauer 13\, Böen 0\, Nähe 8\nPrognose\, keine Zusage — vo
  r der Fahrt nochmal nachsehen.
-LOCATION:Thun / Gwatt\, Thunersee
+LOCATION:Ipsach / Nidau\, Bielersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
-GEO:46.7178;7.6335
+GEO:47.115;7.227
+END:VEVENT
+BEGIN:VEVENT
+UID:spiez-2026-10-08-13@seewind
+DTSTAMP:20261007T050653Z
+DTSTART:20261008T110000Z
+DTEND:20261008T130000Z
+SUMMARY:#3 Wingfoil Spiez — 12 kn NW
+DESCRIPTION:Spiez / Faulensee · Thunersee\n12 kn Mittelwind\, Böen 26 kn\
+ , Richtung NW\nFenster 13–15 Uhr (2 h)\, Modell ICON-CH1\nBewertung 23/1
+ 00 — Wind 6\, Dauer 8\, Böen 1\, Nähe 8\nPrognose\, keine Zusage — v
+ or der Fahrt nochmal nachsehen.
+LOCATION:Spiez / Faulensee\, Thunersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.6815;7.674
+END:VEVENT
+BEGIN:VEVENT
+UID:neuhaus-2026-10-08-15@seewind
+DTSTAMP:20261007T050653Z
+DTSTART:20261008T130000Z
+DTEND:20261008T150000Z
+SUMMARY:#2 Wingfoil Neuhaus — 12 kn SW
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n12 kn Mittelwind\, Böen 23 
+ kn\, Richtung SW\nFenster 15–17 Uhr (2 h)\, Modell ICON-CH2\nBewertung 2
+ 8/100 — Wind 6\, Dauer 8\, Böen 5\, Nähe 8\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Neuhaus / Interlaken\, Thunersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.685;7.818
 END:VEVENT
 END:VCALENDAR
