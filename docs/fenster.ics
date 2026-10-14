@@ -7,4 +7,21 @@ X-WR-CALNAME:Seewind — Windfenster
 X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
+BEGIN:VEVENT
+UID:thun-gwatt-2026-10-17-16@seewind
+DTSTAMP:20261014T051827Z
+DTSTART:20261017T140000Z
+DTEND:20261017T170000Z
+SUMMARY:#1 Wingfoil Thun — 12 kn NW
+DESCRIPTION:Thun / Gwatt · Thunersee\n12 kn Mittelwind\, Böen 21 kn\, Ric
+ htung NW\nFenster 16–19 Uhr (3 h)\, Modell ICON-CH2\nBewertung 30/100 
+ — Wind 6\, Dauer 13\, Böen 8\, Nähe 3\nPrognose\, keine Zusage — vor
+  der Fahrt nochmal nachsehen.
+LOCATION:Thun / Gwatt\, Thunersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.7178;7.6335
+END:VEVENT
 END:VCALENDAR
