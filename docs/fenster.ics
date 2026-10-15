@@ -8,20 +8,71 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:thun-gwatt-2026-10-17-16@seewind
-DTSTAMP:20261014T152453Z
-DTSTART:20261017T140000Z
+UID:neuhaus-2026-10-17-17@seewind
+DTSTAMP:20261015T051804Z
+DTSTART:20261017T150000Z
 DTEND:20261017T170000Z
-SUMMARY:#1 Wingfoil Thun — 13 kn NW
-DESCRIPTION:Thun / Gwatt · Thunersee\n13 kn Mittelwind\, Böen 21 kn\, Ric
- htung NW\nFenster 16–19 Uhr (3 h)\, Modell ICON-CH2\nBewertung 39/100 
- — Wind 13\, Dauer 13\, Böen 11\, Nähe 3\nPrognose\, keine Zusage — v
- or der Fahrt nochmal nachsehen.
-LOCATION:Thun / Gwatt\, Thunersee
+SUMMARY:Wingfoil Neuhaus — 11 kn SW
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n11 kn Mittelwind\, Böen 21 
+ kn\, Richtung SW\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH2\nBewertung 1
+ 9/100 — Wind 0\, Dauer 8\, Böen 5\, Nähe 5\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Neuhaus / Interlaken\, Thunersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
-GEO:46.7178;7.6335
+GEO:46.685;7.818
+END:VEVENT
+BEGIN:VEVENT
+UID:yvonand-2026-10-17-19@seewind
+DTSTAMP:20261015T051804Z
+DTSTART:20261017T170000Z
+DTEND:20261017T200000Z
+SUMMARY:#1 Wingfoil Yvonand — 12 kn NO
+DESCRIPTION:Yvonand · Neuenburgersee\n12 kn Mittelwind\, Böen 19 kn\, Ric
+ htung NO\nFenster 19–22 Uhr (3 h)\, Modell ICON-CH2\nBewertung 35/100 
+ — Wind 6\, Dauer 13\, Böen 12\, Nähe 5\nPrognose\, keine Zusage — vo
+ r der Fahrt nochmal nachsehen.
+LOCATION:Yvonand\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.8;6.74
+END:VEVENT
+BEGIN:VEVENT
+UID:yvonand-2026-10-18-08@seewind
+DTSTAMP:20261015T051804Z
+DTSTART:20261018T060000Z
+DTEND:20261018T080000Z
+SUMMARY:#3 Wingfoil Yvonand — 11 kn NO
+DESCRIPTION:Yvonand · Neuenburgersee\n11 kn Mittelwind\, Böen 19 kn\, Ric
+ htung NO\nFenster 08–10 Uhr (2 h)\, Modell ICON-CH2\nBewertung 20/100 
+ — Wind 0\, Dauer 8\, Böen 9\, Nähe 3\nPrognose\, keine Zusage — vor 
+ der Fahrt nochmal nachsehen.
+LOCATION:Yvonand\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.8;6.74
+END:VEVENT
+BEGIN:VEVENT
+UID:yvonand-2026-10-18-11@seewind
+DTSTAMP:20261015T051804Z
+DTSTART:20261018T090000Z
+DTEND:20261018T120000Z
+SUMMARY:#2 Wingfoil Yvonand — 12 kn NO
+DESCRIPTION:Yvonand · Neuenburgersee\n12 kn Mittelwind\, Böen 21 kn\, Ric
+ htung NO\nFenster 11–14 Uhr (3 h)\, Modell ICON-CH2\nBewertung 30/100 
+ — Wind 6\, Dauer 13\, Böen 8\, Nähe 3\nPrognose\, keine Zusage — vor
+  der Fahrt nochmal nachsehen.
+LOCATION:Yvonand\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.8;6.74
 END:VEVENT
 END:VCALENDAR
