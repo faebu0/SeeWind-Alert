@@ -9,13 +9,13 @@ REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
 UID:erlach-2026-10-18-09@seewind
-DTSTAMP:20261017T085634Z
+DTSTAMP:20261017T174408Z
 DTSTART:20261018T070000Z
-DTEND:20261018T130000Z
+DTEND:20261018T120000Z
 SUMMARY:#1 Wingfoil Erlach — 12 kn NO
-DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 22 kn
- \, Richtung NO\nFenster 09–15 Uhr (6 h)\, Modell ICON-CH1\nBewertung 46/
- 100 — Wind 6\, Dauer 25\, Böen 7\, Nähe 8\nPrognose\, keine Zusage —
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 21 kn
+ \, Richtung NO\nFenster 09–14 Uhr (5 h)\, Modell ICON-CH1\nBewertung 44/
+ 100 — Wind 6\, Dauer 21\, Böen 8\, Nähe 8\nPrognose\, keine Zusage —
   vor der Fahrt nochmal nachsehen.
 LOCATION:Erlach / Lüscherz\, Bielersee
 TRANSP:OPAQUE
