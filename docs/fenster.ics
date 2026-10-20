@@ -8,14 +8,48 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:yvonand-2026-10-21-15@seewind
-DTSTAMP:20261019T201949Z
-DTSTART:20261021T130000Z
-DTEND:20261021T190000Z
-SUMMARY:#1 Wingfoil Yvonand — 13 kn SW
+UID:neuhaus-2026-10-21-08@seewind
+DTSTAMP:20261020T094423Z
+DTSTART:20261021T060000Z
+DTEND:20261021T090000Z
+SUMMARY:#2 Wingfoil Neuhaus — 13 kn SW
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n13 kn Mittelwind\, Böen 24 
+ kn\, Richtung SW\nFenster 08–11 Uhr (3 h)\, Modell ICON-CH1\nBewertung 4
+ 0/100 — Wind 13\, Dauer 13\, Böen 7\, Nähe 8\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Neuhaus / Interlaken\, Thunersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.685;7.818
+END:VEVENT
+BEGIN:VEVENT
+UID:yvonand-2026-10-21-16@seewind
+DTSTAMP:20261020T094423Z
+DTSTART:20261021T140000Z
+DTEND:20261021T170000Z
+SUMMARY:#3 Wingfoil Yvonand — 13 kn W
 DESCRIPTION:Yvonand · Neuenburgersee\n13 kn Mittelwind\, Böen 26 kn\, Ric
- htung SW\nFenster 15–21 Uhr (6 h)\, Modell ICON-CH2\nBewertung 46/100 
- — Wind 13\, Dauer 25\, Böen 4\, Nähe 5\nPrognose\, keine Zusage — vo
+ htung W\nFenster 16–19 Uhr (3 h)\, Modell ICON-CH1/ICON-CH2\nBewertung 3
+ 7/100 — Wind 13\, Dauer 13\, Böen 4\, Nähe 8\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Yvonand\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.8;6.74
+END:VEVENT
+BEGIN:VEVENT
+UID:yvonand-2026-10-23-13@seewind
+DTSTAMP:20261020T094423Z
+DTSTART:20261023T110000Z
+DTEND:20261023T180000Z
+SUMMARY:#1 Wingfoil Yvonand — 15 kn SW
+DESCRIPTION:Yvonand · Neuenburgersee\n15 kn Mittelwind\, Böen 33 kn\, Ric
+ htung SW\nFenster 13–20 Uhr (7 h)\, Modell ICON-CH2\nBewertung 53/100 
+ — Wind 25\, Dauer 25\, Böen 0\, Nähe 3\nPrognose\, keine Zusage — vo
  r der Fahrt nochmal nachsehen.
 LOCATION:Yvonand\, Neuenburgersee
 TRANSP:OPAQUE
@@ -23,5 +57,22 @@ X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
 GEO:46.8;6.74
+END:VEVENT
+BEGIN:VEVENT
+UID:neuhaus-2026-10-23-16@seewind
+DTSTAMP:20261020T094423Z
+DTSTART:20261023T140000Z
+DTEND:20261023T160000Z
+SUMMARY:Wingfoil Neuhaus — 13 kn W
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n13 kn Mittelwind\, Böen 33 
+ kn\, Richtung W\nFenster 16–18 Uhr (2 h)\, Modell ICON-CH2\nBewertung 24
+ /100 — Wind 13\, Dauer 8\, Böen 0\, Nähe 3\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Neuhaus / Interlaken\, Thunersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.685;7.818
 END:VEVENT
 END:VCALENDAR
