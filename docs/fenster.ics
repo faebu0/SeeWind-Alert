@@ -8,65 +8,14 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:neuhaus-2026-10-23-20@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261023T180000Z
-DTEND:20261023T200000Z
-SUMMARY:Wingfoil Neuhaus — 13 kn W
-DESCRIPTION:Neuhaus / Interlaken · Thunersee\n13 kn Mittelwind\, Böen 33 
- kn\, Richtung W\nFenster 20–22 Uhr (2 h)\, Modell ICON-CH1\nBewertung 31
- /100 — Wind 13\, Dauer 8\, Böen 0\, Nähe 10\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
-LOCATION:Neuhaus / Interlaken\, Thunersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:46.685;7.818
-END:VEVENT
-BEGIN:VEVENT
-UID:yvonand-2026-10-23-20@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261023T180000Z
-DTEND:20261023T200000Z
-SUMMARY:Wingfoil Yvonand — 12 kn SW
-DESCRIPTION:Yvonand · Neuenburgersee\n12 kn Mittelwind\, Böen 26 kn\, Ric
- htung SW\nFenster 20–22 Uhr (2 h)\, Modell ICON-CH1\nBewertung 25/100 
- — Wind 6\, Dauer 8\, Böen 1\, Nähe 10\nPrognose\, keine Zusage — vor
-  der Fahrt nochmal nachsehen.
-LOCATION:Yvonand\, Neuenburgersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:46.8;6.74
-END:VEVENT
-BEGIN:VEVENT
-UID:yvonand-2026-10-24-10@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261024T080000Z
-DTEND:20261024T150000Z
-SUMMARY:#2 Wingfoil Yvonand — 13 kn SW
-DESCRIPTION:Yvonand · Neuenburgersee\n13 kn Mittelwind\, Böen 23 kn\, Ric
- htung SW\nFenster 10–17 Uhr (7 h)\, Modell ICON-CH1\nBewertung 54/100 
- — Wind 13\, Dauer 25\, Böen 8\, Nähe 8\nPrognose\, keine Zusage — vo
- r der Fahrt nochmal nachsehen.
-LOCATION:Yvonand\, Neuenburgersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:46.8;6.74
-END:VEVENT
-BEGIN:VEVENT
-UID:yvonand-2026-10-25-08@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261025T070000Z
-DTEND:20261025T160000Z
-SUMMARY:#1 Wingfoil Yvonand — 26 kn SW
-DESCRIPTION:Yvonand · Neuenburgersee\n26 kn Mittelwind\, Böen 44 kn\, Ric
- htung SW\nFenster 08–17 Uhr (9 h)\, Modell ICON-CH2\nBewertung 76/100 
- — Wind 36\, Dauer 25\, Böen 10\, Nähe 5\nPrognose\, keine Zusage — v
+UID:yvonand-2026-10-24-11@seewind
+DTSTAMP:20261024T091348Z
+DTSTART:20261024T090000Z
+DTEND:20261024T170000Z
+SUMMARY:Wingfoil Yvonand — 13 kn SW
+DESCRIPTION:Yvonand · Neuenburgersee\n13 kn Mittelwind\, Böen 26 kn\, Ric
+ htung SW\nFenster 11–19 Uhr (8 h)\, Modell ICON-CH1\nBewertung 51/100 
+ — Wind 13\, Dauer 25\, Böen 4\, Nähe 10\nPrognose\, keine Zusage — v
  or der Fahrt nochmal nachsehen.
 LOCATION:Yvonand\, Neuenburgersee
 TRANSP:OPAQUE
@@ -76,15 +25,15 @@ SEQUENCE:0
 GEO:46.8;6.74
 END:VEVENT
 BEGIN:VEVENT
-UID:neuhaus-2026-10-25-10@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261025T090000Z
-DTEND:20261025T110000Z
-SUMMARY:Wingfoil Neuhaus — 14 kn W
-DESCRIPTION:Neuhaus / Interlaken · Thunersee\n14 kn Mittelwind\, Böen 30 
- kn\, Richtung W\nFenster 10–12 Uhr (2 h)\, Modell ICON-CH2\nBewertung 33
- /100 — Wind 19\, Dauer 8\, Böen 1\, Nähe 5\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
+UID:neuhaus-2026-10-25-08@seewind
+DTSTAMP:20261024T091348Z
+DTSTART:20261025T070000Z
+DTEND:20261025T180000Z
+SUMMARY:#2 Wingfoil Neuhaus — 18 kn W
+DESCRIPTION:Neuhaus / Interlaken · Thunersee\n18 kn Mittelwind\, Böen 33 
+ kn\, Richtung W\nFenster 08–19 Uhr (11 h)\, Modell ICON-CH1/ICON-CH2\nBe
+ wertung 84/100 — Wind 44\, Dauer 25\, Böen 7\, Nähe 8\nPrognose\, kein
+ e Zusage — vor der Fahrt nochmal nachsehen.
 LOCATION:Neuhaus / Interlaken\, Thunersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
@@ -93,49 +42,32 @@ SEQUENCE:0
 GEO:46.685;7.818
 END:VEVENT
 BEGIN:VEVENT
-UID:neuhaus-2026-10-25-15@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261025T140000Z
+UID:yvonand-2026-10-25-08@seewind
+DTSTAMP:20261024T091348Z
+DTSTART:20261025T070000Z
 DTEND:20261025T190000Z
-SUMMARY:Wingfoil Neuhaus — 14 kn W
-DESCRIPTION:Neuhaus / Interlaken · Thunersee\n14 kn Mittelwind\, Böen 27 
- kn\, Richtung W\nFenster 15–20 Uhr (5 h)\, Modell ICON-CH2\nBewertung 50
- /100 — Wind 19\, Dauer 21\, Böen 5\, Nähe 5\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
-LOCATION:Neuhaus / Interlaken\, Thunersee
+SUMMARY:#1 Wingfoil Yvonand — 22 kn SW
+DESCRIPTION:Yvonand · Neuenburgersee\n22 kn Mittelwind\, Böen 38 kn\, Ric
+ htung SW\nFenster 08–20 Uhr (12 h)\, Modell ICON-CH1/ICON-CH2\nBewertung
+  86/100 — Wind 44\, Dauer 25\, Böen 9\, Nähe 8\nPrognose\, keine Zusag
+ e — vor der Fahrt nochmal nachsehen.
+LOCATION:Yvonand\, Neuenburgersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
-GEO:46.685;7.818
-END:VEVENT
-BEGIN:VEVENT
-UID:erlach-2026-10-25-16@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261025T150000Z
-DTEND:20261025T170000Z
-SUMMARY:Wingfoil Erlach — 14 kn W
-DESCRIPTION:Erlach / Lüscherz · Bielersee\n14 kn Mittelwind\, Böen 30 kn
- \, Richtung W\nFenster 16–18 Uhr (2 h)\, Modell ICON-CH2\nBewertung 33/1
- 00 — Wind 19\, Dauer 8\, Böen 1\, Nähe 5\nPrognose\, keine Zusage — 
- vor der Fahrt nochmal nachsehen.
-LOCATION:Erlach / Lüscherz\, Bielersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:47.045;7.095
+GEO:46.8;6.74
 END:VEVENT
 BEGIN:VEVENT
 UID:ipsach-2026-10-25-17@seewind
-DTSTAMP:20261023T185154Z
+DTSTAMP:20261024T091348Z
 DTSTART:20261025T160000Z
 DTEND:20261025T180000Z
-SUMMARY:Wingfoil Ipsach — 13 kn W
-DESCRIPTION:Ipsach / Nidau · Bielersee\n13 kn Mittelwind\, Böen 24 kn\, R
- ichtung W\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH2\nBewertung 32/100 
- — Wind 13\, Dauer 8\, Böen 7\, Nähe 5\nPrognose\, keine Zusage — vor
-  der Fahrt nochmal nachsehen.
+SUMMARY:#3 Wingfoil Ipsach — 17 kn W
+DESCRIPTION:Ipsach / Nidau · Bielersee\n17 kn Mittelwind\, Böen 34 kn\, R
+ ichtung W\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH1/ICON-CH2\nBewertung
+  58/100 — Wind 38\, Dauer 8\, Böen 4\, Nähe 8\nPrognose\, keine Zusage
+  — vor der Fahrt nochmal nachsehen.
 LOCATION:Ipsach / Nidau\, Bielersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
@@ -144,32 +76,49 @@ SEQUENCE:0
 GEO:47.115;7.227
 END:VEVENT
 BEGIN:VEVENT
-UID:estavayer-2026-10-25-17@seewind
-DTSTAMP:20261023T185154Z
+UID:erlach-2026-10-25-17@seewind
+DTSTAMP:20261024T091348Z
 DTSTART:20261025T160000Z
 DTEND:20261025T180000Z
-SUMMARY:Wingfoil Estavayer — 12 kn W
-DESCRIPTION:Estavayer-le-Lac · Neuenburgersee\n12 kn Mittelwind\, Böen 31
-  kn\, Richtung W\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH2\nBewertung 2
- 0/100 — Wind 6\, Dauer 8\, Böen 0\, Nähe 5\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
-LOCATION:Estavayer-le-Lac\, Neuenburgersee
+SUMMARY:Wingfoil Erlach — 14 kn W
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n14 kn Mittelwind\, Böen 32 kn
+ \, Richtung W\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH1/ICON-CH2\nBewer
+ tung 35/100 — Wind 19\, Dauer 8\, Böen 0\, Nähe 8\nPrognose\, keine Zu
+ sage — vor der Fahrt nochmal nachsehen.
+LOCATION:Erlach / Lüscherz\, Bielersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 CATEGORIES:Wingfoil
 SEQUENCE:0
-GEO:46.848;6.848
+GEO:47.045;7.095
 END:VEVENT
 BEGIN:VEVENT
-UID:thun-gwatt-2026-10-25-18@seewind
-DTSTAMP:20261023T185154Z
-DTSTART:20261025T170000Z
-DTEND:20261025T200000Z
-SUMMARY:#3 Wingfoil Thun — 15 kn N
-DESCRIPTION:Thun / Gwatt · Thunersee\n15 kn Mittelwind\, Böen 26 kn\, Ric
- htung N\nFenster 18–21 Uhr (3 h)\, Modell ICON-CH2\nBewertung 51/100 —
-  Wind 25\, Dauer 13\, Böen 9\, Nähe 5\nPrognose\, keine Zusage — vor d
- er Fahrt nochmal nachsehen.
+UID:vully-2026-10-25-17@seewind
+DTSTAMP:20261024T091348Z
+DTSTART:20261025T160000Z
+DTEND:20261025T180000Z
+SUMMARY:Wingfoil Vully — 12 kn NW
+DESCRIPTION:Praz / Vully · Murtensee\n12 kn Mittelwind\, Böen 28 kn\, Ric
+ htung NW\nFenster 17–19 Uhr (2 h)\, Modell ICON-CH1/ICON-CH2\nBewertung 
+ 23/100 — Wind 6\, Dauer 8\, Böen 0\, Nähe 8\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Praz / Vully\, Murtensee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.945;7.077
+END:VEVENT
+BEGIN:VEVENT
+UID:thun-gwatt-2026-10-25-20@seewind
+DTSTAMP:20261024T091348Z
+DTSTART:20261025T190000Z
+DTEND:20261025T210000Z
+SUMMARY:Wingfoil Thun — 14 kn N
+DESCRIPTION:Thun / Gwatt · Thunersee\n14 kn Mittelwind\, Böen 24 kn\, Ric
+ htung N\nFenster 20–22 Uhr (2 h)\, Modell ICON-CH2\nBewertung 44/100 —
+  Wind 19\, Dauer 8\, Böen 9\, Nähe 8\nPrognose\, keine Zusage — vor de
+ r Fahrt nochmal nachsehen.
 LOCATION:Thun / Gwatt\, Thunersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
