@@ -7,21 +7,4 @@ X-WR-CALNAME:Seewind — Windfenster
 X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
-BEGIN:VEVENT
-UID:neuhaus-2026-10-25-19@seewind
-DTSTAMP:20261025T180427Z
-DTSTART:20261025T180000Z
-DTEND:20261025T200000Z
-SUMMARY:#1 Wingfoil Neuhaus — 16 kn NW
-DESCRIPTION:Neuhaus / Interlaken · Thunersee\n16 kn Mittelwind\, Böen 35 
- kn\, Richtung NW\nFenster 19–21 Uhr (2 h)\, Modell ICON-CH1\nBewertung 5
- 0/100 — Wind 31\, Dauer 8\, Böen 0\, Nähe 10\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
-LOCATION:Neuhaus / Interlaken\, Thunersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:46.685;7.818
-END:VEVENT
 END:VCALENDAR
