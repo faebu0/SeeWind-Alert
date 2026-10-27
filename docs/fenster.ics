@@ -7,4 +7,72 @@ X-WR-CALNAME:Seewind — Windfenster
 X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
+BEGIN:VEVENT
+UID:erlach-2026-10-29-09@seewind
+DTSTAMP:20261027T100825Z
+DTSTART:20261029T080000Z
+DTEND:20261029T110000Z
+SUMMARY:#2 Wingfoil Erlach — 12 kn NO
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 20 kn
+ \, Richtung NO\nFenster 09–12 Uhr (3 h)\, Modell ICON-CH2\nBewertung 34/
+ 100 — Wind 6\, Dauer 13\, Böen 10\, Nähe 5\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Erlach / Lüscherz\, Bielersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:47.045;7.095
+END:VEVENT
+BEGIN:VEVENT
+UID:yvonand-2026-10-29-09@seewind
+DTSTAMP:20261027T100825Z
+DTSTART:20261029T080000Z
+DTEND:20261029T110000Z
+SUMMARY:#3 Wingfoil Yvonand — 11 kn NO
+DESCRIPTION:Yvonand · Neuenburgersee\n11 kn Mittelwind\, Böen 18 kn\, Ric
+ htung NO\nFenster 09–12 Uhr (3 h)\, Modell ICON-CH2\nBewertung 28/100 
+ — Wind 0\, Dauer 13\, Böen 11\, Nähe 5\nPrognose\, keine Zusage — vo
+ r der Fahrt nochmal nachsehen.
+LOCATION:Yvonand\, Neuenburgersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:46.8;6.74
+END:VEVENT
+BEGIN:VEVENT
+UID:erlach-2026-10-29-19@seewind
+DTSTAMP:20261027T100825Z
+DTSTART:20261029T180000Z
+DTEND:20261029T210000Z
+SUMMARY:#1 Wingfoil Erlach — 12 kn NO
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 19 kn
+ \, Richtung NO\nFenster 19–22 Uhr (3 h)\, Modell ICON-CH2\nBewertung 35/
+ 100 — Wind 6\, Dauer 13\, Böen 12\, Nähe 5\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Erlach / Lüscherz\, Bielersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:47.045;7.095
+END:VEVENT
+BEGIN:VEVENT
+UID:erlach-2026-10-30-19@seewind
+DTSTAMP:20261027T100825Z
+DTSTART:20261030T180000Z
+DTEND:20261030T210000Z
+SUMMARY:Wingfoil Erlach — 11 kn NO
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n11 kn Mittelwind\, Böen 18 kn
+ \, Richtung NO\nFenster 19–22 Uhr (3 h)\, Modell ICON-CH2\nBewertung 26/
+ 100 — Wind 0\, Dauer 13\, Böen 11\, Nähe 3\nPrognose\, keine Zusage 
+ — vor der Fahrt nochmal nachsehen.
+LOCATION:Erlach / Lüscherz\, Bielersee
+TRANSP:OPAQUE
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+CATEGORIES:Wingfoil
+SEQUENCE:0
+GEO:47.045;7.095
+END:VEVENT
 END:VCALENDAR
