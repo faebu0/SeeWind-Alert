@@ -7,21 +7,4 @@ X-WR-CALNAME:Seewind — Windfenster
 X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
-BEGIN:VEVENT
-UID:erlach-2026-11-04-16@seewind
-DTSTAMP:20261104T124152Z
-DTSTART:20261104T150000Z
-DTEND:20261104T210000Z
-SUMMARY:#1 Wingfoil Erlach — 13 kn NO
-DESCRIPTION:Erlach / Lüscherz · Bielersee\n13 kn Mittelwind\, Böen 22 kn
- \, Richtung NO\nFenster 16–22 Uhr (6 h)\, Modell ICON-CH1\nBewertung 57/
- 100 — Wind 13\, Dauer 25\, Böen 10\, Nähe 10\nPrognose\, keine Zusage 
- — vor der Fahrt nochmal nachsehen.
-LOCATION:Erlach / Lüscherz\, Bielersee
-TRANSP:OPAQUE
-X-MICROSOFT-CDO-BUSYSTATUS:BUSY
-CATEGORIES:Wingfoil
-SEQUENCE:0
-GEO:47.045;7.095
-END:VEVENT
 END:VCALENDAR
