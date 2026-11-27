@@ -8,15 +8,15 @@ X-WR-TIMEZONE:Europe/Zurich
 REFRESH-INTERVAL;VALUE=DURATION:PT4H
 X-PUBLISHED-TTL:PT4H
 BEGIN:VEVENT
-UID:erlach-2026-11-28-09@seewind
-DTSTAMP:20261127T143135Z
-DTSTART:20261128T080000Z
+UID:erlach-2026-11-28-08@seewind
+DTSTAMP:20261127T231051Z
+DTSTART:20261128T070000Z
 DTEND:20261128T100000Z
-SUMMARY:#1 Wingfoil Erlach — 11 kn NO
-DESCRIPTION:Erlach / Lüscherz · Bielersee\n11 kn Mittelwind\, Böen 19 kn
- \, Richtung NO\nFenster 09–11 Uhr (2 h)\, Modell ICON-CH1\nBewertung 25/
- 100 — Wind 0\, Dauer 8\, Böen 9\, Nähe 8\nPrognose\, keine Zusage — 
- vor der Fahrt nochmal nachsehen.
+SUMMARY:#1 Wingfoil Erlach — 12 kn NO
+DESCRIPTION:Erlach / Lüscherz · Bielersee\n12 kn Mittelwind\, Böen 21 kn
+ \, Richtung NO\nFenster 08–11 Uhr (3 h)\, Modell ICON-CH1\nBewertung 35/
+ 100 — Wind 6\, Dauer 13\, Böen 8\, Nähe 8\nPrognose\, keine Zusage —
+  vor der Fahrt nochmal nachsehen.
 LOCATION:Erlach / Lüscherz\, Bielersee
 TRANSP:OPAQUE
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
